@@ -1,0 +1,61 @@
+This is BibTeX, Version 0.99d (TeX Live 2017/Debian)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+The top-level auxiliary file: Abschlussarbeit.aux
+A level-1 auxiliary file: source/Titelseite.aux
+A level-1 auxiliary file: source/content/Danksagung.aux
+A level-1 auxiliary file: source/content/EidesstattlicheErklaerung.aux
+A level-1 auxiliary file: source/content/Abstract.aux
+A level-1 auxiliary file: source/content/Einleitung.aux
+A level-1 auxiliary file: source/content/Grundlagen.aux
+A level-1 auxiliary file: source/content/Fazit.aux
+The style file: plain.bst
+Database file #1: source/bib/references.bib
+Warning--empty journal in lib
+Warning--empty journal in analyzer
+Warning--empty booktitle in HTS221
+Warning--empty journal in LSM6DSL
+Warning--empty journal in B-L475E-IOT01A
+Warning--empty journal in STM32L4_datascheet
+Warning--empty journal in AT_Command
+You've used 7 entries,
+            2118 wiz_defined-function locations,
+            539 strings with 5280 characters,
+and the built_in function-call counts, 1537 in all, are:
+= -- 149
+> -- 49
+< -- 0
++ -- 21
+- -- 14
+* -- 61
+:= -- 290
+add.period$ -- 28
+call.type$ -- 7
+change.case$ -- 28
+chr.to.int$ -- 0
+cite$ -- 14
+duplicate$ -- 73
+empty$ -- 129
+format.name$ -- 14
+if$ -- 306
+int.to.chr$ -- 0
+int.to.str$ -- 7
+missing$ -- 7
+newline$ -- 45
+num.names$ -- 14
+pop$ -- 38
+preamble$ -- 1
+purify$ -- 21
+quote$ -- 0
+skip$ -- 48
+stack$ -- 0
+substring$ -- 35
+swap$ -- 1
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 28
+warning$ -- 7
+while$ -- 14
+width$ -- 8
+write$ -- 80
+(There were 7 warnings)

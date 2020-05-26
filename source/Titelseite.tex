@@ -1,0 +1,50 @@
+% erste Seite (Titelseite) der Bachelorarbeit mit Titel, Name usw...
+
+\newsavebox{\Prof}
+\savebox{\Prof}{Erster Prüfer }
+
+\newsavebox{\Betr}
+\savebox{\Betr}{Zweiter Prüfer }
+
+
+
+\begin{titlepage}
+
+\begin{textblock}{0}(20,10)
+	\includegraphics[height=2cm]{source/images/THMlogo.png}	
+\end{textblock}
+
+\begin{textblock}{20}(165,10)
+	\includegraphics[height=2cm]{source/images/logo-print-hd.jpg}
+\end{textblock}
+
+\begin{center}
+%\includegraphics[height=2cm]{source/images/logo_mirolab.png}
+
+{\large Technische Hochschule Mittelhessen}\\[1mm]
+{\small Fachbereich \fachbereich}
+\vspace{1.5cm}
+
+{\huge \TitelArbeit}
+
+\vspace{2cm}
+
+{\large Bachelorarbeit}
+
+\vspace{1.5cm}
+
+von\\[2mm]
+
+\textbf{\large{\DeinName}}\\
+\vspace{1.5cm}
+
+Betreuer: \\[2mm]
+
+\usebox{\Prof \PrueferEins} \\
+\usebox{\Betr \PrueferZwei} \\
+
+\vspace{1.5cm}
+Friedberg, den \today
+\end{center}
+
+\end{titlepage}

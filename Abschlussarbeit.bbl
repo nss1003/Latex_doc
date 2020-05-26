@@ -1,0 +1,49 @@
+\begin{thebibliography}{1}
+
+\bibitem{lib}
+libopencm3.
+\newblock libopencm3 lowlevel open-source library for arm cortex mcus.
+\newblock 2013.
+\newblock \url {https://github.com/libopencm3}.
+
+\bibitem{analyzer}
+saleae.
+\newblock Debug hardware like the pros with the logic analyzer you will love.
+\newblock 2020.
+\newblock \url {https://www.saleae.com/}.
+
+\bibitem{HTS221}
+STMicroelectronics.
+\newblock Capacitive digital sensor for relative humidity and temperature.
+\newblock STMicroelectronics, 2018.
+\newblock \url {https://www.st.com/en/mems-and-sensors/hts221.html#resource}.
+
+\bibitem{LSM6DSL}
+STMicroelectronics.
+\newblock inemo inertial module: always-on 3d accelerometer and 3d gyroscope.
+\newblock 2018.
+\newblock \url {https://www.st.com/en/mems-and-sensors/lsm6dsl.html#resource}.
+
+\bibitem{B-L475E-IOT01A}
+STMicroelectronics.
+\newblock Discovery kit for iot node, multi-channel communication with stm32l4.
+\newblock 2019.
+\newblock
+  \url{https://www.st.com/en/evaluation-tools/b-l475e-iot01a.html#resource}.
+
+\bibitem{STM32L4_datascheet}
+STMicroelectronics.
+\newblock
+  dm00083560-stm32l47xxx-stm32l48xxx-stm32l49xxx-and-stm32l4axxx-advanced-armbased-32bit-mcus-stmicroelectronics.
+\newblock 2019.
+\newblock
+  \url{https://www.st.com/en/evaluation-tools/b-l475e-iot01a.html#resource}.
+
+\bibitem{AT_Command}
+USI.
+\newblock Wm-sg-sm-42 at command reference manual.
+\newblock 04 2018.
+\newblock \url
+  {https://github.com/USIWP1Module/USI_I-NUCLEO-LRWAN1/tree/master/preloaded_firmware}.
+
+\end{thebibliography}

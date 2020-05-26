@@ -1,0 +1,20 @@
+\BOOKMARK [0][-]{chapter*.2}{Danksagung}{}% 1
+\BOOKMARK [0][-]{chapter*.3}{Selbst\344ndigkeit Erkl\344rung}{}% 2
+\BOOKMARK [0][-]{chapter.1}{1 Abstract}{}% 3
+\BOOKMARK [0][-]{chapter.2}{2 Einleitung}{}% 4
+\BOOKMARK [1][-]{section.2.1}{2.1 Motivation}{chapter.2}% 5
+\BOOKMARK [1][-]{section.2.2}{2.2 Aufgabenstellung und Zielsetzung}{chapter.2}% 6
+\BOOKMARK [1][-]{section.2.3}{2.3 Gliederung der Arbeit}{chapter.2}% 7
+\BOOKMARK [0][-]{chapter.3}{3 Komponenten und Software-Entwicklung}{}% 8
+\BOOKMARK [1][-]{section.3.1}{3.1 STM32L4 Discovery kit}{chapter.3}% 9
+\BOOKMARK [2][-]{subsection.3.1.1}{3.1.1 HTS221 Temperatursensor}{section.3.1}% 10
+\BOOKMARK [2][-]{subsection.3.1.2}{3.1.2 LSM6DSL 3D Gyroscope und 3D Beschleunigungssensor}{section.3.1}% 11
+\BOOKMARK [1][-]{section.3.2}{3.2 LoRa Node: i-nucleo-lrwan1}{chapter.3}% 12
+\BOOKMARK [2][-]{subsection.3.2.1}{3.2.1 LoRaWAN Protokol}{section.3.2}% 13
+\BOOKMARK [2][-]{subsection.3.2.2}{3.2.2 AT Commandos}{section.3.2}% 14
+\BOOKMARK [0][-]{chapter.4}{4 Gateway und LoRaWAN server}{}% 15
+\BOOKMARK [1][-]{section.4.1}{4.1 Gateway}{chapter.4}% 16
+\BOOKMARK [1][-]{section.4.2}{4.2 Server}{chapter.4}% 17
+\BOOKMARK [0][-]{chapter.5}{5 Fazit}{}% 18
+\BOOKMARK [1][-]{section.5.1}{5.1 Zusammenfassung}{chapter.5}% 19
+\BOOKMARK [1][-]{section.5.2}{5.2 Ausblick}{chapter.5}% 20

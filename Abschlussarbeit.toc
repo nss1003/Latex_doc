@@ -1,0 +1,23 @@
+\babel@toc {ngerman}{}
+\contentsline {chapter}{\nonumberline Danksagung}{iii}{chapter*.2}
+\contentsline {chapter}{\nonumberline Selbst\"andigkeit Erkl\"arung}{iv}{chapter*.3}
+\contentsline {chapter}{\numberline {1}Abstract}{1}{chapter.1}
+\contentsline {chapter}{\numberline {2}Einleitung}{2}{chapter.2}
+\contentsline {section}{\numberline {2.1}Motivation}{2}{section.2.1}
+\contentsline {section}{\numberline {2.2}Aufgabenstellung und Zielsetzung}{2}{section.2.2}
+\contentsline {section}{\numberline {2.3}Gliederung der Arbeit}{3}{section.2.3}
+\contentsline {chapter}{\numberline {3}Komponenten und Software-Entwicklung}{4}{chapter.3}
+\contentsline {section}{\numberline {3.1}STM32L4 Discovery kit}{4}{section.3.1}
+\contentsline {subsection}{\numberline {3.1.1}HTS221 Temperatursensor}{5}{subsection.3.1.1}
+\contentsline {subsubsection}{\nonumberline Feuchtigkeit ermitteln}{6}{section*.9}
+\contentsline {subsubsection}{\nonumberline Temperatur ermitteln}{7}{section*.12}
+\contentsline {subsection}{\numberline {3.1.2}LSM6DSL 3D Gyroscope und 3D Beschleunigungssensor}{8}{subsection.3.1.2}
+\contentsline {section}{\numberline {3.2}LoRa Node: i-nucleo-lrwan1}{8}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}LoRaWAN Protokol}{8}{subsection.3.2.1}
+\contentsline {subsection}{\numberline {3.2.2}AT Commandos}{8}{subsection.3.2.2}
+\contentsline {chapter}{\numberline {4}Gateway und LoRaWAN server}{9}{chapter.4}
+\contentsline {section}{\numberline {4.1}Gateway}{9}{section.4.1}
+\contentsline {section}{\numberline {4.2}Server}{9}{section.4.2}
+\contentsline {chapter}{\numberline {5}Fazit}{10}{chapter.5}
+\contentsline {section}{\numberline {5.1}Zusammenfassung}{10}{section.5.1}
+\contentsline {section}{\numberline {5.2}Ausblick}{10}{section.5.2}

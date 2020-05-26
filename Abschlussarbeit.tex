@@ -1,0 +1,66 @@
+\newcommand{\DeinName}{Silvere Sacker Ngoufack}
+\newcommand{\TitelArbeit}{LoRa based IoT endpoint and gateway}
+
+\newcommand{\PrueferEins}{Prof. Dr. Hartmut Weber}
+\newcommand{\PrueferZwei}{Dipl.-Ing ...}
+\newcommand{\fachbereich}{Informationstechnik - Elektrotechnik - Mechatronik}
+% entweder ein Datum händisch eintragen, oder den Befehl \today nutzen
+\newcommand{\Datum}{29 April 2020}
+
+\makeglossary
+
+
+%
+% Einbinden des Headers, hier können auch weitere Einstellungen vorgenommen werden.
+\input{source/header}
+
+
+% Beginn des Dokuments
+\begin{document}
+
+
+%Zitiert alle Referenzen, ohne Sie hier zu listen. Dadurch erscheinen alle Quellen im %Literaturverzeichnis, auch wenn sie im Text nicht genutzt werden.
+%Bitte nur für Testzwecke verwenden.
+\nocite{*}
+
+
+% Einbinden des Deckblatts
+
+\frontmatter
+\include{source/Titelseite}
+
+\tableofcontents 
+\include{source/content/Danksagung}
+\include{source/content/EidesstattlicheErklaerung}
+
+\backmatter
+%Einbinden des Tabellenverzeichnisses
+\listoffigures
+%Liste der Tabellen
+\listoftables
+
+
+%Einbinden des Hauptteils
+\mainmatter
+\include{source/content/Abstract}
+\include{source/content/Einleitung}
+\include{source/content/Grundlagen}
+
+%Das Fazit
+\include{source/content/Fazit}
+%Einbinden des Abbildungsverzeichnisses
+
+
+% Quellenverzeichnis
+\bibliographystyle{plain}
+\bibliography{source/bib/references}
+
+% Anhang
+\appendix
+\end{document}
+
+
+
+%
+% EOF
+%
