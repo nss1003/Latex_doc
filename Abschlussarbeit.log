@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2020.4.19)  26 MAY 2020 00:16
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2020.4.19)  26 JUN 2020 03:46
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -603,6 +603,88 @@ Package: etoolbox 2018/02/11 v2.5e e-TeX tools for LaTeX (JAW)
 \Urlmuskip=\muskip16
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
+(/usr/share/texlive/texmf-dist/tex/latex/base/textcomp.sty
+Package: textcomp 2017/04/05 v2.0i Standard LaTeX package
+Package textcomp Info: Sub-encoding information:
+(textcomp)               5 = only ISO-Adobe without \textcurrency
+(textcomp)               4 = 5 + \texteuro
+(textcomp)               3 = 4 + \textohm
+(textcomp)               2 = 3 + \textestimated + \textcurrency
+(textcomp)               1 = TS1 - \textcircled - \t
+(textcomp)               0 = TS1 (full)
+(textcomp)             Font families with sub-encoding setting implement
+(textcomp)             only a restricted character set as indicated.
+(textcomp)             Family '?' is the default used for unknown fonts.
+(textcomp)             See the documentation for details.
+Package textcomp Info: Setting ? sub-encoding to TS1/1 on input line 79.
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/ts1enc.def
+File: ts1enc.def 2001/06/05 v3.0e (jk/car/fm) Standard LaTeX file
+)
+LaTeX Info: Redefining \oldstylenums on input line 334.
+Package textcomp Info: Setting cmr sub-encoding to TS1/0 on input line 349.
+Package textcomp Info: Setting cmss sub-encoding to TS1/0 on input line 350.
+Package textcomp Info: Setting cmtt sub-encoding to TS1/0 on input line 351.
+Package textcomp Info: Setting cmvtt sub-encoding to TS1/0 on input line 352.
+Package textcomp Info: Setting cmbr sub-encoding to TS1/0 on input line 353.
+Package textcomp Info: Setting cmtl sub-encoding to TS1/0 on input line 354.
+Package textcomp Info: Setting ccr sub-encoding to TS1/0 on input line 355.
+Package textcomp Info: Setting ptm sub-encoding to TS1/4 on input line 356.
+Package textcomp Info: Setting pcr sub-encoding to TS1/4 on input line 357.
+Package textcomp Info: Setting phv sub-encoding to TS1/4 on input line 358.
+Package textcomp Info: Setting ppl sub-encoding to TS1/3 on input line 359.
+Package textcomp Info: Setting pag sub-encoding to TS1/4 on input line 360.
+Package textcomp Info: Setting pbk sub-encoding to TS1/4 on input line 361.
+Package textcomp Info: Setting pnc sub-encoding to TS1/4 on input line 362.
+Package textcomp Info: Setting pzc sub-encoding to TS1/4 on input line 363.
+Package textcomp Info: Setting bch sub-encoding to TS1/4 on input line 364.
+Package textcomp Info: Setting put sub-encoding to TS1/5 on input line 365.
+Package textcomp Info: Setting uag sub-encoding to TS1/5 on input line 366.
+Package textcomp Info: Setting ugq sub-encoding to TS1/5 on input line 367.
+Package textcomp Info: Setting ul8 sub-encoding to TS1/4 on input line 368.
+Package textcomp Info: Setting ul9 sub-encoding to TS1/4 on input line 369.
+Package textcomp Info: Setting augie sub-encoding to TS1/5 on input line 370.
+Package textcomp Info: Setting dayrom sub-encoding to TS1/3 on input line 371.
+Package textcomp Info: Setting dayroms sub-encoding to TS1/3 on input line 372.
+
+Package textcomp Info: Setting pxr sub-encoding to TS1/0 on input line 373.
+Package textcomp Info: Setting pxss sub-encoding to TS1/0 on input line 374.
+Package textcomp Info: Setting pxtt sub-encoding to TS1/0 on input line 375.
+Package textcomp Info: Setting txr sub-encoding to TS1/0 on input line 376.
+Package textcomp Info: Setting txss sub-encoding to TS1/0 on input line 377.
+Package textcomp Info: Setting txtt sub-encoding to TS1/0 on input line 378.
+Package textcomp Info: Setting lmr sub-encoding to TS1/0 on input line 379.
+Package textcomp Info: Setting lmdh sub-encoding to TS1/0 on input line 380.
+Package textcomp Info: Setting lmss sub-encoding to TS1/0 on input line 381.
+Package textcomp Info: Setting lmssq sub-encoding to TS1/0 on input line 382.
+Package textcomp Info: Setting lmvtt sub-encoding to TS1/0 on input line 383.
+Package textcomp Info: Setting lmtt sub-encoding to TS1/0 on input line 384.
+Package textcomp Info: Setting qhv sub-encoding to TS1/0 on input line 385.
+Package textcomp Info: Setting qag sub-encoding to TS1/0 on input line 386.
+Package textcomp Info: Setting qbk sub-encoding to TS1/0 on input line 387.
+Package textcomp Info: Setting qcr sub-encoding to TS1/0 on input line 388.
+Package textcomp Info: Setting qcs sub-encoding to TS1/0 on input line 389.
+Package textcomp Info: Setting qpl sub-encoding to TS1/0 on input line 390.
+Package textcomp Info: Setting qtm sub-encoding to TS1/0 on input line 391.
+Package textcomp Info: Setting qzc sub-encoding to TS1/0 on input line 392.
+Package textcomp Info: Setting qhvc sub-encoding to TS1/0 on input line 393.
+Package textcomp Info: Setting futs sub-encoding to TS1/4 on input line 394.
+Package textcomp Info: Setting futx sub-encoding to TS1/4 on input line 395.
+Package textcomp Info: Setting futj sub-encoding to TS1/4 on input line 396.
+Package textcomp Info: Setting hlh sub-encoding to TS1/3 on input line 397.
+Package textcomp Info: Setting hls sub-encoding to TS1/3 on input line 398.
+Package textcomp Info: Setting hlst sub-encoding to TS1/3 on input line 399.
+Package textcomp Info: Setting hlct sub-encoding to TS1/5 on input line 400.
+Package textcomp Info: Setting hlx sub-encoding to TS1/5 on input line 401.
+Package textcomp Info: Setting hlce sub-encoding to TS1/5 on input line 402.
+Package textcomp Info: Setting hlcn sub-encoding to TS1/5 on input line 403.
+Package textcomp Info: Setting hlcw sub-encoding to TS1/5 on input line 404.
+Package textcomp Info: Setting hlcf sub-encoding to TS1/5 on input line 405.
+Package textcomp Info: Setting pplx sub-encoding to TS1/3 on input line 406.
+Package textcomp Info: Setting pplj sub-encoding to TS1/3 on input line 407.
+Package textcomp Info: Setting ptmx sub-encoding to TS1/4 on input line 408.
+Package textcomp Info: Setting ptmj sub-encoding to TS1/4 on input line 409.
+)
 (/usr/share/texlive/texmf-dist/tex/latex/wrapfig/wrapfig.sty
 \wrapoverhang=\dimen142
 \WF@size=\dimen143
@@ -708,12 +790,12 @@ Package: longtable 2014/10/28 v4.11 Multi-page Table package (DPC)
 \c@LT@chunks=\count197
 \LT@p@ftn=\toks24
 )
-Class scrbook Info: longtable captions redefined on input line 74.
+Class scrbook Info: longtable captions redefined on input line 75.
 
 (/usr/share/texlive/texmf-dist/tex/latex/setspace/setspace.sty
 Package: setspace 2011/12/19 v6.7a set line spacing
 )
-Package scrhack Info: loading setspace hack on input line 79.
+Package scrhack Info: loading setspace hack on input line 80.
 
 (/usr/share/texlive/texmf-dist/tex/latex/koma-script/setspace.hak
 File: setspace.hak 2017/09/07 v3.24 KOMA-Script package (hacking package setspa
@@ -789,7 +871,7 @@ File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
 (/usr/share/texlive/texmf-dist/tex/latex/listings/listings.cfg
 File: listings.cfg 2015/06/04 1.6 listings configuration
 ))
-Package scrhack Info: loading listings hack on input line 108.
+Package scrhack Info: loading listings hack on input line 109.
 
 (/usr/share/texlive/texmf-dist/tex/latex/koma-script/listings.hak
 File: listings.hak 2017/09/07 v3.24 KOMA-Script package (hacking package listin
@@ -877,7 +959,7 @@ Class scrbook Warning: Usage of package `fancyhdr' together
 (scrbook)              `\addtokomafont' for the page style elements need
 (scrbook)              explicite user intervention to work.
 (scrbook)              Nevertheless, using requested
-(scrbook)              package `fancyhdr' on input line 157.
+(scrbook)              package `fancyhdr' on input line 158.
 
 (/usr/share/texlive/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
 Package: fancyhdr 2017/06/30 v3.9a Extensive control of page headers and footer
@@ -1213,7 +1295,7 @@ File: pgflibraryfadings.code.tex 2008/02/07 v3.0.1a (rcs-revision 1.3)
 ))))
 Package scrhack Info: hyperref hack deactivated because of
 (scrhack)             detection of KOMA-Script class, that doesn't
-(scrhack)             need that hack, on input line 215.
+(scrhack)             need that hack, on input line 216.
  (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
 Package: hyperref 2018/02/06 v6.86b Hypertext links for LaTeX
 
@@ -1320,8 +1402,8 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 )
 \Hy@SectionHShift=\skip86
 )
-Package hyperref Info: Option `colorlinks' set `true' on input line 224.
-Package hyperref Info: Option `bookmarksnumbered' set `true' on input line 224.
+Package hyperref Info: Option `colorlinks' set `true' on input line 225.
+Package hyperref Info: Option `bookmarksnumbered' set `true' on input line 225.
 
 )
 Package csquotes Info: Checking for multilingual support...
@@ -1347,6 +1429,13 @@ LaTeX Font Info:    ... okay on input line 19.
 LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 19.
 LaTeX Font Info:    ... okay on input line 19.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 19.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 19.
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmr.fd
+File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
 LaTeX Font Info:    ... okay on input line 19.
 LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 19.
 LaTeX Font Info:    ... okay on input line 19.
@@ -1463,7 +1552,7 @@ LaTeX Info: Redefining \nameref on input line 19.
  (./source/Titelseite.tex
 \Prof=\box71
 \Betr=\box72
-<source/images/THMlogo.png, id=111, 837.1275pt x 152.57pt>
+<source/images/THMlogo.png, id=143, 837.1275pt x 152.57pt>
 File: source/images/THMlogo.png Graphic file (type png)
 <use source/images/THMlogo.png>
 Package pdftex.def Info: source/images/THMlogo.png  used on input line 14.
@@ -1473,7 +1562,7 @@ Overfull \hbox (312.23593pt too wide) in paragraph at lines 14--15
 [][] 
  []
 
-<source/images/logo-print-hd.jpg, id=113, 722.7pt x 539.1342pt>
+<source/images/logo-print-hd.jpg, id=145, 722.7pt x 539.1342pt>
 File: source/images/logo-print-hd.jpg Graphic file (type jpg)
 <use source/images/logo-print-hd.jpg>
 Package pdftex.def Info: source/images/logo-print-hd.jpg  used on input line 18
@@ -1504,15 +1593,15 @@ Package babel Info: Redefining ngerman shorthand "~
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./source/images/THMlogo.pn
 g> <./source/images/logo-print-hd.jpg>])
-LaTeX Font Info:    Try loading font information for T1+phv on input line 32.
+LaTeX Font Info:    Try loading font information for T1+phv on input line 33.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1phv.fd
 File: t1phv.fd 2001/06/04 scalable font definitions for T1/phv.
 )
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <10.95> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 32.
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 33.
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <20.74> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 32.
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 33.
 
 (./Abschlussarbeit.toc
 LaTeX Font Info:    External font `cmex10' loaded for size
@@ -1526,14 +1615,19 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 \openout9 = `Abschlussarbeit.toc'.
 
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 33.
+(babel)             in language  on input line 34.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 33.
+(babel)             in language  on input line 34.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 33.
+(babel)             in language  on input line 34.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 33.
- [2
+(babel)             in language  on input line 34.
+pdfTeX warning (ext4): destination with the same identifier (name{page.i}) has 
+been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.34 \include{source/content/Danksagung}
+                                         [1
 
 
 
@@ -1553,14 +1647,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 8--10
 
 )
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 33.
+(babel)             in language  on input line 34.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 33.
+(babel)             in language  on input line 34.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 33.
+(babel)             in language  on input line 34.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 33.
- [3
+(babel)             in language  on input line 34.
+ [2
 
 
 
@@ -1580,109 +1674,112 @@ Underfull \hbox (badness 10000) in paragraph at lines 2--7
 
 )
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 34.
+(babel)             in language  on input line 35.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 34.
+(babel)             in language  on input line 35.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 34.
+(babel)             in language  on input line 35.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 34.
+(babel)             in language  on input line 35.
+ [3
+
+
+
+
+] (./Abschlussarbeit.lof
+LaTeX Font Info:    Try loading font information for TS1+ppl on input line 11.
+
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ppl.fd
+File: ts1ppl.fd 2001/06/04 font definitions for TS1/ppl.
+))
+\tf@lof=\write10
+\openout10 = `Abschlussarbeit.lof'.
+
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 41.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 41.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 41.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 41.
  [4
 
 
 
 
-] (./Abschlussarbeit.lof)
-\tf@lof=\write10
-\openout10 = `Abschlussarbeit.lof'.
 
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 40.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 40.
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 40.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 40.
- [5
-
-
-
-
-
-] (./Abschlussarbeit.lot)
+]
+(./Abschlussarbeit.lot)
 \tf@lot=\write11
 \openout11 = `Abschlussarbeit.lot'.
 
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 44.
+(babel)             in language  on input line 42.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 44.
+(babel)             in language  on input line 42.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 44.
+(babel)             in language  on input line 42.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 44.
- [6
+(babel)             in language  on input line 42.
+ [5
 
 
 ]
 \openout2 = `source/content/Abstract.aux'.
 
-
-(./source/content/Abstract.tex
-chapter 1.
+ (./source/content/Abstract.tex
+chapter without number
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 1.
+(babel)             in language  on input line 2.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 1.
-)
+(babel)             in language  on input line 2.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 45.
+(babel)             in language  on input line 5.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 45.
+(babel)             in language  on input line 5.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 45.
+(babel)             in language  on input line 5.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 45.
- [1
+(babel)             in language  on input line 5.
+[6
 
 
 
-
-]
+])
 \openout2 = `source/content/Einleitung.aux'.
 
  (./source/content/Einleitung.tex
-chapter 2.
+chapter 1.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 1.
+(babel)             in language  on input line 2.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 1.
+(babel)             in language  on input line 2.
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <14.4> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 6.
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 7.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 6.
+(babel)             in language  on input line 7.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 6.
+(babel)             in language  on input line 7.
 LaTeX Font Info:    Font shape `T1/ppl/bx/it' in size <10.95> not available
-(Font)              Font shape `T1/ppl/b/it' tried instead on input line 9.
+(Font)              Font shape `T1/ppl/b/it' tried instead on input line 10.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 12.
+(babel)             in language  on input line 13.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 12.
+(babel)             in language  on input line 13.
 
-Overfull \hbox (30.52733pt too wide) in paragraph at lines 13--14
-\T1/ppl/m/n/10.95 und Feuch-tig-keits-sen-sor. Die Sen-so-ren mes-sen Da-ten un
-d über-ge-ben die-se an den STM32L475
+Overfull \hbox (4.6191pt too wide) in paragraph at lines 16--17
+[]\T1/ppl/m/n/10.95 Der Mi-kro-con-trol-ler soll die Da-ten ver-ar-bei-ten und 
+mit Hil-fe von ei-nem LoRa-Modul[[]]
  []
 
-<source/images/LoRaWAN.png, id=188, 909.3975pt x 365.365pt>
-File: source/images/LoRaWAN.png Graphic file (type png)
-<use source/images/LoRaWAN.png>
-Package pdftex.def Info: source/images/LoRaWAN.png  used on input line 19.
-(pdftex.def)             Requested size: 483.69684pt x 194.33382pt.
+<source/images/LoRaWAN_NET.png, id=244, 938.50626pt x 405.515pt>
+File: source/images/LoRaWAN_NET.png Graphic file (type png)
+<use source/images/LoRaWAN_NET.png>
+Package pdftex.def Info: source/images/LoRaWAN_NET.png  used on input line 20.
+(pdftex.def)             Requested size: 426.79134pt x 184.4106pt.
 
-Overfull \hbox (65.44316pt too wide) in paragraph at lines 19--20
+Overfull \hbox (8.53766pt too wide) in paragraph at lines 20--21
 [][] 
  []
 
@@ -1690,23 +1787,24 @@ Overfull \hbox (65.44316pt too wide) in paragraph at lines 19--20
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 25.
+(babel)             in language  on input line 26.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 25.
+(babel)             in language  on input line 26.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 25.
+(babel)             in language  on input line 26.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 25.
-[2
+(babel)             in language  on input line 26.
+[1
+
 
 
 
 
 ]
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 25.
+(babel)             in language  on input line 26.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 25.
+(babel)             in language  on input line 26.
 )
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 46.
@@ -1716,11 +1814,11 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 46.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 46.
- [3 <./source/images/LoRaWAN.png>]
+ [2 <./source/images/LoRaWAN_NET.png>]
 \openout2 = `source/content/Grundlagen.aux'.
 
  (./source/content/Grundlagen.tex
-chapter 3.
+chapter 2.
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 1.
 Package babel Info: Redefining ngerman shorthand "~
@@ -1729,145 +1827,324 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 5.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 5.
-LaTeX Font Info:    Try loading font information for OMS+ppl on input line 8.
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/omsppl.fd
-File: omsppl.fd 
-)
-LaTeX Font Info:    Font shape `OMS/ppl/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 8.
-
-Overfull \hbox (22.32487pt too wide) in paragraph at lines 7--9
-\T1/ppl/m/n/10.95 Kommunikation (Ble-au-tooth Low ener-gie) mit ge-rin-ge-rem S
-trom-ver-brauch nutz, Multiway-
- []
-
-<source/images/Board.png, id=206, 782.925pt x 548.0475pt>
+<source/images/Board.png, id=264, 782.925pt x 548.0475pt>
 File: source/images/Board.png Graphic file (type png)
 <use source/images/Board.png>
 Package pdftex.def Info: source/images/Board.png  used on input line 14.
-(pdftex.def)             Requested size: 284.52756pt x 199.17015pt.
+(pdftex.def)             Requested size: 270.30118pt x 189.21039pt.
 
-LaTeX Warning: `h' float specifier changed to `ht'.
+Overfull \hbox (9.10942pt too wide) in paragraph at lines 20--21
+[]\T1/ppl/m/n/10.95 Für die-se Ar-beit wer-den wir uns auf zwei Sen-so-ren be-s
+chrän-ken. Erst-mal den HTS221[[]]
+ []
 
-LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <12> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 21.
+
+Overfull \hbox (7.95995pt too wide) in paragraph at lines 20--21
+\T1/ppl/m/n/10.95 Beschleunigungssensor [[]]. Die-se Da-ten wer-den er-fasst un
+d draht-los an den LoRaWAN-
+ []
+
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 21.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 21.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 21.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 21.
+[3
 
-Overfull \hbox (3.3598pt too wide) in paragraph at lines 22--23
+
+
+
+ <./source/images/Board.png>]
+LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <12> not available
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 22.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 22.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 22.
+
+Overfull \hbox (3.3598pt too wide) in paragraph at lines 23--24
 \T1/ppl/m/n/10.95 In die-sem Un-ter-ka-pi-tel wird der HTS221 Temperatur- und F
 euch-tig-keits-sen-sor be-schrie-
  []
 
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 24.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 24.
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 24.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 24.
-[4
-
-
-
-
-]
-<source/images/HTS221_sensor.png, id=215, 1221.56375pt x 631.35875pt>
+<source/images/HTS221_sensor.png, id=277, 1221.56375pt x 631.35875pt>
 File: source/images/HTS221_sensor.png Graphic file (type png)
 <use source/images/HTS221_sensor.png>
-Package pdftex.def Info: source/images/HTS221_sensor.png  used on input line 28
+Package pdftex.def Info: source/images/HTS221_sensor.png  used on input line 29
 .
 (pdftex.def)             Requested size: 398.33858pt x 205.88278pt.
 
-Overfull \hbox (1.71715pt too wide) in paragraph at lines 34--37
+Overfull \hbox (1.71715pt too wide) in paragraph at lines 35--38
 \T1/ppl/m/n/10.95 HTS221 Sen-sor spei-chert den Feuch-tig-keits-wert in Roh-zä-
-lun-gen in zwie 8-Bit-Registern: 
+lun-gen in zwei 8-Bit-Registern: 
  []
 
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 37.
+(babel)             in language  on input line 39.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 37.
+(babel)             in language  on input line 39.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 37.
+(babel)             in language  on input line 39.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 37.
-[5 <./source/images/Board.png> <./source/images/HTS221_sensor.png>]
+(babel)             in language  on input line 39.
+[4 <./source/images/HTS221_sensor.png>]
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <14.4> on input line 52.
+(Font)              <14.4> on input line 54.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 52.
+(Font)              <7> on input line 54.
 LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <14.4> not available
-(Font)              Font shape `T1/ppl/b/n' tried instead on input line 53.
+(Font)              Font shape `T1/ppl/b/n' tried instead on input line 55.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <9> on input line 72.
+(Font)              <9> on input line 74.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 72.
-<source/images/rH.png, id=227, 487.8225pt x 437.635pt>
+(Font)              <5> on input line 74.
+<source/images/rH.png, id=289, 487.8225pt x 437.635pt>
 File: source/images/rH.png Graphic file (type png)
 <use source/images/rH.png>
-Package pdftex.def Info: source/images/rH.png  used on input line 88.
-(pdftex.def)             Requested size: 284.52756pt x 255.2575pt.
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 90.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 90.
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 90.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 90.
- [6]
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 110.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 110.
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 113.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 113.
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 114.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 114.
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 115.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 115.
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 118.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 118.
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 118.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 118.
+Package pdftex.def Info: source/images/rH.png  used on input line 90.
+(pdftex.def)             Requested size: 256.0748pt x 229.72842pt.
 
-[7 <./source/images/rH.png>]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 118.
+(babel)             in language  on input line 97.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 118.
+(babel)             in language  on input line 97.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 118.
+(babel)             in language  on input line 97.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 118.
- [8]
+(babel)             in language  on input line 97.
+[5]
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 121.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 121.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 121.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 121.
+ [6 <./source/images/rH.png>]
+<source/images/Temp.png, id=310, 467.7475pt x 374.39874pt>
+File: source/images/Temp.png Graphic file (type png)
+<use source/images/Temp.png>
+Package pdftex.def Info: source/images/Temp.png  used on input line 168.
+(pdftex.def)             Requested size: 256.0748pt x 204.97733pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 175.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 175.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 175.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 175.
+[7]
+
+LaTeX Warning: Command \textdegree invalid in math mode on input line 178.
+
+
+LaTeX Warning: Command \textdegree invalid in math mode on input line 178.
+
+Missing character: There is no ° in font cmr10!
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 184.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 184.
+
+Overfull \hbox (0.1077pt too wide) in paragraph at lines 189--191
+[]\T1/ppl/m/n/10.95 Der LSM6DSL ist ein di-gi-ta-ler 3D-Beschleunigungsmesser u
+nd ein 3D-Gyroskopsystem
+ []
+
+
+Overfull \hbox (2.88976pt too wide) in paragraph at lines 189--191
+\T1/ppl/m/n/10.95 ba-ren dy-na-mi-schen Be-schleu-ni-gungs-be-reich von \TS1/pp
+l/m/n/10.95 ±\T1/ppl/m/n/10.95 2 |\TS1/ppl/m/n/10.95 ±\T1/ppl/m/n/10.95 4 |\TS1
+/ppl/m/n/10.95 ±\T1/ppl/m/n/10.95 8 |\TS1/ppl/m/n/10.95 ±\T1/ppl/m/n/10.95 16g 
+(g is gleich 9,81m/s)
+ []
+
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 193.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 193.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 193.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 193.
+[8 <./source/images/Temp.png>]
+<source/images/Gy_Acc_data.png, id=324, 448.67625pt x 419.5675pt>
+File: source/images/Gy_Acc_data.png Graphic file (type png)
+<use source/images/Gy_Acc_data.png>
+Package pdftex.def Info: source/images/Gy_Acc_data.png  used on input line 210.
+
+(pdftex.def)             Requested size: 227.62204pt x 212.84982pt.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 215.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 215.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 215.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 215.
+ [9 <./source/images/Gy_Acc_data.png>]
+Overfull \hbox (2.94467pt too wide) in paragraph at lines 216--217
+\T1/ppl/m/n/10.95 von Mess-da-ten durch ein Si-gnal er-kenn-bar wird. Das XLDA-
+Bit von dem STATUS_REG-
+ []
+
+
+Overfull \hbox (2.96692pt too wide) in paragraph at lines 218--219
+\T1/ppl/m/n/10.95 schleu-ni-gungs-da-ten wer-den in OUTX_H_XL-, OUTX_L_XL-, OUT
+Y_H_XL-, OUTY_L_-
+ []
+
+
+Overfull \hbox (6.12022pt too wide) in paragraph at lines 218--219
+\T1/ppl/m/n/10.95 dig-keits-da-ten wer-den da-ge-gen in OUTX_H_G-, OUTX_L_G-, O
+UTY_H_G-, OUTY_L_G-
+ []
+
+
+Overfull \hbox (2.21075pt too wide) in paragraph at lines 220--223
+\T1/ppl/m/n/10.95 Endian ent-spricht. Dies ist mög-lich, so-fern man das BLE-Bi
+t von dem CTRL3_C-Register
+ []
+
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 229.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 229.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 232.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 232.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 232.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 232.
+[10]
+<source/images/LoRa_mod.png, id=337, 1101.11375pt x 616.3025pt>
+File: source/images/LoRa_mod.png Graphic file (type png)
+<use source/images/LoRa_mod.png>
+Package pdftex.def Info: source/images/LoRa_mod.png  used on input line 236.
+(pdftex.def)             Requested size: 398.33858pt x 222.95018pt.
+
+Overfull \hbox (10.01788pt too wide) in paragraph at lines 240--242
+\T1/ppl/m/n/10.95 mög-lich An-wen-dun-gen mit der LoRa-Technologie zu ent-wi-ck
+eln. Das I-Nucleo-LRWAN1
+ []
+
+
+Overfull \hbox (7.47736pt too wide) in paragraph at lines 240--242
+\T1/ppl/m/n/10.95 ver-fügt über den USI\TS1/ppl/m/n/10.95 ® \T1/ppl/m/n/10.95 L
+o-Ra-WAN\TS1/ppl/m/n/10.95 — \T1/ppl/m/n/10.95 Tech-no-lo-gie-mo-dul für kons-t
+en-güns-ti-ges und strom-
+ []
+
+
+Overfull \hbox (3.64429pt too wide) in paragraph at lines 249--250
+\T1/ppl/m/n/10.95 Mi-kro-con-trol-ler er-folgt ein-fach durch UART, man braucht
+ nicht auf das in-te-grie-te Radio-
+ []
+
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 250.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 250.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 250.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 250.
+[11 <./source/images/LoRa_mod.png>]
+<source/images/LoRa_Intern.png, id=348, 799.98875pt x 529.98pt>
+File: source/images/LoRa_Intern.png Graphic file (type png)
+<use source/images/LoRa_Intern.png>
+Package pdftex.def Info: source/images/LoRa_Intern.png  used on input line 253.
+
+(pdftex.def)             Requested size: 398.33858pt x 263.89761pt.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 259.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 259.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 262.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 262.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 265.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 265.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 265.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 265.
+ [12 <./source/images/LoRa_Intern.png>]
+chapter 3.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 265.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 265.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 267.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 267.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 268.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 268.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 269.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 269.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 270.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 270.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 273.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 273.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 273.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 273.
+[13
+
+
+]
 chapter 4.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 118.
+(babel)             in language  on input line 273.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 118.
+(babel)             in language  on input line 273.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 120.
+(babel)             in language  on input line 274.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 120.
+(babel)             in language  on input line 274.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 121.
+(babel)             in language  on input line 275.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 121.
+(babel)             in language  on input line 275.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 276.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 276.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 277.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 277.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 278.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 278.
 )
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 47.
@@ -1877,7 +2154,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 47.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 47.
- [9
+ [14
 
 
 ]
@@ -1906,7 +2183,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 50.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 50.
- [10
+ [15
 
 
 
@@ -1917,50 +2194,74 @@ LaTeX Font Info:    Try loading font information for T1+pcr on input line 7.
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1pcr.fd
 File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
 )
-Underfull \hbox (badness 5203) in paragraph at lines 16--20
+Underfull \hbox (badness 3838) in paragraph at lines 62--66
 []\T1/ppl/m/n/10.95 STMicroelectronics.  Ca-pa-ci-ti-ve di-gi-tal sen-sor for r
 e-la-ti-ve hu-mi-di-ty and
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 16--20
+Underfull \hbox (badness 10000) in paragraph at lines 62--66
 \T1/ppl/m/n/10.95 tem-pe-ra-ture.  STMi-cro-elec-tro-nics, 2018.  [][]$\T1/pcr/
 m/n/10.95 https : / / www . st . com / en /
  []
 
-
-Underfull \hbox (badness 1163) in paragraph at lines 28--33
-[]\T1/ppl/m/n/10.95 STMicroelectronics.  Dis-co-ve-ry kit for iot no-de, multi-
-channel com-mu-ni-ca-ti-
- []
-
-
-Underfull \hbox (badness 1072) in paragraph at lines 28--33
-\T1/ppl/m/n/10.95 on with stm32l4.  2019.  [][]$\T1/pcr/m/n/10.95 https : / / w
-ww . st . com / en / evaluation-[]tools /
- []
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 80.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 80.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 80.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 80.
+[16
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 35--41
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 81--87
 []\T1/ppl/m/n/10.95 STMicroelectronics.  dm00083560-stm32l47xxx-stm32l48xxx-stm
-32l49xxx-and-
+32l49xxx-
  []
 
 
-Underfull \hbox (badness 2469) in paragraph at lines 43--48
+Underfull \hbox (badness 10000) in paragraph at lines 81--87
+\T1/ppl/m/n/10.95 and-stm32l4axxx-advanced-armbased-32bit-mcus-stmicroelectroni
+cs.  2019.
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 81--87
+[][]$\T1/pcr/m/n/10.95 https : / / www . st . com / en / evaluation-[]tools / b
+-[]l475e-[]iot01a . html #
+ []
+
+
+Underfull \hbox (badness 2512) in paragraph at lines 89--94
+[]\T1/ppl/m/n/10.95 STMicroelectronics.  Usi lo-ra ex-pan-si-on baord for stm32
+ nucleo.  2019.
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 89--94
+[][]$\T1/pcr/m/n/10.95 https : / / www . st . com / en / evaluation-[]tools / i
+-[]nucleo-[]lrwan1 .
+ []
+
+
+Underfull \hbox (badness 1931) in paragraph at lines 96--101
 []\T1/ppl/m/n/10.95 USI.  Wm-sg-sm-42 at com-mand re-fe-rence ma-nu-al.  04 201
 8.  [][]$\T1/pcr/m/n/10.95 https :
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 43--48
+Underfull \hbox (badness 10000) in paragraph at lines 96--101
 \T1/pcr/m/n/10.95 / / github . com / USIWP1Module / USI _ I-[]NUCLEO-[]LRWAN1 /
  tree / master /
  []
 
 )
 
-Package caption Warning: Unused \captionsetup[lstlisting] on input line 153.
+Package caption Warning: Unused \captionsetup[lstlisting] on input line 154.
 See the caption package documentation for explanation.
 
 Package babel Info: Redefining ngerman shorthand "|
@@ -1971,11 +2272,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 60.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 60.
-[11
-
-
-
-]
+[17]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 60.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 60.
  (./Abschlussarbeit.aux (./source/Titelseite.aux)
@@ -1986,31 +2283,30 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 60.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 60.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 60.
 Package rerunfilecheck Info: File `Abschlussarbeit.out' has not changed.
-(rerunfilecheck)             Checksum: E3C7F6B9AE7B881CC439B1889C60F2AF;1326.
+(rerunfilecheck)             Checksum: 1521F9351E1350B771A2B700EC486BD7;1968.
  ) 
 Here is how much of TeX's memory you used:
- 33530 strings out of 492982
- 633288 string characters out of 6134896
- 812395 words of memory out of 5000000
- 36416 multiletter control sequences out of 15000+600000
- 572919 words of font info for 78 fonts, out of 8000000 for 9000
+ 34076 strings out of 492982
+ 641878 string characters out of 6134896
+ 815544 words of memory out of 5000000
+ 36916 multiletter control sequences out of 15000+600000
+ 573420 words of font info for 80 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,13n,108p,10452b,490s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 75i,13n,108p,10452b,598s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/
-fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/ty
-pe1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
-blic/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/couri
-er/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pf
-b></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/shar
-e/texlive/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/share/texlive/te
-xmf-dist/fonts/type1/urw/palatino/uplbi8a.pfb></usr/share/texlive/texmf-dist/fo
-nts/type1/urw/palatino/uplr8a.pfb>
-Output written on Abschlussarbeit.pdf (17 pages, 1615376 bytes).
+fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/
+type1/urw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/hel
+vetic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a
+.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/s
+hare/texlive/texmf-dist/fonts/type1/urw/palatino/uplbi8a.pfb></usr/share/texliv
+e/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/share/texlive/texmf-dist
+/fonts/type1/urw/palatino/uplri8a.pfb>
+Output written on Abschlussarbeit.pdf (24 pages, 2283986 bytes).
 PDF statistics:
- 335 PDF objects out of 1000 (max. 8388607)
- 273 compressed objects within 3 object streams
- 57 named destinations out of 1000 (max. 500000)
- 299 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 472 PDF objects out of 1000 (max. 8388607)
+ 391 compressed objects within 4 object streams
+ 87 named destinations out of 1000 (max. 500000)
+ 383 words of extra memory for PDF output out of 10000 (max. 10000000)
 

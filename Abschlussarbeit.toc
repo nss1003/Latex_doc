@@ -1,23 +1,33 @@
 \babel@toc {ngerman}{}
-\contentsline {chapter}{\nonumberline Danksagung}{iii}{chapter*.2}
-\contentsline {chapter}{\nonumberline Selbst\"andigkeit Erkl\"arung}{iv}{chapter*.3}
-\contentsline {chapter}{\numberline {1}Abstract}{1}{chapter.1}
-\contentsline {chapter}{\numberline {2}Einleitung}{2}{chapter.2}
-\contentsline {section}{\numberline {2.1}Motivation}{2}{section.2.1}
-\contentsline {section}{\numberline {2.2}Aufgabenstellung und Zielsetzung}{2}{section.2.2}
-\contentsline {section}{\numberline {2.3}Gliederung der Arbeit}{3}{section.2.3}
-\contentsline {chapter}{\numberline {3}Komponenten und Software-Entwicklung}{4}{chapter.3}
-\contentsline {section}{\numberline {3.1}STM32L4 Discovery kit}{4}{section.3.1}
-\contentsline {subsection}{\numberline {3.1.1}HTS221 Temperatursensor}{5}{subsection.3.1.1}
-\contentsline {subsubsection}{\nonumberline Feuchtigkeit ermitteln}{6}{section*.9}
-\contentsline {subsubsection}{\nonumberline Temperatur ermitteln}{7}{section*.12}
-\contentsline {subsection}{\numberline {3.1.2}LSM6DSL 3D Gyroscope und 3D Beschleunigungssensor}{8}{subsection.3.1.2}
-\contentsline {section}{\numberline {3.2}LoRa Node: i-nucleo-lrwan1}{8}{section.3.2}
-\contentsline {subsection}{\numberline {3.2.1}LoRaWAN Protokol}{8}{subsection.3.2.1}
-\contentsline {subsection}{\numberline {3.2.2}AT Commandos}{8}{subsection.3.2.2}
-\contentsline {chapter}{\numberline {4}Gateway und LoRaWAN server}{9}{chapter.4}
-\contentsline {section}{\numberline {4.1}Gateway}{9}{section.4.1}
-\contentsline {section}{\numberline {4.2}Server}{9}{section.4.2}
-\contentsline {chapter}{\numberline {5}Fazit}{10}{chapter.5}
-\contentsline {section}{\numberline {5.1}Zusammenfassung}{10}{section.5.1}
-\contentsline {section}{\numberline {5.2}Ausblick}{10}{section.5.2}
+\contentsline {chapter}{\nonumberline Danksagung}{ii}{chapter*.2}
+\contentsline {chapter}{\nonumberline Selbst\"andigkeitserkl\"arung}{iii}{chapter*.3}
+\contentsline {chapter}{\nonumberline Abstract}{vi}{chapter*.6}
+\contentsline {chapter}{\numberline {1}Einleitung}{1}{chapter.1}
+\contentsline {section}{\numberline {1.1}Motivation}{1}{section.1.1}
+\contentsline {section}{\numberline {1.2}Aufgabenstellung und Zielsetzung}{1}{section.1.2}
+\contentsline {section}{\numberline {1.3}Gliederung der Arbeit}{2}{section.1.3}
+\contentsline {chapter}{\numberline {2}Hardware Komponenten}{3}{chapter.2}
+\contentsline {section}{\numberline {2.1}STM32L4 Discovery Kit}{3}{section.2.1}
+\contentsline {subsection}{\numberline {2.1.1}HTS221 Temperatursensor- und Feuchtigkeitssensor}{4}{subsection.2.1.1}
+\contentsline {subsubsection}{\nonumberline Feuchtigkeit ermitteln}{4}{section*.10}
+\contentsline {subsubsection}{\nonumberline Temperatur ermitteln}{6}{section*.13}
+\contentsline {subsection}{\numberline {2.1.2}LSM6DSL 3D Gyroskope und 3D Beschleunigungssensor}{8}{subsection.2.1.2}
+\contentsline {section}{\numberline {2.2}LoRa Node: i-nucleo-lrwan1}{11}{section.2.2}
+\contentsline {subsection}{\numberline {2.2.1}LoRaWAN Protokol}{12}{subsection.2.2.1}
+\contentsline {subsubsection}{\nonumberline Aktivierung durch OTAA}{12}{section*.19}
+\contentsline {subsubsection}{\nonumberline Aktivierung durch ABP}{12}{section*.20}
+\contentsline {subsection}{\numberline {2.2.2}AT Commandos}{12}{subsection.2.2.2}
+\contentsline {chapter}{\numberline {3}Gateway und LoRaWAN-Server}{13}{chapter.3}
+\contentsline {section}{\numberline {3.1}Gateway}{13}{section.3.1}
+\contentsline {subsection}{\numberline {3.1.1}Was ist das Lora packet forwarder}{13}{subsection.3.1.1}
+\contentsline {section}{\numberline {3.2}Einstellung des LoRaWAN-Servers}{13}{section.3.2}
+\contentsline {section}{\numberline {3.3}MQTT brocker zur Daten"ubertragung}{13}{section.3.3}
+\contentsline {chapter}{\numberline {4}Software-Entwicklung}{14}{chapter.4}
+\contentsline {section}{\numberline {4.1}Entwicklungsumgebung}{14}{section.4.1}
+\contentsline {subsection}{\numberline {4.1.1}Eclipse}{14}{subsection.4.1.1}
+\contentsline {subsection}{\numberline {4.1.2}Libopencm3 Bibliotek installieren}{14}{subsection.4.1.2}
+\contentsline {section}{\numberline {4.2}Sensoren Auslesen}{14}{section.4.2}
+\contentsline {section}{\numberline {4.3}LoRa Commandos senden}{14}{section.4.3}
+\contentsline {chapter}{\numberline {5}Fazit}{15}{chapter.5}
+\contentsline {section}{\numberline {5.1}Zusammenfassung}{15}{section.5.1}
+\contentsline {section}{\numberline {5.2}Ausblick}{15}{section.5.2}

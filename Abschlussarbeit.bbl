@@ -1,4 +1,28 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
+
+\bibitem{LoRaWAN}
+LoRa Alliance.
+\newblock What is lorawan.
+\newblock 2020.
+\newblock \url {https://lora-alliance.org/resource-hub/what-lorawanr}.
+
+\bibitem{BeginningSTM32}
+Warren Gay.
+\newblock {\em Beginning STM32. Developing with FreeRTOS, libopencm3 and GCC}.
+\newblock 2018.
+\newblock \url {https://doi.org/10.1007/978-1-4842-3623-9}.
+
+\bibitem{server}
+Petr Gotthard.
+\newblock Compact server for private lorawan networks.
+\newblock 2016.
+\newblock \url {https://github.com/gotthardp/lorawan-server/tree/master/doc}.
+
+\bibitem{GCC}
+Brian Gough.
+\newblock {\em An Introduction to GCC for the GNU Compilers gcc and g++}.
+\newblock Network Theory Limited, Bristol UK, 2005.
+\newblock \url {http://www.network-theory.co.uk/gcc/intro/}.
 
 \bibitem{lib}
 libopencm3.
@@ -6,11 +30,33 @@ libopencm3.
 \newblock 2013.
 \newblock \url {https://github.com/libopencm3}.
 
+\bibitem{ARM}
+Muhammad~Ali Mazidi, Shujen Chen, and Eshragh Ghaemi.
+\newblock {\em STM32 ARM Programming for Embedded Systems. Using C language
+  with STM32F4 ARM}.
+\newblock 2014.
+
+\bibitem{Pointers}
+Richard Reese.
+\newblock {\em Understandidng and using C pointers}.
+\newblock O'Reilly Media, Sebastopol, 2013.
+
+\bibitem{erlang}
+Mickael Remond.
+\newblock {\em Erlang Programmation}.
+\newblock 2003.
+
 \bibitem{analyzer}
 saleae.
 \newblock Debug hardware like the pros with the logic analyzer you will love.
 \newblock 2020.
 \newblock \url {https://www.saleae.com/}.
+
+\bibitem{paketForwarder}
+Semtech.
+\newblock Lora network packet forwarder project.
+\newblock 2013.
+\newblock \url {https://github.com/Lora-net/packet_forwarder}.
 
 \bibitem{HTS221}
 STMicroelectronics.
@@ -38,6 +84,13 @@ STMicroelectronics.
 \newblock 2019.
 \newblock
   \url{https://www.st.com/en/evaluation-tools/b-l475e-iot01a.html#resource}.
+
+\bibitem{LoRaMod}
+STMicroelectronics.
+\newblock Usi lora expansion baord for stm32 nucleo.
+\newblock 2019.
+\newblock
+  \url{https://www.st.com/en/evaluation-tools/i-nucleo-lrwan1.html#resource}.
 
 \bibitem{AT_Command}
 USI.

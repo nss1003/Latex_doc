@@ -1,8 +1,8 @@
 \newcommand{\DeinName}{Silvere Sacker Ngoufack}
 \newcommand{\TitelArbeit}{LoRa based IoT endpoint and gateway}
 
-\newcommand{\PrueferEins}{Prof. Dr. Hartmut Weber}
-\newcommand{\PrueferZwei}{Dipl.-Ing ...}
+\newcommand{\PrueferEins}{Prof. Dr.-Ing. Hartmut Weber}
+\newcommand{\PrueferZwei}{Prof. Dr.-Ing. Martin Gräfe}
 \newcommand{\fachbereich}{Informationstechnik - Elektrotechnik - Mechatronik}
 % entweder ein Datum händisch eintragen, oder den Befehl \today nutzen
 \newcommand{\Datum}{29 April 2020}
@@ -29,6 +29,7 @@
 \frontmatter
 \include{source/Titelseite}
 
+\setcounter{page}{1} %Seitennummerierung ab Seite 2
 \tableofcontents 
 \include{source/content/Danksagung}
 \include{source/content/EidesstattlicheErklaerung}
@@ -38,11 +39,10 @@
 \listoffigures
 %Liste der Tabellen
 \listoftables
-
+\include{source/content/Abstract}
 
 %Einbinden des Hauptteils
 \mainmatter
-\include{source/content/Abstract}
 \include{source/content/Einleitung}
 \include{source/content/Grundlagen}
 

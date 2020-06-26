@@ -10,52 +10,64 @@ A level-1 auxiliary file: source/content/Grundlagen.aux
 A level-1 auxiliary file: source/content/Fazit.aux
 The style file: plain.bst
 Database file #1: source/bib/references.bib
+I was expecting a `,' or a `}'---line 241 of file source/bib/references.bib
+ :  
+ :  PUBLISHER = {EDITIONS EYROLLES},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+Warning--empty journal in LoRaWAN
+Warning--empty publisher in BeginningSTM32
+Warning--empty journal in server
 Warning--empty journal in lib
+Warning--empty publisher in ARM
+Warning--empty publisher in erlang
 Warning--empty journal in analyzer
+Warning--empty journal in paketForwarder
 Warning--empty booktitle in HTS221
 Warning--empty journal in LSM6DSL
 Warning--empty journal in B-L475E-IOT01A
 Warning--empty journal in STM32L4_datascheet
+Warning--empty journal in LoRaMod
 Warning--empty journal in AT_Command
-You've used 7 entries,
+You've used 16 entries,
             2118 wiz_defined-function locations,
-            539 strings with 5280 characters,
-and the built_in function-call counts, 1537 in all, are:
-= -- 149
-> -- 49
+            587 strings with 6357 characters,
+and the built_in function-call counts, 3560 in all, are:
+= -- 336
+> -- 123
 < -- 0
-+ -- 21
-- -- 14
-* -- 61
-:= -- 290
-add.period$ -- 28
-call.type$ -- 7
-change.case$ -- 28
++ -- 53
+- -- 36
+* -- 150
+:= -- 657
+add.period$ -- 61
+call.type$ -- 16
+change.case$ -- 61
 chr.to.int$ -- 0
-cite$ -- 14
-duplicate$ -- 73
-empty$ -- 129
-format.name$ -- 14
-if$ -- 306
+cite$ -- 30
+duplicate$ -- 173
+empty$ -- 307
+format.name$ -- 36
+if$ -- 719
 int.to.chr$ -- 0
-int.to.str$ -- 7
-missing$ -- 7
-newline$ -- 45
-num.names$ -- 14
-pop$ -- 38
+int.to.str$ -- 16
+missing$ -- 21
+newline$ -- 96
+num.names$ -- 32
+pop$ -- 99
 preamble$ -- 1
-purify$ -- 21
+purify$ -- 50
 quote$ -- 0
-skip$ -- 48
+skip$ -- 105
 stack$ -- 0
-substring$ -- 35
-swap$ -- 1
+substring$ -- 81
+swap$ -- 6
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 28
-warning$ -- 7
-while$ -- 14
-width$ -- 8
-write$ -- 80
-(There were 7 warnings)
+type$ -- 54
+warning$ -- 14
+while$ -- 32
+width$ -- 18
+write$ -- 177
+(There was 1 error message)
