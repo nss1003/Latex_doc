@@ -10,12 +10,16 @@ A level-1 auxiliary file: source/content/Grundlagen.aux
 A level-1 auxiliary file: source/content/Fazit.aux
 The style file: plain.bst
 Database file #1: source/bib/references.bib
-I was expecting a `,' or a `}'---line 241 of file source/bib/references.bib
+I was expecting a `,' or a `}'---line 269 of file source/bib/references.bib
  :  
  :  PUBLISHER = {EDITIONS EYROLLES},
 (Error may have been on previous line)
 I'm skipping whatever remains of this entry
+Warning--to sort, need author or key in AndreasSpiess
+Warning--empty author in AndreasSpiess
+Warning--empty journal in AndreasSpiess
 Warning--empty journal in LoRaWAN
+Warning--empty journal in Entcription
 Warning--empty publisher in BeginningSTM32
 Warning--empty journal in server
 Warning--empty journal in lib
@@ -29,45 +33,45 @@ Warning--empty journal in B-L475E-IOT01A
 Warning--empty journal in STM32L4_datascheet
 Warning--empty journal in LoRaMod
 Warning--empty journal in AT_Command
-You've used 16 entries,
+You've used 18 entries,
             2118 wiz_defined-function locations,
-            587 strings with 6357 characters,
-and the built_in function-call counts, 3560 in all, are:
-= -- 336
-> -- 123
+            598 strings with 6714 characters,
+and the built_in function-call counts, 3944 in all, are:
+= -- 374
+> -- 131
 < -- 0
-+ -- 53
-- -- 36
-* -- 150
-:= -- 657
-add.period$ -- 61
-call.type$ -- 16
-change.case$ -- 61
++ -- 57
+- -- 38
+* -- 169
+:= -- 720
+add.period$ -- 68
+call.type$ -- 18
+change.case$ -- 68
 chr.to.int$ -- 0
-cite$ -- 30
-duplicate$ -- 173
-empty$ -- 307
-format.name$ -- 36
-if$ -- 719
+cite$ -- 36
+duplicate$ -- 193
+empty$ -- 342
+format.name$ -- 38
+if$ -- 798
 int.to.chr$ -- 0
-int.to.str$ -- 16
-missing$ -- 21
-newline$ -- 96
-num.names$ -- 32
-pop$ -- 99
+int.to.str$ -- 18
+missing$ -- 23
+newline$ -- 107
+num.names$ -- 34
+pop$ -- 109
 preamble$ -- 1
-purify$ -- 50
+purify$ -- 55
 quote$ -- 0
-skip$ -- 105
+skip$ -- 119
 stack$ -- 0
-substring$ -- 81
+substring$ -- 91
 swap$ -- 6
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 54
-warning$ -- 14
-while$ -- 32
-width$ -- 18
-write$ -- 177
+type$ -- 62
+warning$ -- 18
+while$ -- 34
+width$ -- 20
+write$ -- 197
 (There was 1 error message)

@@ -1,10 +1,23 @@
 \begin{thebibliography}{10}
 
+\bibitem{AndreasSpiess}
+120 lora / lorawan range world record attempt. will i succeed?
+\newblock 2017.
+\newblock
+  \url{https://www.youtube.com/watch?v=adhWIo-7gr4&list=PL3XBzmAj53Rkkogh-lti58h_GkhzU1n7U&index=6&t=506s}.
+
 \bibitem{LoRaWAN}
 LoRa Alliance.
 \newblock What is lorawan.
 \newblock 2020.
 \newblock \url {https://lora-alliance.org/resource-hub/what-lorawanr}.
+
+\bibitem{Entcription}
+Ali Benfattoum.
+\newblock De la technologie lora au reseau lorawan.
+\newblock 2016.
+\newblock \url
+  {https://www.frugalprototype.com/technologie-lora-reseau-lorawan/}.
 
 \bibitem{BeginningSTM32}
 Warren Gay.

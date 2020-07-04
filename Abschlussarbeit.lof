@@ -5,13 +5,26 @@
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {\relax 1.1}{\ignorespaces LoRaWAN Netzwerkarchitektur \cite {LoRaWAN}\relax }}{2}{figure.caption.7}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {\relax 2.1}{\ignorespaces B-L475E-IOT01A Discovery kit \cite {B-L475E-IOT01A}\relax }}{3}{figure.caption.8}
-\contentsline {figure}{\numberline {\relax 2.2}{\ignorespaces Humidity sensor analog-to-digital flow \cite {HTS221}\relax }}{4}{figure.caption.9}
-\contentsline {figure}{\numberline {\relax 2.3}{\ignorespaces Linear interpolation to convert LSB to \%RH \cite {HTS221}\relax }}{6}{figure.caption.12}
-\contentsline {figure}{\numberline {\relax 2.4}{\ignorespaces Linear interpolation to convert LSB to \textdegree {}c \cite {HTS221}\relax }}{8}{figure.caption.15}
-\contentsline {figure}{\numberline {\relax 2.5}{\ignorespaces Flu\ss {}diagram zur Datenermitlung\relax }}{9}{figure.caption.16}
-\contentsline {figure}{\numberline {\relax 2.6}{\ignorespaces I-Nucleo-LRWAN1 \cite {LoRaMod}\relax }}{11}{figure.caption.17}
-\contentsline {figure}{\numberline {\relax 2.7}{\ignorespaces I-Nucleo-LRWAN1 Architektur \cite {LoRaMod}\relax }}{12}{figure.caption.18}
+\contentsline {figure}{\numberline {\relax 2.1}{\ignorespaces B-L475E-IOT01A Discovery kit \cite {B-L475E-IOT01A}\relax }}{4}{figure.caption.8}
+\contentsline {figure}{\numberline {\relax 2.2}{\ignorespaces Humidity sensor analog-to-digital flow \cite {HTS221}\relax }}{5}{figure.caption.9}
+\contentsline {figure}{\numberline {\relax 2.3}{\ignorespaces Linear interpolation to convert LSB to \%RH \cite {HTS221}\relax }}{7}{figure.caption.12}
+\contentsline {figure}{\numberline {\relax 2.4}{\ignorespaces Linear interpolation to convert LSB to \textdegree {}c \cite {HTS221}\relax }}{9}{figure.caption.15}
+\contentsline {figure}{\numberline {\relax 2.5}{\ignorespaces Flu\ss {}diagram zur Datenermitlung\relax }}{10}{figure.caption.16}
+\contentsline {figure}{\numberline {\relax 2.6}{\ignorespaces I-Nucleo-LRWAN1 \cite {LoRaMod}\relax }}{12}{figure.caption.17}
+\contentsline {figure}{\numberline {\relax 2.7}{\ignorespaces I-Nucleo-LRWAN1 Architektur \cite {LoRaMod}\relax }}{13}{figure.caption.18}
+\contentsline {figure}{\numberline {\relax 2.8}{\ignorespaces LABCSMART LoRa End-Node physisches Aussehen \ref {sub@fig-subfig1} und Verbindung \ref {sub@fig-subfig2}\relax }}{14}{figure.caption.19}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{14}{figure.caption.19}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {}}}{14}{figure.caption.19}
+\contentsline {figure}{\numberline {\relax 2.9}{\ignorespaces Vergleich zwischen LoRa und andere IoT Kommunikationstechnologien \cite {LoRaWAN}\relax }}{16}{figure.caption.22}
+\contentsline {figure}{\numberline {\relax 2.10}{\ignorespaces Klassen von LoRaWAN \cite {LoRaWAN}\relax }}{17}{figure.caption.24}
+\contentsline {figure}{\numberline {\relax 2.11}{\ignorespaces Klasse A \relax }}{18}{figure.caption.25}
+\contentsline {figure}{\numberline {\relax 2.12}{\ignorespaces Klasse B \relax }}{18}{figure.caption.26}
+\contentsline {figure}{\numberline {\relax 2.13}{\ignorespaces Klasse C \relax }}{19}{figure.caption.27}
+\contentsline {figure}{\numberline {\relax 2.14}{\ignorespaces LoRaWAN-Nachricht Verschl"usselung \cite {Entcription}\relax }}{20}{figure.caption.28}
+\contentsline {figure}{\numberline {\relax 2.15}{\ignorespaces Join-Request Verfahren\relax }}{22}{figure.caption.30}
 \addvspace {10\p@ }
+\contentsline {figure}{\numberline {\relax 3.1}{\ignorespaces LABCSMART LoRaWAN Gateway\relax }}{26}{figure.caption.32}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{26}{figure.caption.32}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {}}}{26}{figure.caption.32}
 \addvspace {10\p@ }
 \addvspace {10\p@ }

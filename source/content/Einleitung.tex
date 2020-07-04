@@ -7,29 +7,47 @@ Dieses Kapitel soll den Leser auf den Inhalt der Arbeit aufmerksam machen, ihn m
 \section{Motivation}
 Objekte werden in der heutigen Tagen immer mehr mit Elektronik und Intelligenz versehen. Die Leute wollen aufgrund dieser Entwicklung, dass Prozesse oder bestimmte Aufgaben ohne menschliches Eingreifen erledigt und miteinander vernetzt werden. Das System soll nur "uberwacht werden und die Ergebnisse zu bestimmten Zwecken benutzt werden.
 
-Das Internet der Dinge (in Englisch \textbf{\textit{internet of things}}, Kurzform \textbf{IoT}) wird dazu benutzt, um die Interaktion zwischen Menschen und vernetzten elektronischen Systemen zu vereinfachen. 
+Das Internet der Dinge (in Englisch \textbf{\textit{internet of things}}, Kurzform \textbf{IoT}) wird dazu benutzt, um die Interaktion zwischen Menschen und vernetzten elektronischen Ger"aten zu vereinfachen. 
 
 
 \section{Aufgabenstellung und Zielsetzung}
 Diese Bachelorarbeit besch"aftigt sich mit der Entwicklung eines vernetzten Systems bestehend aus einem 3D-Beschleunigungssensor, einem 3D-Gyroskop sowie einem Tem\-peratur- und Feuchtigkeitssensor. Die Sensoren messen Daten und "ubergeben diese an den STM32L475 Mikrocontroller.
 
-Der Mikrocontroller soll die Daten verarbeiten und mit Hilfe von einem LoRa-Modul\cite{AT_Command} drahtlos zu einem Server "ubertragen. Bevor die "Ubertragung erfolgt, muss das LoRa-Modul Zugang zu dem Server durch ein Gateway bekommen. Abbildung \ref{LRWAN} gibt einen "Uberblick "uber den Aufbau des gesamten Systems.
+Der Mikrocontroller soll die Daten verarbeiten und mit Hilfe von einem LoRa-Node\cite{AT_Command} drahtlos an einem Server "ubertragen. Bevor die "Ubertragung erfolgt, muss das LoRa-Node Zugang zu dem Neztwerk durch ein Gateway bekommen. Nach dem das LoRa-Node dem Netzwerk hinzugef"ugt wurde, k"onnen nun Informationen zwischen dem LoRa-Node und dem Netzwerk-Server bis zu einem Anwendungsserver vertauscht werden. Abbildung \ref{LRWAN} gibt einen "Uberblick "uber den Aufbau des gesamten Systems.
 
 % Bild hinzufügen 
 \begin{figure}[h]	
 	\includegraphics[width=15cm]{source/images/LoRaWAN_NET}
 	\caption{LoRaWAN Netzwerkarchitektur \cite{LoRaWAN}}\label{LRWAN}
 \end{figure}
-
 \vspace{5cm}
 
+\begin{description}
+	\item[LoRa:] ist eine abk"urzung f"ur \textbf{\textit{Long Range}} und es ist eine drahtlose Technologie, das geringe Sendeleistung verbraucht wird, um kleine Datenpakete (0,3 Kbps bis 5,5 Kbps) "uber eine lange Strecke zu senden oder zu empfangen.    
+	
+	\item[End Node Endger"at:] ist ein Ger"at, das aus zwei Teilen Besteht. Ein Funkmodul mit Antenne und einem Mikrocontroller zur Verarbeitung der Daten wie Sensordaten. Diese Daten k"onnen entweder an einem anderen LoRa-Node per Point-To-Point-Verbindung oder an einem LoRaWAN-Netzwerk versand werden.
+
+	\item[LoRaWAN:] steht f"ur \textbf{\textit{Long Range Wide Area Network}} und ist das Kommunicationsprotokol f"ur den Netzwerk.
+	
+	\item[Gateway:] ist ein Ger"at, das aus mindestens einem Funkkonzentrator, einem Host und einer Netzverbindung zum Internet oder einen privaten Netzwerk (Ethernet, 3G, Wifi), m"oglicherweise einem GPS-Empf"anger besteht.
+	
+	\item[LoRaWAN Server:] ist ein abstrakter Computer, der die von dem Gateway empfangene RF-Pakete verarbeitet und sendet RF-Pakete als Antwort, dass das Gateway zur"ucksenden muss.
+	
+	\item[Application Server:] ist eine Anwendung, womit der Benutzer die von den Sensoren gemesennen Daten entweder Tabelarisch oder Grafisch ansehen kann.
+	
+	\item[Uplink:] ist die Kommunikation von einem Endger"at zu einem Gateway. 
+	
+	\item[Downlink:] ist die Kommunikations von einem Gateway zu einem Endger"at.
+\end{description}
+
+\vspace{8cm}
 \section{Gliederung der Arbeit}
 
 Das Kapitel \ref{Komponente} gibt einen detaillierten "Uberblick "uber allen Hardware-Komponenten, die bei der Durchf"uhrung dieser Arbeit verwendet werden. Hinzu kommt die Erl"auterung der Software-Entwicklung. Als Erstes wird auf die Eigenschaften von des benutzten STM32-Nucleo Board eingegangen. Diesem Kapitel ist auch zu entnehmen, warum genau dieses Board gew"ahlt wurde. 
 
 Als n"achstes wird das LoRa Node und das LoRaWAN-Protokoll beschrieben. Dieser LoRa-Node wird dazu verwendet, um die gesammelten Daten dem Server drahtlos zu "ubertragen.
 
-Das Kapitel \ref{G_S} beschreibt wie der LoRaWAN-Server und das Gateway funktionieren und zeigt die Konfigurationen, die zu "ubernehmen sind, um eine Verbindung mit einem LoRa-Node herzustellen.
+Das Kapitel \ref{G_S} beschreibt wie das LoRaWAN-Protokol, der LoRaWAN-Server und das Gateway funktionieren und zeigt die Konfigurationen, die zu "ubernehmen sind, um eine Verbindung mit einem LoRa-Node herzustellen.
 
 Anschlie\ss{}end im Kapitel \ref{Fazit} wird eine Zusammenfassung und einen kleinen Ausblick der Arbeit gegeben.
    
