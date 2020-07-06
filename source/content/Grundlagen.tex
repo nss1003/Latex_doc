@@ -403,7 +403,7 @@ Alle Endger"ats funktionieren nicht gleich, dies aufgrund der von dem Entwickler
 \vspace{10cm}
 Im Rahmen dieser Thesis wird nur die Klasse A ber"ucksichtig, weil das ausgew"ahlte Endger"at die Klasse B nicht unterst"utzt und die Klasse C zu viel Energie verbraucht. 
 
-\subsection{Sicherung der Daten}
+\subsection{Sicherung der Daten}\label{secure}
 
 Wir wollen nicht, dass die gesendeten Informationen durch ein Dritter ohne Zugriffsrechte auf das Netzwerk die Informationen lesen kann. Unabh"angig davon, ob die Netzwerksicherheit oder die Vertraulichkeit und sicherheit der Daten gew"ahrleistet werden soll, ist das Thema sicherheit "au\ss{}erst wichtig. Eine Frage, die "ubrigens das Internet der Dinge als ganzes bettrifft.
 
@@ -498,7 +498,7 @@ Die Syntax des Kommandos ist wie folgt:
 
 Da wir nun wiessen, wir diese Kommandos zu nutzen sind, k"onnen wir Beispiele f"ur OTAA und ABP machen (diese Einstellungen wurden getestet und funktionieren einwandfrei).
 
-\begin{itemize}
+\begin{itemize}\label{LoRaconf}
 	\item[\textbf{OTAA:}] Die Folgenden AT-Befehle weden von B-L475E-IOT01A nacheinander  per UART am i-nucleo-lrwan1 gesendet.
 	\begin{itemize}
 		\item \textbf{AT+BAND=0}: Setzt die Region des Netzwerks (Hier EU868)
@@ -578,13 +578,127 @@ Der Paket-Forwarder ist ein Programm, das auf dem Host ausgef"uhrt wird, um Funk
 \end{figure}
 
 
-Abbildung \ref{fig:forwarder1} zeigt die Netztwerkkomponenten, beginend mit dem Gateway und seinen Bestandteilen. Es ist deutlich zu sehen, dass das der Konzentrator und der Host durch einer SPI-Snittstelle verbunden sind und die Verbindung zwischen dem Gateway und dem Server das Internet oder Intranet ist. Unser Prototyp \ref{fig:forwarder2} ist alles in einem einzigen Modul. Das heisst, der Konzentrator, das Gateway und der Server zusammen in einem Block eingebaut sind. Der Raspberry-Pi ist gleichzeitig der Host und der Server. 
+Abbildung \ref{fig:forwarder1} zeigt die Netztwerkkomponenten, beginend mit dem Gateway und seinen Bestandteilen. Es ist deutlich zu sehen, dass das der Konzentrator und der Host durch einer SPI-Snittstelle verbunden sind und die Verbindung zwischen dem Gateway und dem Server das Internet oder Intranet ist. Unser Prototyp \ref{fig:forwarder2} ist alles in einem einzigen Modul. Das heisst, der Konzentrator, das Gateway und der Server zusammen in einem Block eingebaut sind. Der Raspberry-Pi ist gleichzeitig der Host und der Server. \textbf{(Referenzen zur Installation des Paket-forwarder im Ausblick)}
 
-
+\vspace{8cm}
 \section{Einstellung des LoRaWAN-Servers}\label{server}
 
+An dieser Stelle ist die Arbeit fast fertig, da unsere Anwendung theoretisch in der Lage ist, Uplinks an dem Gateway zu schicken. Nun interessieren wir uns auf die Verarbeitung der empfangenen Daten. Die Daten werden zwar in die Luft gesendet, aber der Benutzer kann diese nicht sehen oder vearbeiten, dazu ist ein Server. Dieser Server soll in der Lage sein, gesendete Funkpakete zu interpretieren und darzustellen, sodass der Benutzer diese lesen und verstehen kann. 
 
+Der verwendete Server heisst \textbf{lorawan-server} (Open-source). Er wurde von Herrn \textbf{Petr Gotthard} \cite{server} entwickelt und ist ein Kompater Server f"ur private LoRaWAN-Netzwerke. Dieser Server dient nicht nur als Netzwerkserver, sondern auch als Anwendungssever. Man kann damit alle Ereignisse, und alle Daten, die entweder vom Endger"at oder vom Packet-Forwarder komment. Der Server wurde in 79\% in der Programmierspache Erlang \cite{erlang} geschireben.   
 
+In diesem Kapitel, erfahren Sie wie dieser Server einzustellen ist, um Endger"ate mit OTAA oder ABP zu verbinden. Bevor ein Endger"at hinzugef"ugt wird, muss der Server dazu vorbereitet werden. Er muss die MAC-Adresse des Gateways, der Netzwerk, das Profil des Netzwerks und die Gruppe des Endger"ats kennen. 
+
+\begin{description}
+	\item[Gateway:] Der Server kann mit einem oder mehrere Gateway verbunden werden (Nur ein in unserem Fall). Der Server bekommt alle Uplinks, die von den Gateways weitergeleitet werden,betrachtet nicht welches Endger"at welchem Netzwerk geh"ort.
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=10cm]{source/images/Gateway}
+		\caption{Einstellung des Gateways\label{fig:gateway}}
+	\end{figure}
+
+	\item[Netzwerk:] Der Server kann ein oder mehrere Netzwerke verarbeiten. Jede Netzwerkkonfiguration umfasst:
+	\begin{itemize}
+		\item Eine Netzwerkkennung, um die Eger"at-Adresse (DevAddr) neu verbundener Endger"ate zu Erstellen.
+		\item LoRaWAN-Regionparameter, einschlie\ss{}lich zus"atzliche Frequenzen
+	\end{itemize}
+
+	\begin{figure}[h!]
+		% first include \usepackage{subfigure}
+		\centering
+		\subfigure[]{
+			\includegraphics[ width=7cm]{source/images/Labcsmart_network_gen}
+			\label{fig:NetGen}
+		}
+		\subfigure[]{
+			\includegraphics[width=7cm]{source/images/Labcsmart_network_adr}
+			\label{fig:NetAdr}
+		}
+		\caption{Einstellung des Netzwerks}
+	\end{figure}
+
+	\item[Profil:] Das Profil repr"asentiert eine bestimmte Hardware und alle statischen Einstellungen in der Firmware, die f"ur eine Gruppe von Ger"aten gleich sind. Die Konfiguration umfasst:
+	\begin{itemize}
+		\item Die Referenz zu einem bestimmten Netzwerk
+		\item Die F"ahigkei des Ger"ats, ADR (Adaptive Data Rate) durchzuf"uren oder den Batteriestatus bereitzustellen.
+		\item Die Anwendung
+	\end{itemize} 
+	Es is zu bemerken, dass die einstellung der Abbildung \ref{fig:ProAdr} genau ist, wie die Einstellung des endger"ats, die im Abschnitt \ref{LoRaconf} erl"autert wurde. Weil wir genau dieses Ger"at im Netzwerk integrieren wollen, muss auch der Server dementsprechen eingestellt werden.
+
+	\begin{figure}[h!]
+		% first include \usepackage{subfigure}
+		\centering
+		\subfigure[]{
+			\includegraphics[ width=7cm]{source/images/Labcsmart_profile_gen}
+			\label{fig:ProGen}
+		}
+		\subfigure[]{
+			\includegraphics[width=7cm]{source/images/Labcsmart_profile_adr}
+			\label{fig:ProAdr}
+		}
+		\caption{Einstellung des Profils}
+	\end{figure}
+	\vspace{10cm}
+	\item[Gruppe:] Die Gruppe repr"asentiert eine Reihe von Profilen, die zu einem einzelnen Teilnetzwerk geh"oren. Zu einem einzelnen Kunde zum Beispiel.
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=10cm]{source/images/Labcsmart_group}
+		\caption{Einstellung der Gruppe\label{fig:group}}
+	\end{figure}
+\end{description}
+
+Nun ist es m"oglich Endger"ate zum Server hinzuzuf"ugen. Als erstes versuchen wir mit ABP, dann mit OTAA.
+\vspace{10cm}
+\subsubsection{ABP Verbindung}
+Ger"ate die mit ABP verbunden werden sollen, brauchen wie im Abschnitt \ref{secure} DevAddr, NwkSKey und AppSKey.
+Die Informationen auf Abbildung \ref{fig:DevAdr} werden automatisch erstellt, nachdem ein Endger"at dem Netzwerk hinzugef"ugt wurde. Man kann die "Ubertragungsfrequenzen, die Leistung und andere Einstellungen erkennen, die im Abscnhitt \ref{secure} erw"ahnt wurden. 
+	\begin{figure}[h!]
+	% first include \usepackage{subfigure}
+	\centering
+	\subfigure[]{
+		\includegraphics[ width=7cm]{source/images/Labcsmart_abp_gen}
+		\label{fig:DevGen}
+	}
+	\subfigure[]{
+		\includegraphics[width=7cm]{source/images/Labcsmart_abp_adr}
+		\label{fig:DevAdr}
+	}
+	\caption{ABP Verbindung}
+	\end{figure}
+
+\subsubsection{OTAA Verbindung}
+Hier befinden sich Ger"ate, die dem LoRaWAN-Netzwerk mit Hilfe von OTAA beitreten d"urfen. Man muss dazu aber die DevEUI, AppEUI und AppKey auf jedem Fall kennen und im Server eingeben (Siehe \ref{fig:otaa}). 
+	\begin{figure}[h]
+	\centering
+	\includegraphics[width=10cm]{source/images/Labcsmart_otaa_gen}
+	\caption{Einstellung OTAA\label{fig:otaa}}
+\end{figure}
+Nachdem das Ger"at dem Netzwerk beigetreten ist, bekommt es eine DevAddr, einen NwkSKey und einen AppSKey, die mit Hilfe des AppKey berechnet wird (Siehe \ref{secure} f"ur die Erkl"arung). 
+\vspace{10cm}
+
+Nach dem diese Einstellungen fertig sind und die Ger"ate dem Netzwerk beigetreten sind, k"onnen Uplinks im Dashboard gesehen werden. Der Inhalt (In Hexadezimal) befinden sich unter Frames (unten links vom Server). 
+
+	\begin{figure}[h!]
+	% first include \usepackage{subfigure}
+	
+	\subfigure[]{
+		\includegraphics[ width=17cm]{source/images/dashboard}
+		\label{fig:Dashboard}
+	}
+	\subfigure[]{
+		\includegraphics[width=17cm]{source/images/frames}
+		\label{fig:Frames}
+	}
+	\caption{Zwischenergebnis}
+\end{figure}
+Gr"une Ereignisse im Abbildung \ref{fig:Dashboard} bezeichnen Downlinks, w"ahrend Ereignisse in lila sind Uplinks. Die Spalte U/l RSSI des Abbildungs \ref{fig:Frames} stellt die empfangene Signalat"arke (in Englisch \textbf{\textit{Received Signal Strength Indication}}, Kurzform \textbf{RSSI}) dar. RSSI ist die empfangene Leistung in miliwatts, wird aber in dBm(liste der Abk"urzung decibel miliwatt) gemessen. Diesen wird sagt wie, gut ein Empf"anger gesendete Signale empfangen kann.RSSI ist ein negativer Wert, je n"aher 0 dieser Wert ist, desto besser is das Signal. Der minimale RSSI-Wert f"ur die LoRa-Technologie ist -120dBm.  
+
+\vspace{10cm}
+
+Zu Ende reicht diese Ergebnis noch nicht. Was passiert wenn der Server nicht mehr funktioniert? Soll die Anwendung auch nicht funktionieren oder gibt es eine andere M"oglichkeit die Daten irgendwie zu sichern, falls ein Serverausfall vorkommen w"urde? Zwischen dem Server und dem Packet-Forwarder gibt es ein Kommunikationsprotokol Namens MQTT. Das n"achste Kapitel erkl"art was MQTT ist, wie es funktioniert und wie die Daten beim Serverausfall anderswo gesichert werden k"onnen. 
+
+\vspace{10cm}   
 \section{MQTT brocker zur Daten"ubertragung}
 
 

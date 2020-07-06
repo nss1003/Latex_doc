@@ -23,14 +23,16 @@
 \contentsline {subsection}{\numberline {2.2.4}AT Commandos}{22}{subsection.2.2.4}
 \contentsline {chapter}{\numberline {3}Gateway und LoRaWAN-Server}{25}{chapter.3}
 \contentsline {section}{\numberline {3.1}Gateway}{25}{section.3.1}
-\contentsline {section}{\numberline {3.2}Einstellung des LoRaWAN-Servers}{26}{section.3.2}
-\contentsline {section}{\numberline {3.3}MQTT brocker zur Daten"ubertragung}{26}{section.3.3}
-\contentsline {chapter}{\numberline {4}Software-Entwicklung}{27}{chapter.4}
-\contentsline {section}{\numberline {4.1}Entwicklungsumgebung}{27}{section.4.1}
-\contentsline {subsection}{\numberline {4.1.1}Eclipse}{27}{subsection.4.1.1}
-\contentsline {subsection}{\numberline {4.1.2}Libopencm3 Bibliotek installieren}{27}{subsection.4.1.2}
-\contentsline {section}{\numberline {4.2}Sensoren Auslesen}{27}{section.4.2}
-\contentsline {section}{\numberline {4.3}LoRa Commandos senden}{27}{section.4.3}
-\contentsline {chapter}{\numberline {5}Fazit}{28}{chapter.5}
-\contentsline {section}{\numberline {5.1}Zusammenfassung}{28}{section.5.1}
-\contentsline {section}{\numberline {5.2}Ausblick}{28}{section.5.2}
+\contentsline {section}{\numberline {3.2}Einstellung des LoRaWAN-Servers}{27}{section.3.2}
+\contentsline {subsubsection}{\nonumberline ABP Verbindung}{30}{section*.37}
+\contentsline {subsubsection}{\nonumberline OTAA Verbindung}{30}{section*.39}
+\contentsline {section}{\numberline {3.3}MQTT brocker zur Daten"ubertragung}{33}{section.3.3}
+\contentsline {chapter}{\numberline {4}Software-Entwicklung}{34}{chapter.4}
+\contentsline {section}{\numberline {4.1}Entwicklungsumgebung}{34}{section.4.1}
+\contentsline {subsection}{\numberline {4.1.1}Eclipse}{34}{subsection.4.1.1}
+\contentsline {subsection}{\numberline {4.1.2}Libopencm3 Bibliotek installieren}{34}{subsection.4.1.2}
+\contentsline {section}{\numberline {4.2}Sensoren Auslesen}{34}{section.4.2}
+\contentsline {section}{\numberline {4.3}LoRa Commandos senden}{34}{section.4.3}
+\contentsline {chapter}{\numberline {5}Fazit}{35}{chapter.5}
+\contentsline {section}{\numberline {5.1}Zusammenfassung}{35}{section.5.1}
+\contentsline {section}{\numberline {5.2}Ausblick}{35}{section.5.2}

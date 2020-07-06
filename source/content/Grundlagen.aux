@@ -85,6 +85,7 @@
 \@writefile{lof}{\contentsline {figure}{\numberline {\relax 2.13}{\ignorespaces Klasse C \relax }}{19}{figure.caption.27}}
 \newlabel{fig:classC}{{\relax 2.13}{19}{Klasse C \relax }{figure.caption.27}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.2.2}Sicherung der Daten}{19}{subsection.2.2.2}}
+\newlabel{secure}{{2.2.2}{19}{Sicherung der Daten}{subsection.2.2.2}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {\relax 2.14}{\ignorespaces LoRaWAN-Nachricht Verschl"usselung \cite  {Entcription}\relax }}{20}{figure.caption.28}}
 \newlabel{fig:Entcription}{{\relax 2.14}{20}{LoRaWAN-Nachricht Verschl"usselung \cite {Entcription}\relax }{figure.caption.28}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.2.3}Aktivierung des Endger"ats}{20}{subsection.2.2.3}}
@@ -96,6 +97,7 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.2.4}AT Commandos}{22}{subsection.2.2.4}}
 \newlabel{AT}{{2.2.4}{22}{AT Commandos}{subsection.2.2.4}{}}
 \citation{AT_Command}
+\newlabel{LoRaconf}{{2.2.4}{23}{AT Commandos}{subsection.2.2.4}{}}
 \@writefile{toc}{\contentsline {chapter}{\numberline {3}Gateway und LoRaWAN-Server}{25}{chapter.3}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
@@ -111,22 +113,60 @@
 \@writefile{lof}{\contentsline {figure}{\numberline {\relax 3.1}{\ignorespaces LABCSMART LoRaWAN Gateway\relax }}{26}{figure.caption.32}}
 \@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {}}}{26}{figure.caption.32}}
 \@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {}}}{26}{figure.caption.32}}
-\@writefile{toc}{\contentsline {section}{\numberline {3.2}Einstellung des LoRaWAN-Servers}{26}{section.3.2}}
-\newlabel{server}{{3.2}{26}{Einstellung des LoRaWAN-Servers}{section.3.2}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {3.3}MQTT brocker zur Daten"ubertragung}{26}{section.3.3}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {4}Software-Entwicklung}{27}{chapter.4}}
+\citation{server}
+\citation{erlang}
+\@writefile{toc}{\contentsline {section}{\numberline {3.2}Einstellung des LoRaWAN-Servers}{27}{section.3.2}}
+\newlabel{server}{{3.2}{27}{Einstellung des LoRaWAN-Servers}{section.3.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {\relax 3.2}{\ignorespaces Einstellung des Gateways\relax }}{27}{figure.caption.33}}
+\newlabel{fig:gateway}{{\relax 3.2}{27}{Einstellung des Gateways\relax }{figure.caption.33}{}}
+\newlabel{fig:NetGen}{{\relax 3.3(a)}{28}{Subfigure 3 \relax 3.3(a)}{subfigure.\relax 3.3.1}{}}
+\newlabel{sub@fig:NetGen}{{(a)}{28}{Subfigure 3 \relax 3.3(a)\relax }{subfigure.\relax 3.3.1}{}}
+\newlabel{fig:NetAdr}{{\relax 3.3(b)}{28}{Subfigure 3 \relax 3.3(b)}{subfigure.\relax 3.3.2}{}}
+\newlabel{sub@fig:NetAdr}{{(b)}{28}{Subfigure 3 \relax 3.3(b)\relax }{subfigure.\relax 3.3.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {\relax 3.3}{\ignorespaces Einstellung des Netzwerks\relax }}{28}{figure.caption.34}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {}}}{28}{figure.caption.34}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {}}}{28}{figure.caption.34}}
+\newlabel{fig:ProGen}{{\relax 3.4(a)}{29}{Subfigure 3 \relax 3.4(a)}{subfigure.\relax 3.4.1}{}}
+\newlabel{sub@fig:ProGen}{{(a)}{29}{Subfigure 3 \relax 3.4(a)\relax }{subfigure.\relax 3.4.1}{}}
+\newlabel{fig:ProAdr}{{\relax 3.4(b)}{29}{Subfigure 3 \relax 3.4(b)}{subfigure.\relax 3.4.2}{}}
+\newlabel{sub@fig:ProAdr}{{(b)}{29}{Subfigure 3 \relax 3.4(b)\relax }{subfigure.\relax 3.4.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {\relax 3.4}{\ignorespaces Einstellung des Profils\relax }}{29}{figure.caption.35}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {}}}{29}{figure.caption.35}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {}}}{29}{figure.caption.35}}
+\@writefile{lof}{\contentsline {figure}{\numberline {\relax 3.5}{\ignorespaces Einstellung der Gruppe\relax }}{29}{figure.caption.36}}
+\newlabel{fig:group}{{\relax 3.5}{29}{Einstellung der Gruppe\relax }{figure.caption.36}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\nonumberline ABP Verbindung}{30}{section*.37}}
+\newlabel{fig:DevGen}{{\relax 3.6(a)}{30}{Subfigure 3 \relax 3.6(a)}{subfigure.\relax 3.6.1}{}}
+\newlabel{sub@fig:DevGen}{{(a)}{30}{Subfigure 3 \relax 3.6(a)\relax }{subfigure.\relax 3.6.1}{}}
+\newlabel{fig:DevAdr}{{\relax 3.6(b)}{30}{Subfigure 3 \relax 3.6(b)}{subfigure.\relax 3.6.2}{}}
+\newlabel{sub@fig:DevAdr}{{(b)}{30}{Subfigure 3 \relax 3.6(b)\relax }{subfigure.\relax 3.6.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {\relax 3.6}{\ignorespaces ABP Verbindung\relax }}{30}{figure.caption.38}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {}}}{30}{figure.caption.38}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {}}}{30}{figure.caption.38}}
+\@writefile{toc}{\contentsline {subsubsection}{\nonumberline OTAA Verbindung}{30}{section*.39}}
+\@writefile{lof}{\contentsline {figure}{\numberline {\relax 3.7}{\ignorespaces Einstellung OTAA\relax }}{31}{figure.caption.40}}
+\newlabel{fig:otaa}{{\relax 3.7}{31}{Einstellung OTAA\relax }{figure.caption.40}{}}
+\newlabel{fig:Dashboard}{{\relax 3.8(a)}{32}{Subfigure 3 \relax 3.8(a)}{subfigure.\relax 3.8.1}{}}
+\newlabel{sub@fig:Dashboard}{{(a)}{32}{Subfigure 3 \relax 3.8(a)\relax }{subfigure.\relax 3.8.1}{}}
+\newlabel{fig:Frames}{{\relax 3.8(b)}{32}{Subfigure 3 \relax 3.8(b)}{subfigure.\relax 3.8.2}{}}
+\newlabel{sub@fig:Frames}{{(b)}{32}{Subfigure 3 \relax 3.8(b)\relax }{subfigure.\relax 3.8.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {\relax 3.8}{\ignorespaces Zwischenergebnis\relax }}{32}{figure.caption.41}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {}}}{32}{figure.caption.41}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {}}}{32}{figure.caption.41}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.3}MQTT brocker zur Daten"ubertragung}{33}{section.3.3}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {4}Software-Entwicklung}{34}{chapter.4}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
 \@writefile{lol}{\addvspace {10\p@ }}
-\newlabel{Soft-Ent}{{4}{27}{Software-Entwicklung}{chapter.4}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.1}Entwicklungsumgebung}{27}{section.4.1}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.1.1}Eclipse}{27}{subsection.4.1.1}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.1.2}Libopencm3 Bibliotek installieren}{27}{subsection.4.1.2}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.2}Sensoren Auslesen}{27}{section.4.2}}
-\newlabel{Sensoren}{{4.2}{27}{Sensoren Auslesen}{section.4.2}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.3}LoRa Commandos senden}{27}{section.4.3}}
+\newlabel{Soft-Ent}{{4}{34}{Software-Entwicklung}{chapter.4}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.1}Entwicklungsumgebung}{34}{section.4.1}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1.1}Eclipse}{34}{subsection.4.1.1}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1.2}Libopencm3 Bibliotek installieren}{34}{subsection.4.1.2}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.2}Sensoren Auslesen}{34}{section.4.2}}
+\newlabel{Sensoren}{{4.2}{34}{Sensoren Auslesen}{section.4.2}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.3}LoRa Commandos senden}{34}{section.4.3}}
 \@setckpt{source/content/Grundlagen}{
-\setcounter{page}{28}
+\setcounter{page}{35}
 \setcounter{equation}{0}
 \setcounter{enumi}{0}
 \setcounter{enumii}{0}
