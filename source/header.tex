@@ -14,7 +14,7 @@
 							%draft,			%	Draft-Version, keine Bilder im pdf!
 							final,			% Final-Version
 							oneside,		% einseitiger Druck
-							11pt,				% Schriftgröße 12pt
+							12pt,				% Schriftgröße 12pt
 							DIV=calc,
 							%tocbasic,
 							]{scrbook}	%	KOMAScript scrbook-Dokumentklasse
@@ -43,6 +43,7 @@
 
 \usepackage{textcomp}
 \usepackage{subfigure}
+
 % Definieren von eigenen benannten Farben.
 % Für spätere Verwendung in dem Dokument, definieren wir einzelne
 % benannte Farben.
@@ -124,10 +125,25 @@
 	backgroundcolor=\color{ListingBackground}} % Hintergrundfarbe des Quellcodes setzen.
 
 
+\lstdefinestyle{customc}{
+	belowcaptionskip=1\baselineskip,
+	breaklines=true,
+	frame=L,
+	xleftmargin=\parindent,
+	language=C,
+	showstringspaces=false,
+	basicstyle=\footnotesize\ttfamily,
+	keywordstyle=\bfseries\color{green!40!black},
+	commentstyle=\itshape\color{purple!40!black},
+	identifierstyle=\color{blue},
+	stringstyle=\color{orange},
+}
+
 \lstset{
   basicstyle=\small\ttfamily,
   columns=fullflexible,
   showstringspaces=false,
+  escapechar=@,style=customc
   %commentstyle=\color{gray}\upshape
 }
 %neue Lang definieren, als Bsp.
