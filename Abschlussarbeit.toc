@@ -32,7 +32,8 @@
 \contentsline {subsection}{\numberline {4.1.1}Eclipse}{41}{subsection.4.1.1}
 \contentsline {subsection}{\numberline {4.1.2}Libopencm3 Bibliotek installieren}{44}{subsection.4.1.2}
 \contentsline {section}{\numberline {4.2}Sensoren Auslesen}{46}{section.4.2}
-\contentsline {section}{\numberline {4.3}AT-Kommandos senden}{46}{section.4.3}
-\contentsline {chapter}{\numberline {5}Fazit}{47}{chapter.5}
-\contentsline {section}{\numberline {5.1}Zusammenfassung}{47}{section.5.1}
-\contentsline {section}{\numberline {5.2}Ausblick}{47}{section.5.2}
+\contentsline {section}{\numberline {4.3}AT-Kommandos senden}{50}{section.4.3}
+\contentsline {section}{\numberline {4.4}Downlinks Behandlung}{55}{section.4.4}
+\contentsline {chapter}{\numberline {5}Fazit}{56}{chapter.5}
+\contentsline {section}{\numberline {5.1}Zusammenfassung}{56}{section.5.1}
+\contentsline {section}{\numberline {5.2}Ausblick}{56}{section.5.2}

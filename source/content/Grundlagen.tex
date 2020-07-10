@@ -1447,15 +1447,42 @@ Da wir nun eine Funktionsf"ahige Entwicklungsumgebung und eine
 STM32-kompatible Bibliothek haben, sind wir in der Lage C-Code zur 
 Ansteuerung der Sensoren zu schreiben. In diesem Kapitel werden nur 
 wichtige Teile des gesamten Quellecodes erkl"art. Die Sensoren lassen 
-sich per I2C ansteuern, dies bedeutet, dass die Schnittstelle Aktiviert 
+sich per I2C ansteuern, dies bedeutet, dass die Schnittstelle aktiviert 
 und konfiguriert werden muss, damit wir sie "uberhaupt nutzen k"onnen. 
+Der unten stehende Textblock zeigt die Aktivierung und Konfigurations des Schnittstelle.
+
+\begin{lstlisting}[frame=single]
+void i2c2_setup(void)
+{
+	rcc_periph_clock_enable(RCC_I2C2);
+	/* Setup SDA and SLC for I2C communication*/
+	gpio_mode_setup(GPIOB, GPIO_MODE_AF, GPIO_PUPD_NONE, SCL);
+	gpio_mode_setup(GPIOB, GPIO_MODE_AF, GPIO_PUPD_NONE, SDA);
+
+	/* Setup SDA and SCL pin as alternate function. */
+	gpio_set_af(GPIOB, GPIO_AF4, SCL);
+	gpio_set_af(GPIOB, GPIO_AF4, SDA);
+
+	i2c_peripheral_disable(I2C2);
+	i2c_enable_analog_filter(I2C2);
+
+	i2c_set_speed(I2C2,i2c_speed_sm_100k, 8);
+	i2c_enable_stretching(I2C2);
+
+	i2c_set_7bit_addr_mode(I2C2);
+	i2c_peripheral_enable(I2C2);
+}
+
+\end{lstlisting}
 
 I2C ist eine Multi-Master-, Multi-Slave-Komminukationsschnittstelle, 
 das heisst einem oder mehrere Master k"onnen mit einem oder mehrere 
 Slaves  Kommunizieren. F"ur dieses Projekt haben wir einen Master 
-\textbf{(STM32L4)} und zwei Slaves  \textbf{(HTS221 und LSM6DSL)}. 
+\textbf{(STM32L4)} und zwei Slaves  \textbf{(HTS221 und LSM6DSL)} 
+(Siehe Abbildung \ref{fig:I2C}). 
 Jedes Slave hat eine Adresse in Hexadezimal, womit der Master es 
-ansprechen kann. Der Master muss diese Adresse kennen, sonst k"onnen beide nicht kommunizieren. 
+ansprechen kann. Der Master muss diese Adresse kennen, sonst k"onnen 
+beide nicht kommunizieren. 
 
 \begin{figure}[h]
 	\centering
@@ -1463,6 +1490,335 @@ ansprechen kann. Der Master muss diese Adresse kennen, sonst k"onnen beide nicht
 	\caption{I2C Kommunikation\label{fig:I2C}}
 \end{figure}
 
+\vspace{2cm}
+Im Kapitel \ref{Temp} wurde die Funktionsweise beider Sensoren und die 
+Vorgehensweise zur Ermittlung der gemessenen Daten behandelt. In diesem 
+Abschnitt wird gezeigt wie man Werte im Sensoren-Register schreibt und
+wie diese Register zu lesen sind. Im Anhang befinden sich alle Quellem- 
+und Header-Dateien. In den Header-Dateien \textbf{hts221.h} und 
+\textbf{lsm6dsl.h} sind alle Register (Als Makro-Definition), 
+Funktionen zur Initialisierung und zum Auslesen der jeweiligen Sensoren 
+definiert. In den Quellen-Dateien \textbf{hts221.c} und 
+\textbf{lsm6dsl.c} sind diese Funktionen inplementiert. Das Folgende 
+Textblock zeigt, wie Register gelesen werden und wie man in diesen 
+Registern schreiben kann. (Dieses Beispiel bezieht sich auf dem 
+HTS221-Sensor)
+
+\begin{lstlisting}[frame=single]
+	uint8_t cmd[2];
+	cmd[0] = CTRL_REG1;
+	i2c_transfer7(I2C2, HTS221_ADDR, cmd, 1, (cmd+1), 1);
+	cmd[1] |= (HTS221_PD_ON | HTS221_BDU_ON | HTS221_ODR1_ON);
+	i2c_transfer7(I2C2, HTS221_ADDR, cmd, 2, NULL, 0);
+
+\end{lstlisting}
+Die Funktion \textbf{i2c\_transfer()} hat sechs Parameter:
+
+\begin{enumerate}
+	\item \textbf{i2c:} Die Peripherie, die benutzt wird (Hier I2C2) 
+	\item \textbf{addr:} Die Slave-Adresse  
+	\item \textbf{w:} Buffer der zu schreibenden Daten
+	\item \textbf{wn:} Gr"o\ss{}e der zu schreibenden Daten (In Byte)
+	\item \textbf{r:} Buffer, in dem die gelesennen Daten geschrieben 
+	werden sollen
+	\item \textbf{rn:} Gr"o\ss{}e der zu lesenden Daten (In Byte)
+\end{enumerate}
+
+\textbf{Achtung:} Wenn Daten geschrieben werden sollen ist \textbf{r} 
+gleich dem NULL-Pointer und \textbf{rn} gleich null (0), da wir nichts 
+lesen wollen.
+
+Diese Vorgehensweise wird (Mit unterschiedlichen Registern) mehrmals wiederholt, weil viele Kalibrierregister gelesen und zusammengerechnet werden m"ussen, um die gemessenen Werten zu bekommen. Die folgenden Textbl"ocke bezeichnen jeweils, wie die Temeratur vom \textbf{HTS221} und die Beschleunigung vom \textbf{LSM6DSL} ermittelt werden.
+
+\begin{lstlisting}[frame=single]
+	/* Temperatur ermitteln wie im Kapitel 2.1.1 beschrieben */
+
+	/* Read T0_degc_x8 and T1_degc_x8 */
+	cmd[0] = TO_DEGC_X8;
+	i2c_transfer7(I2C2, HTS221_ADDR, cmd, 1, (cmd+1), 1);
+	cmd[0] = T1_DEGC_X8;
+	i2c_transfer7(I2C2, HTS221_ADDR, cmd, 1, (cmd+2), 1);
+
+	/* Read the most significant bit of T1_DEGC and T0_DEGC */
+	cmd[0] = T1_T0_MSB;
+	i2c_transfer7(I2C2, HTS221_ADDR, cmd, 1, (cmd+3), 1);
+
+	/* Calculate the T0_degc and T1_degc values */
+	T0_degc_x8 = (((uint16_t)(cmd[3] & 0x02)) << 8) | ((uint16_t)cmd[1]);
+	T1_degc_x8 = (((uint16_t)(cmd[3] & 0x0C)) << 6) | ((uint16_t)cmd[2]);
+	T0_degc = T0_degc_x8>>3;
+	T1_degc = T1_degc_x8>>3;
+
+	/* Read T0_OUT less significant bit */
+	cmd[0] = T0_OUT_L;
+	i2c_transfer7(I2C2, HTS221_ADDR, cmd, 1, (cmd+1), 1);
+
+	/* Read T0_OUT most significant bit */
+	cmd[0] = T0_OUT_M;
+	i2c_transfer7(I2C2, HTS221_ADDR, cmd, 1, (cmd+2), 1);
+	T0_out = (((int16_t)cmd[2])<<8) | (int16_t)cmd[1];
+
+
+	/* Read T1_OUT less significant bit */
+	cmd[0] = T1_OUT_L;
+	i2c_transfer7(I2C2, HTS221_ADDR, cmd, 1, (cmd+1), 1);
+
+	/* Read T1_OUT most significant bit */
+	cmd[0] = T1_OUT_M;
+	i2c_transfer7(I2C2, HTS221_ADDR, cmd, 1, (cmd+2), 1);
+	T1_out = (((int16_t)cmd[2])<<8) | (int16_t)cmd[1];
+
+
+	/* Read T_OUT less significant bit */
+	cmd[0] = T_OUT_L;
+	i2c_transfer7(I2C2, HTS221_ADDR, cmd, 1, (cmd+1), 1);
+
+	/* Read T_OUT most significant bit */
+	cmd[0] = T_OUT_M;
+	i2c_transfer7(I2C2, HTS221_ADDR, cmd, 1, (cmd+2), 1);
+	T_out = (((int16_t)cmd[2])<<8) | (int16_t)cmd[1];
+
+	/* Calculate the temperature value */
+	tmp = ((int32_t)(T_out - T0_out)) * ((int32_t)(T1_degc - T0_degc));
+	temperature = ((float)tmp / (float)(T1_out - T0_out)) + (float)(T0_degc);
+
+	return temperature;
+\end{lstlisting}  
+
+
+\begin{lstlisting}[frame=single]
+	/* Beschleunigung ermitteln wie im Abbildung 2.5 */
+	
+	status_cmd[0] = STATUS_REG;
+	i2c_transfer7(I2C2, LSM6DSL_ADDR, status_cmd, 1, (status_cmd+1), 1);
+	
+	if (status_cmd[1] & GET_XLDA) {
+		/* Read X */
+		cmd[0] = OUTX_L_XL;
+		i2c_transfer7(I2C2, LSM6DSL_ADDR, cmd, 1, (cmd+1), 1);
+		outx_l_xl = cmd[1];
+	
+		cmd[0] = OUTX_H_XL;
+		i2c_transfer7(I2C2, LSM6DSL_ADDR, cmd, 1, (cmd+1), 1);
+		outx_h_xl = cmd[1];
+	
+		x = ((int16_t)outx_h_xl << 8 | (int16_t)outx_l_xl);
+	
+		/* Read Y */
+	
+		cmd[0] = OUTY_L_XL;
+		i2c_transfer7(I2C2, LSM6DSL_ADDR, cmd, 1, (cmd+1), 1);
+		outy_l_xl = cmd[1];
+	
+		cmd[0] = OUTY_H_XL;
+		i2c_transfer7(I2C2, LSM6DSL_ADDR, cmd, 1, (cmd+1), 1);
+		outy_h_xl = cmd[1];
+	
+		y = ((int16_t)outy_h_xl << 8 | (int16_t)outy_l_xl);
+	
+		/* Read Z */
+		cmd[0] = OUTZ_L_XL;
+		i2c_transfer7(I2C2, LSM6DSL_ADDR, cmd, 1, (cmd+1), 1);
+		outz_l_xl = cmd[1];
+	
+		cmd[0] = OUTZ_H_XL;
+		i2c_transfer7(I2C2, LSM6DSL_ADDR, cmd, 1, (cmd+1), 1);
+		outz_h_xl = cmd[1];
+	
+		z = ((int16_t)outz_h_xl << 8 | (int16_t)outz_l_xl);
+	
+		acc_xyz[0] = (float)x * FS_XL_4G;
+		acc_xyz[1] = (float)y * FS_XL_4G;
+		acc_xyz[2] = (float)z * FS_XL_4G;
+	}
+	return acc_xyz;
+\end{lstlisting}
+
+\textbf{Achtung:} Die Adresse, die beim Auslesen der Beschleunigung
+zur"uckgegeben wird, enth"alt 3 unterschiedliche Werten. Der Index 0 
+beinhaltet den Wert der X-Achse, Index 1 beinhaltet den Y-Wert und 
+Index 2 den Y-Wert. (Genau so wie f"ur den Gyroskop)
+
+Nachdem die Daten gelesen worden sind, kann man sie nun in Hexadezimal 
+konvertieren und mit Hilfe eines AT-Befehls am Server per LoRaWAN 
+senden. Der folgende Abschnitt zeigt wie das geht.
 
 
 \section{AT-Kommandos senden}
+In diesem Teil geht es haupts"achlich um UART. Die Peripherie muss Aktiviert und konfiguriert werden, bevor einem Transfer startet. Der folgende Quelle-Code ist daf"ur zust"andig.
+Die Konfugiration muss die gleiche sein wie im Abschnitt \ref{AT} beschrieben (Baudrate: 115200, Daten:8 Bit, Keine Parot"at und 1 Stopbit).
+\begin{lstlisting}[frame=single]
+	rcc_periph_clock_enable(RCC_UART4);
+	
+	void uart_setup(void)
+	{
+		/* Setup GPIO pins for UART4 and USART3 transmit. */
+		gpio_mode_setup(GPIOA, GPIO_MODE_AF, GPIO_PUPD_NONE, GPIO0);
+		gpio_mode_setup(GPIOA, GPIO_MODE_AF, GPIO_PUPD_NONE, GPIO1);
+	
+		/* Setup UART4 TX and RX pin as alternate function. */
+		gpio_set_af(GPIOA, GPIO_AF8, GPIO0);
+		gpio_set_af(GPIOA, GPIO_AF8, GPIO1);
+	
+		/* UART4 setup */
+		usart_set_baudrate(UART4, 115200);
+		usart_set_databits(UART4, 8);
+		usart_set_stopbits(UART4, USART_STOPBITS_1);
+		usart_set_mode(UART4, USART_MODE_TX_RX);
+		usart_set_parity(UART4, USART_PARITY_NONE);
+		usart_set_flow_control(UART4, USART_FLOWCONTROL_NONE);
+	
+		/* Finally enable UART4. */
+		usart_enable(UART4);
+	}
+	
+\end{lstlisting}  
+
+Wie im Abschnitt \ref{AT} erw"ahnt, sollen AT-Befehle am LoRa-Modul  senden, um das Modul f"ur eine LoRaWAN-Verbindung vorzubereiten. Diese Befehle werden  ein Zeichen nach dem anderen per UART an dem LoRa-Modul gesendet werden. Da viele AT-Befehle Parameter erwarten, haben wir mit Hilfe der Stringifikation Makros definiert, die dem Benutzer erm"oglichen ver"anderliche Strings in C durch UART zu senden. 
+
+Zuerst wurde eine Enumeration aller Befehle herstellt, die gebraucht werden. Danach mit Hilfe eines zweidimentionalen Feldes und des Stingifikation k"onnen wird Parametern zwischen den Strings setzen. Die Enumeration gibt den Anfangindex jedes Befehls an. Damit kann man weiteriterieren, um ein kompletes String zu bilden. Die folgenden Zeilen-Code zeigen die Stingification, die Enumeration und das zweidimentionale Feld.
+
+\vspace{2cm}
+\begin{lstlisting}[frame=single]
+
+	/*
+	* Stringification
+	* Helful to convert macro argument into
+	* string constant
+	*/
+	#define AT_COMMAND(cmd,	param) "AT+" #cmd "=" #param "\r\n\0"
+	
+\end{lstlisting}     
+
+\begin{lstlisting}[frame=single]
+	/*
+	* List of possible AT command
+	*/
+	enum lora_cmd {
+		AT = 0,
+		ATZ,
+		GET_APPEUI,
+		GET_EUI,
+		GET_NET_S_KEY,
+		GET_APP_S_KEY,
+		GET_APP_KEY,
+		GET_ADDR,
+		GET_JOIN_STATUS,
+		AT_RADIO,
+		AT_GETDATA,
+		AT_RX1_DELAY,
+		AT_RX2_DELAY,
+		AT_JOIN_ACCEPT1_DELAY,
+		AT_JOIN_ACCEPT2_DELAY,
+		AT_DUTY_CYCLE,
+		AT_BAND,
+		AT_DATA_RATE,
+		AT_RX2_DATA_RATE,
+		AT_CLASS,
+		AT_ADDR,
+		AT_NET_S_KEY,
+		AT_APP_S_KEY,
+		AT_APP_KEY,
+		AT_APPEUI,
+		AT_JOIN_OTAA,
+		AT_JOIN_ABP,
+		AT_NETWORK_TYP,
+		AT_ADAPTIVE_DATA_RATE,
+		AT_MAX
+	};
+\end{lstlisting}
+
+\begin{lstlisting}[frame=single]
+	/*
+	* List of possible codes
+	*/
+	/* Default network type is public (NTYP = 1, 0 for private network)
+	* Band = EU868
+	* DevEUI = e24f43fffe44c432
+	* Duty Cycle (DC) = is on
+	* Data Rate (DR) = SF7/125KHz
+	* Class = Class A
+	* APPEUI is a 8 bytes hex value
+	* AppKey (AK) NSK ASP are 16 byte hex value
+	* Device address (ADDR) is a 4 bytes hex value
+	* Radio setting: Power: 14dBm
+	* 				  Frequency: 867.1MHz
+	* 				  Spreading factor: 12
+	* 				  Bandwidth: 125KHz
+	* 				  Coding rate: 4/5
+	*
+	*/
+	
+	char *code[] = {
+		"AT\r\n\0",
+		"ATZ\r\n\0",
+		"AT+APPEUI\r\n\0",
+		"AT+EUI\r\n\0",
+		"AT+NSK\r\n\0",
+		"AT+ASK\r\n\0",
+		"AT+AK\r\n\0",
+		"AT+ADDR\r\n\0",
+		"AT+JSTA\r\n\0",
+		"AT+RF=14,8671000000,12,0,1\r\n\0",
+		"AT+RCV\r\n\0",
+		AT_COMMAND(RX1DT, 1000),
+		AT_COMMAND(RX2DT, 2000),
+		AT_COMMAND(JRX1DT, 5000),
+		AT_COMMAND(JRX2DT, 6000),
+		AT_COMMAND(DC, 0),
+		AT_COMMAND(BAND, 0),
+		AT_COMMAND(DR, 0), //UE860: SF12-BW125
+		AT_COMMAND(RX2DR, 0),//UE860: SF12-BW125
+		AT_COMMAND(CLASS, 0),
+		AT_COMMAND(ADDR, 12345678),
+		AT_COMMAND(NSK, 1122334455663EAB546829CB361CAB7D),
+		AT_COMMAND(ASK, 887766554433BCFACDE52476CA4598BA),
+		AT_COMMAND(AK, 00112233445566778899AABBCCDDEEFF),
+		AT_COMMAND(APPEUI, ABC123ADF135CBD8),
+		AT_COMMAND(JOIN, 1),
+		AT_COMMAND(JOIN, 0),
+		AT_COMMAND(NTYP, 1),
+		AT_COMMAND(ADR, 1)
+	};
+\end{lstlisting}
+
+Nun ein Beispiel wie das ganze zu verwenden ist. Jedes Zeichen wird einem nach dem anderen per UART4 gessendet.
+
+\begin{lstlisting}[frame=single]
+	void send_cmd(enum lora_cmd cmd)
+	{
+		char *command = code[cmd];
+		/*Send command*/
+		if(cmd >= AT_MAX)
+			return;
+		printf("cmd: %s\n",code[cmd]);
+		while (*command != '\0') {
+			usart_send_blocking(UART4, *command);
+			command++;
+		}
+	}
+\end{lstlisting}
+
+Nachdem ein Befehl desendet wurde, bekommt man eine Antwort von dem LoRa-Modul zur"uck. Diese Antwort ist abh"angig von dem Befehl. Geht es um einen Set-Befehl, bekommt man \textbf{OK} oder ein Fehler zur"uck. Ist der Befehle ein Get befehl dagegen, bekommt man die Abgefragte Daten oder ein Fehler zur"uck. Eine Ausnahme bestehet bei Events.
+
+Nehmen wir an ein Endger"at m"ochte ein LoRaWAM-Netzwerk eintreten. Das 
+Endger"at wird zugelassen, der Server sendet es ein Join-Accept. Diese 
+Antwort taucht wie ein Event genau so wie ein normales Downlink auf. 
+Diese Antworten werden dann zur P"ufung verwendet oder zur Verarbeitung 
+von Downlinks verwendet. Um dieses Verhalten zu visualisieren, wurde 
+ein Logic-Analyser Namens Saleae \cite{analyzer} verwendet. Das 
+folgende Bild zeit das Ergebnis einer Messung. Es wird ein einfaches 
+\textbf{AT} gesendet und das LoRa-Modul antwortet mit \textbf{OK}.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=16cm]{source/images/saleae}
+	\caption{Saleae Output\label{fig:saleae}}
+\end{figure}
+
+\vspace{5cm}
+Diese Antwort wird mit Hilfe eines Interrupts abgefangen und in einem 
+Buffer gespeichert. Um zu pr"ufen das ein Befehle richtig interpretiert wurde, wird der Inhalt des Antwort-Buffers mit dem String \textbf{OK} mit hilfe der System-Funktion \textbf{strcmp()} verglischen. So k"onnen wir auch pr"ufen ob ein Endger"at dem Netzwerk eingetreten ist, indem der Antwort-Buffer mit dem Inhalt des Join-Status-Register. Der Inhalt des Join-Status-Register ist 1, wenn das Endger"at zugelassen wurde, un 0 wenn nicht. So k"onnen wir Join-Request solange senden, bis das Endger"at dem Netzwerk zugelassen wird.
+
+
+\section{Downlinks Behandlung} 
