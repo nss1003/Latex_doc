@@ -1,7 +1,7 @@
-\BOOKMARK [0][-]{chapter*.1}{Abstract}{}% 1
-\BOOKMARK [0][-]{chapter*.2}{Danksagung}{}% 2
-\BOOKMARK [0][-]{chapter*.3}{Selbst\344ndigkeitserkl\344rung}{}% 3
-\BOOKMARK [0][-]{chapter*.9}{Abk\374rzungsverzeichnis}{}% 4
+\BOOKMARK [0][-]{chapter*.1}{Danksagung}{}% 1
+\BOOKMARK [0][-]{chapter*.2}{Eidesstattliche Erkl\344rung}{}% 2
+\BOOKMARK [0][-]{chapter*.3}{Abstract}{}% 3
+\BOOKMARK [0][-]{chapter*.5}{Abk\374rzungsverzeichnis}{}% 4
 \BOOKMARK [0][-]{chapter.1}{1 Einleitung}{}% 5
 \BOOKMARK [1][-]{section.1.1}{1.1 Motivation}{chapter.1}% 6
 \BOOKMARK [1][-]{section.1.2}{1.2 Aufgabenstellung und Zielsetzung}{chapter.1}% 7
@@ -19,7 +19,7 @@
 \BOOKMARK [1][-]{section.3.1}{3.1 Gateway}{chapter.3}% 19
 \BOOKMARK [1][-]{section.3.2}{3.2 Einstellung des LoRaWAN-Servers}{chapter.3}% 20
 \BOOKMARK [1][-]{section.3.3}{3.3 MQTT Protokoll}{chapter.3}% 21
-\BOOKMARK [0][-]{chapter.4}{4 Software Emplimmentierung}{}% 22
+\BOOKMARK [0][-]{chapter.4}{4 Software Implimmentierung}{}% 22
 \BOOKMARK [1][-]{section.4.1}{4.1 Entwicklungsumgebung}{chapter.4}% 23
 \BOOKMARK [2][-]{subsection.4.1.1}{4.1.1 Eclipse}{section.4.1}% 24
 \BOOKMARK [2][-]{subsection.4.1.2}{4.1.2 Libopencm3 Bibliotek installieren}{section.4.1}% 25

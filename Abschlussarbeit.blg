@@ -5,6 +5,7 @@ A level-1 auxiliary file: source/Titelseite.aux
 A level-1 auxiliary file: source/content/Danksagung.aux
 A level-1 auxiliary file: source/content/EidesstattlicheErklaerung.aux
 A level-1 auxiliary file: source/content/Abstract.aux
+A level-1 auxiliary file: source/content/Abkuerzung.aux
 A level-1 auxiliary file: source/content/Einleitung.aux
 A level-1 auxiliary file: source/content/Grundlagen.aux
 A level-1 auxiliary file: source/content/Fazit.aux
@@ -35,7 +36,7 @@ Warning--empty journal in LoRaMod
 Warning--empty journal in AT_Command
 You've used 18 entries,
             2118 wiz_defined-function locations,
-            598 strings with 6714 characters,
+            599 strings with 6743 characters,
 and the built_in function-call counts, 3944 in all, are:
 = -- 374
 > -- 131

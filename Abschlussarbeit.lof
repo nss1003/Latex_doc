@@ -10,43 +10,46 @@
 \contentsline {figure}{\numberline {\relax 2.1}{\ignorespaces B-L475E-IOT01A Discovery kit \cite {B-L475E-IOT01A}\relax }}{6}{figure.caption.20}
 \contentsline {figure}{\numberline {\relax 2.2}{\ignorespaces Humidity sensor analog-to-digital flow \cite {HTS221}\relax }}{7}{figure.caption.22}
 \contentsline {figure}{\numberline {\relax 2.3}{\ignorespaces Linear interpolation to convert \ac {LSB} to \%\ac {RH} \cite {HTS221}\relax }}{9}{figure.caption.25}
-\contentsline {figure}{\numberline {\relax 2.4}{\ignorespaces Linear interpolation to convert LSB to \textdegree {}c \cite {HTS221}\relax }}{11}{figure.caption.28}
+\contentsline {figure}{\numberline {\relax 2.4}{\ignorespaces Linear interpolation to convert LSB to \textdegree {}C \cite {HTS221}\relax }}{11}{figure.caption.28}
 \contentsline {figure}{\numberline {\relax 2.5}{\ignorespaces Flu\ss {}diagram zur Datenermitlung\relax }}{13}{figure.caption.32}
 \contentsline {figure}{\numberline {\relax 2.6}{\ignorespaces I-Nucleo-LRWAN1 \cite {LoRaMod}\relax }}{14}{figure.caption.33}
 \contentsline {figure}{\numberline {\relax 2.7}{\ignorespaces I-Nucleo-LRWAN1 Architektur \cite {LoRaMod}\relax }}{16}{figure.caption.35}
 \contentsline {figure}{\numberline {\relax 2.8}{\ignorespaces LABCSMART LoRa End-Node physisches Aussehen \ref {sub@fig-subfig1} und Verbindung \ref {sub@fig-subfig2}\relax }}{16}{figure.caption.36}
 \contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{16}{figure.caption.36}
 \contentsline {subfigure}{\numberline {(b)}{\ignorespaces {}}}{16}{figure.caption.36}
-\contentsline {figure}{\numberline {\relax 2.9}{\ignorespaces Vergleich zwischen LoRa und andere IoT Kommunikationstechnologien \cite {LoRaWAN}\relax }}{19}{figure.caption.41}
-\contentsline {figure}{\numberline {\relax 2.10}{\ignorespaces Klassen von LoRaWAN \cite {LoRaWAN}\relax }}{20}{figure.caption.43}
-\contentsline {figure}{\numberline {\relax 2.11}{\ignorespaces Klasse A \relax }}{21}{figure.caption.44}
-\contentsline {figure}{\numberline {\relax 2.12}{\ignorespaces Klasse B \relax }}{22}{figure.caption.45}
-\contentsline {figure}{\numberline {\relax 2.13}{\ignorespaces Klasse C \relax }}{22}{figure.caption.46}
-\contentsline {figure}{\numberline {\relax 2.14}{\ignorespaces LoRaWAN-Nachricht Verschl"usselung \cite {Entcription}\relax }}{23}{figure.caption.51}
-\contentsline {figure}{\numberline {\relax 2.15}{\ignorespaces Join-Request Verfahren\relax }}{26}{figure.caption.55}
+\contentsline {figure}{\numberline {\relax 2.9}{\ignorespaces Reichweite anh"angig vom SF (Ge"andert von \cite {Entcription}) \relax }}{18}{figure.caption.40}
+\contentsline {figure}{\numberline {\relax 2.10}{\ignorespaces Vergleich zwischen LoRa und andere IoT Kommunikationstechnologien \cite {LoRaWAN}\relax }}{19}{figure.caption.42}
+\contentsline {figure}{\numberline {\relax 2.11}{\ignorespaces Klassen von LoRaWAN \cite {LoRaWAN}\relax }}{21}{figure.caption.44}
+\contentsline {figure}{\numberline {\relax 2.12}{\ignorespaces Klasse A \relax }}{21}{figure.caption.45}
+\contentsline {figure}{\numberline {\relax 2.13}{\ignorespaces Klasse B \relax }}{22}{figure.caption.46}
+\contentsline {figure}{\numberline {\relax 2.14}{\ignorespaces Klasse C \relax }}{22}{figure.caption.47}
+\contentsline {figure}{\numberline {\relax 2.15}{\ignorespaces LoRaWAN-Nachricht Verschl"usselung \cite {Entcription}\relax }}{23}{figure.caption.52}
+\contentsline {figure}{\numberline {\relax 2.16}{\ignorespaces Join-Request Verfahren (Ver"andert von \cite {Entcription})\relax }}{26}{figure.caption.56}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {\relax 3.1}{\ignorespaces LABCSMART LoRaWAN Gateway\relax }}{31}{figure.caption.57}
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{31}{figure.caption.57}
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {}}}{31}{figure.caption.57}
-\contentsline {figure}{\numberline {\relax 3.2}{\ignorespaces Einstellung des Gateways\relax }}{33}{figure.caption.58}
-\contentsline {figure}{\numberline {\relax 3.3}{\ignorespaces Einstellung des Netzwerks\relax }}{33}{figure.caption.59}
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{33}{figure.caption.59}
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {}}}{33}{figure.caption.59}
-\contentsline {figure}{\numberline {\relax 3.4}{\ignorespaces Einstellung des Profils\relax }}{34}{figure.caption.61}
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{34}{figure.caption.61}
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {}}}{34}{figure.caption.61}
-\contentsline {figure}{\numberline {\relax 3.5}{\ignorespaces Einstellung der Gruppe\relax }}{35}{figure.caption.62}
-\contentsline {figure}{\numberline {\relax 3.6}{\ignorespaces ABP Verbindung\relax }}{36}{figure.caption.64}
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{36}{figure.caption.64}
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {}}}{36}{figure.caption.64}
-\contentsline {figure}{\numberline {\relax 3.7}{\ignorespaces Einstellung OTAA\relax }}{37}{figure.caption.66}
-\contentsline {figure}{\numberline {\relax 3.8}{\ignorespaces Zwischenergebnis\relax }}{38}{figure.caption.67}
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{38}{figure.caption.67}
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {}}}{38}{figure.caption.67}
+\contentsline {figure}{\numberline {\relax 3.1}{\ignorespaces LABCSMART LoRaWAN Gateway\relax }}{31}{figure.caption.58}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{31}{figure.caption.58}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {}}}{31}{figure.caption.58}
+\contentsline {figure}{\numberline {\relax 3.2}{\ignorespaces Einstellung des Gateways\relax }}{33}{figure.caption.59}
+\contentsline {figure}{\numberline {\relax 3.3}{\ignorespaces Einstellung des Netzwerks\relax }}{33}{figure.caption.60}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{33}{figure.caption.60}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {}}}{33}{figure.caption.60}
+\contentsline {figure}{\numberline {\relax 3.4}{\ignorespaces Einstellung des Profils\relax }}{34}{figure.caption.62}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{34}{figure.caption.62}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {}}}{34}{figure.caption.62}
+\contentsline {figure}{\numberline {\relax 3.5}{\ignorespaces Einstellung der Gruppe\relax }}{35}{figure.caption.63}
+\contentsline {figure}{\numberline {\relax 3.6}{\ignorespaces ABP Registrierung\relax }}{36}{figure.caption.65}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{36}{figure.caption.65}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {}}}{36}{figure.caption.65}
+\contentsline {figure}{\numberline {\relax 3.7}{\ignorespaces Einstellung OTAA\relax }}{37}{figure.caption.67}
+\contentsline {figure}{\numberline {\relax 3.8}{\ignorespaces Uplinks/Downlinks \ref {fig:Dashboard} und Frames \ref {fig:Frames}\relax }}{38}{figure.caption.68}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{38}{figure.caption.68}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {}}}{38}{figure.caption.68}
+\contentsline {figure}{\numberline {\relax 3.9}{\ignorespaces MQTT-Protokoll\relax }}{40}{figure.caption.74}
+\contentsline {figure}{\numberline {\relax 3.10}{\ignorespaces MQTT Connector vom Server\relax }}{41}{figure.caption.75}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {\relax 4.1}{\ignorespaces Build Targets einstellen\relax }}{43}{figure.caption.73}
-\contentsline {figure}{\numberline {\relax 4.2}{\ignorespaces Build Targets fertig\relax }}{43}{figure.caption.74}
-\contentsline {figure}{\numberline {\relax 4.3}{\ignorespaces Libopencm3 Doxygen\relax }}{46}{figure.caption.75}
-\contentsline {figure}{\numberline {\relax 4.4}{\ignorespaces I2C Kommunikation\relax }}{48}{figure.caption.76}
-\contentsline {figure}{\numberline {\relax 4.5}{\ignorespaces Verbindungstest mit Saleae\relax }}{56}{figure.caption.77}
+\contentsline {figure}{\numberline {\relax 4.1}{\ignorespaces Build Targets einstellen\relax }}{45}{figure.caption.77}
+\contentsline {figure}{\numberline {\relax 4.2}{\ignorespaces Build Targets fertig\relax }}{45}{figure.caption.78}
+\contentsline {figure}{\numberline {\relax 4.3}{\ignorespaces Libopencm3 Doxygen\relax }}{48}{figure.caption.79}
+\contentsline {figure}{\numberline {\relax 4.4}{\ignorespaces I2C Kommunikation\relax }}{50}{figure.caption.80}
+\contentsline {figure}{\numberline {\relax 4.5}{\ignorespaces Verbindungstest mit Saleae\relax }}{58}{figure.caption.81}
 \addvspace {10\p@ }

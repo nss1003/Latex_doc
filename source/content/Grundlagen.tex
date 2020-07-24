@@ -1,7 +1,7 @@
 \chapter{Hardware Komponenten eines Endger"ats}\label{Komponente}
 
 In diesem Kapitel werden die f"ur das Gesamtsystem benutzten 
-Hardware- Komponenten hinsichtlich ihrer Funktionsweise und Ansteuerung 
+Hardware Komponenten hinsichtlich ihrer Funktionsweise und Ansteuerung 
 in Einzelnen erl"autert. 
 
 \section{STM32L4 Discovery Kit}\label{LoRa}
@@ -10,19 +10,19 @@ Das STM32L4 Discovery Kit ist ein IoT Knoten, womit ein Benutzer
 Anwendungen mit direkter Verbindung zu einem oder mehreren 
 Cloud-Servern entwickeln kann.
 Dieses Discovery Kit erm\"oglicht eine Vielzahl von Anwendungen, indem 
-es eine Multikink-Kommunikation (\ac{BLE}) mit geringem 
-Stromverbrauch  Multiway-Erkennung der Umwelt erm"oglicht (Siehe 
+es eine Multilink-Kommunikation (\ac{BLE}) mit geringem 
+Stromverbrauch, Multiway-Erkennung der Umwelt liefert (Siehe 
 Abbildung \ref{Node}).
 
 Das STM32L4 hat einen eingebetteten ST-LINK Debugger/Programmierer, 
 eingebettete Sensoren und viele andere Features, die in dem Datenblatt 
-\cite{B-L475E-IOT01A} erl"autert zu finden sind. Genau wegen der 
+erl"autert zu finden sind. Auf Grung der 
 Vielfalt an Eingenschaften wurde dieses Board ausgew"ahlt. Man braucht 
 kein Breadboard im Vergleich zu dem Arduino oder dem Raspberry-Pi, um 
-die Sensoren mit den Schnittstellen (UART, \ac{SPI} oder I2C) des 
-Mikrocontrollers zu verbinden. Noch dazu eignet sich dieses Discovery 
-Kit f"ur ein Endger"at von STMicroelectronics, da Arduino-Verbinder 
-vorhanden sind. Dazu ist nur das Endger"at in dieser Verbinder stecken. 
+Sensoren durch Schnittstellen (UART, \ac{SPI} oder I2C) mit dem 
+Mikrocontroller zu verbinden. Noch dazu eignet sich dieses Discovery 
+Kit f"ur das LoRa-Modul von STMicroelectronics, da Arduino-Verbinder 
+vorhanden sind. Dazu ist lediglich das LoRa-Modul in diesen Verbindern zu stecken. 
 
 \begin{figure}[h]
 	\centering
@@ -31,31 +31,32 @@ vorhanden sind. Dazu ist nur das Endger"at in dieser Verbinder stecken.
 	\cite{B-L475E-IOT01A}}\label{Node}
 \end{figure}
 
-F"ur diese Arbeit werden wir uns auf zwei Sensoren beschr"anken. 
-Erstmal den HTS221\cite{HTS221} Temperatur- und Feuchtigkeitssensor 
-und dann den LSM6DSK 3D-Gyroscope und 3D-Beschleunigungssensor 
-\cite{LSM6DSL}. Diese Daten werden erfasst und drahtlos an den 
+\vspace{5cm}
+F"ur diese Bachelorarbeit beschr"anken wir uns auf zwei Sensoren. 
+Zum einen den HTS221\cite{HTS221} Temperatur- und Feuchtigkeitssensor 
+zum anderen LSM6DSK 3D-Gyroscope und 3D-Beschleunigungssensor 
+\cite{LSM6DSL}. Daten werden erfasst und drahtlos an den 
 LoRaWAN-Server "ubertragen. Die folgenden Unterkapitel beschreiben, 
 wie diese Sensoren funktionieren und erkl"aren, wie sie anzusteuern 
 sind, damit die erhaltenen Daten im Rahmen der geforderten Toleranzen 
 der Realit"at entsprechen. Laut dem Datenblatt ist mit einer 
-Temperaturgenauigkeit von \textpm 0.5\textdegree{}c und einer 
+Temperaturgenauigkeit von \textpm 0.5\textdegree{}C und einer 
 Feuchtigkeitsgenauigkeit von \textpm 3.5\%   zu rechnen. 
 
 \subsection {HTS221 Temperatursensor- und Feuchtigkeitssensor}\label{Temp}
 In diesem Unterkapitel wird der HTS221 Temperatur- und 
-Feuchtigkeitssensor beschrieben und erkl"art wie die Temperatur und 
+Feuchtigkeitssensor beschrieben und erkl"art wie die Temperatur alsauch 
 die Feuchtigkeit zu ermitteln sind.
 
-Der HTS221 Sensor misst die relative Feuchtigkeit(H) und die 
+Der HTS221 Sensor misst die relative Feuchtigkeit (H) und die 
 Temperatur (T) und speichert die Daten (16-Bits von Datentyp Integer) 
 als Zweierkomplement. Diese Daten k"onnen "uber I2C- oder 
-SPI-Schnittstelle gelesen werden. Die gespeicherte Daten sind 
-Rohdaten, die am Ausgang von dem \ac{ADC} verf"ugbar sind (Siehe 
-Abbildung \ref{HT_sensor}). Um die Temperatur in \textdegree{}c und 
-die relative Feuchtigkeit in \% zu bekommen, muss man die Daten aus 
-den Registern auslesen und mit Hilfe der Formel \ref{HumFormel} und 
-\ref{TempFormel} die richtigen Werten herausfinden.
+SPI-Schnittstelle ausgelesen werden. Die gespeicherten Daten sind 
+Rohdaten, die am Ausgang von dem \ac{ADC} zur Verf"ugung gestellt werden (Siehe 
+Abbildung \ref{HT_sensor}). Um die Temperatur in \textdegree{}C und 
+die relative Feuchtigkeit in \% zu erhalten, m"ussen die Daten aus 
+den Registern ausgelesen und mit Hilfe der Formel \ref{HumFormel} und 
+\ref{TempFormel} die richtigen Werten ermittelt werden.
 
 \begin{figure}[h]
 	\centering
@@ -68,11 +69,11 @@ den Registern auslesen und mit Hilfe der Formel \ref{HumFormel} und
 
 An dieser Stelle wird erkl"art wie die Feuchtigkeit von dem Sensor 
 ermittelt wird.
-Der HTS221 Sensor speichert den Feuchtigkeitswert in Rohz"alungen in 
+Der HTS221 Sensor speichert den Feuchtigkeitswert in Rohz"ahlungen in 
 zwei 8-Bit-Registern:
 \begin{itemize}
-	\item \textit{H\_OUT\_H} (0x29) (H"ochstwertige Bits)
-	\item \textit{H\_OUT\_L} (0x28) (Niedrigswertige Bits)
+	\item \textit{H\_OUT\_H} (0x29) (H"ochstwertiges Byte)
+	\item \textit{H\_OUT\_L} (0x28) (Niedrigswertiges Byte)
 \end{itemize}
 
 Die zwei Bytes werden verkettet, um ein Zweierkomplement dargestelltes 
@@ -81,13 +82,13 @@ lineare Interpolation
 der Register (\textit{HUMIDITY\_OUT\_H} \& \textit{HUMIDITY\_OUT\_L}) 
 mit den Kalibrierregistern berechnet werden.
 
-Der HTS221 Sensor ist bei der Herstellung schon kalibriert und die 
+Der HTS221 Sensor ist bei der Herstellung bereits kalibriert und die 
 erforderlichen Koeffizienten sind ADC 16-Bit-Werte, die in den  
 Registern des Sensors zu lesen sind. Eine weitere Kalibrierung durch den 
 Benutzer ist nicht erforderlich.
 
-Die Tabelle \ref{tab:Reg_H} stellt die Register dar, in dem die 
-Kalibrierwerte zur Ermittlung der relativen Feuchtigkeit gespeichert 
+Die Tabelle \ref{tab:Reg_H} stellt die Register dar, in denen die 
+Kalibrierwerten zur Ermittlung der relativen Feuchtigkeit gespeichert 
 sind.
 
 \vspace{2cm}
@@ -97,7 +98,7 @@ sind.
 		\Large
 	%	\footnote{(u16) 16Bit-Wert ohne Vorzeichen, (s16) 16-Bit-wert 
 	%mit Vorzeichen}
-		\begin{tabular}{l|c|r}
+		\begin{tabular}{c|c|c}
 			\textbf{Variable} & 	\textbf{Adresse} & 
 			\textbf{Format}\footnotemark\\
 			\hline
@@ -122,19 +123,19 @@ sind.
 Vorzeichen}
 
 Nun wissen wir welche Register zu lesen sind, damit die relative 
-Feuchtigkeit mithilfe der Interpolation berechnet wird. Die folgenden 
+Feuchtigkeit mithilfe der Interpolation berechnet werden kann. Die folgenden 
 Schritten m"ussen vor der Berechnung durchgef"uhrt werden:
 
 \begin{itemize}
 	\item Werte von \textit{H0\_rH\_x2} und \textit{H1\_rH\_x2} aus 
-	Registern 0x30 und 0x31 lesen 
+	Registern 0x30 und 0x31 auslesen 
 	\item \textit{H0\_rH\_x2} und \textit{H1\_rH\_x2} durch zwei teilen
 	\item Werte von \textit{H0\_TO\_OUT} aus Registern 0x36 und 0x37 
-	lesen 
+	auslesen 
 	\item Werte von \textit{H1\_TO\_OUT} aus Registern 0x3A und 0x3B 
-	lesen
-	\item Rohdate von \textit{H\_T\_OUT} aus Registern 0x28 und 0x29 
-	lesen
+	auslesen
+	\item Rohdaten von \textit{H\_T\_OUT} aus Registern 0x28 und 0x29 
+	auslesen
 \end{itemize}
 
 Nachdem diese Register gelesen wurden, kann nun die Berechnung der 
@@ -147,7 +148,7 @@ relativen Feuchtigkeit erfolgen.
 	\cite{HTS221}}\label{fig:rH}
 \end{figure}
 
-Aus Abbildung \ref{fig:rH} bekommt man mit Interpolation folgende 
+Aus Abbildung \ref{fig:rH} resultiert nach linearer Interpolation folgende 
 Formel \cite{HTS221}:
 
 \begin{center}
@@ -159,28 +160,28 @@ Formel \cite{HTS221}:
 
 \vspace{10cm}
 \subsubsection{Temperatur ermitteln}
-Der HTS221 Sensor speichert die Temperaturwerten in Rohz"alungen in 
+Der HTS221 Sensor speichert den Temperaturwert in Rohz"ahlungen in 
 zwei 8-Bit-Registern:
 
 \begin{itemize}
-	\item \textit{T\_OUT\_H} (0x2A) (H"ochstwertige Bits)
-	\item \textit{T\_OUT\_L} (0x2B) (Niedrigswertige Bits)
+	\item \textit{T\_OUT\_H} (0x2A) (H"ochstwertiges Byte)
+	\item \textit{T\_OUT\_L} (0x2B) (Niedrigswertiges Byte)
 \end{itemize}
 
-Die zwei Bytes werden verkettet, um ein zweierkomplement dargestelltes 
-16-Bit Wort zu bilden. Die Polarit"at wird duch den h"ochstwertigen Bit 
+Die zwei Bytes werden verkettet, um ein Zweierkomplement dargestelltes 
+16-Bit Wort zu bilden. Die Polarit"at wird duch das h"ochstwertigste Bit 
 vom \textit{T\_OUT\_H} Register bekannt gegeben.
 
 \begin{itemize}
-	\item Ist dieser Bit 0, die gelesene Temperatur ist positiv.
-	\item Ist dieser Bit 1, die gelesene Temperatur ist negativ. In 
-	diesem fall ist das Zweierkomplement des gesamten Wort zu bilden, 
-	um den richtigen Wert zu bekommen.
+	\item Ist dieses Bit 0, ist die gelesene Temperatur positiv.
+	\item Ist dieses Bit 1, ist die gelesene Temperatur negativ. In 
+	diesem Fall ist das Zweierkomplement des gesamten Wort zu bilden, 
+	um den richtigen Wert zu erhalten.
 \end{itemize}
 
 Auch hier ist die Temperatur durch lineare Interpolation von den 
 Kalibrierregistern und den Registern \textit{T\_OUT\_H} und 
-\textit{T\_OUT\_H} in Zweierkomplement zu berechnen.
+\textit{T\_OUT\_H} in Zweierkomplement zu errechnen.
 
 Die Tabelle \ref{tab:Reg_T} stellt diese Kalibrierregister dar.
 
@@ -190,7 +191,7 @@ Die Tabelle \ref{tab:Reg_T} stellt diese Kalibrierregister dar.
 		\Large
 		%	\footnote{(u16) 16Bit-Wert ohne Vorzeichen, (s16) 
 		%16-Bit-wert mit Vorzeichen}
-		\begin{tabular}{l|c|r}
+		\begin{tabular}{c|c|c}
 			\textbf{Registern} & \textbf{Adresse} & \textbf{Format} \\
 			\hline
 			\textit{T0\_degC\_x8} & 0x32	& u(8) \\
@@ -214,42 +215,42 @@ Die Tabelle \ref{tab:Reg_T} stellt diese Kalibrierregister dar.
 \end{center}
 
 Da die Kalibrierregister vom Hersteller mit den korrekten Werten 
-versehen werden, werden wir nun diese Register lesen und mithilfe der 
-gelesenen Werten die Temperatur ermitteln. Bevor man die Temperatur 
-mit linearer Interpolation berechnet, sind folgende Schritten 
+versehen werden, werden wir nun diese Register auslesen und mithilfe der 
+gelesenen Werten die Temperatur ermitteln. Bevor die Temperatur 
+mit linearer Interpolation berechnet werden kann, sind folgende Schritten 
 erstmal erforderlich.
 
 \begin{itemize}
-	\item Die Koeffiziente \textit{T0\_degC\_x8} und 
-	\textit{T1\_degC\_x8} aus den Registern 0x32 und 0x33 lesen
+	\item Die Koeffizienten \textit{T0\_degC\_x8} und 
+	\textit{T1\_degC\_x8} aus den Registern 0x32 und 0x33 auslesen
 	\item Die Werte von \textit{T0\_degC\_x8} und \textit{T1\_degC\_x8} 
-	durch 8 divisiren, um die Koeffiziente \textit{T0\_degC} und 
-	\textit{T1\_degC} zu bekommen.
-	\item Die h"ochstwertige Bits von T\textit{1\_degC}(T1.9 und T1.8) 
-	und \textit{T0\_degC}(T0.9 und T0.8) aus dem Register 0x35 lesen. 
-	Diese Werte an den im Schritt 2 ermittelten Werten verketten, damit 
+	durch 8 dividieren, um die Koeffizienten \textit{T0\_degC} und 
+	\textit{T1\_degC} zu erhalten.
+	\item Die h"ochstwertigste Bits von T\textit{1\_degC}(T1.9 und T1.8) 
+	und \textit{T0\_degC}(T0.9 und T0.8) aus dem Register 0x35 auslesen. 
+	Diese Werte mit den im Schritt 2 ermittelten Werten verketten, damit 
 	\textit{T0\_degC} und \textit{T1\_degC} vollst"andig werden.
 	\item Der Wert von \textit{T0\_OUT} aus den Registern 0x3C und 0x3D 
-	lesen.
+	auslesen.
 	\item Der Wert von \textit{T1\_OUT} aus den Registern 0x3E und 0x3F 
-	lesen.
+	auslesen.
 	\item Der Wert von \textit{T\_OUT} aus den Registern 0x2A und 0x2B 
-	lesen.
+	auslesen.
 	 	
 \end{itemize}
 
-Nachdem diese Kallibrierregister gelesen wurden, kann man mittels 
-linearer Interpolation die Temperatur in \textdegree{}c berechnen.
+Nachdem diese Kallibrierregister ausgelesen wurden, kann mittels 
+linearer Interpolation die Temperatur in \textdegree{}C berechnet werden.
 
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=9cm]{source/images/Temp}
-	\caption{Linear interpolation to convert LSB to \textdegree{}c 
+	\caption{Linear interpolation to convert LSB to \textdegree{}C 
 	\cite{HTS221}}\label{fig:T}
 \end{figure}
 
-Abbildung \ref{fig:T} zeigt der Graph woraus die lineare Interpolation 
-stammt. Die folgende Formel wurde sogar daraus hergeleitet.
+Abbildung \ref{fig:T} zeigt den Graph, aus dem die lineare Interpolation 
+stammt. Die folgende Formel wurde daraus hergeleitet.
 
 \begin{center}
 	\[
@@ -258,7 +259,7 @@ stammt. Die folgende Formel wurde sogar daraus hergeleitet.
 	\]\label{TempFormel}
 \end{center}
 
-Da die Kalibrierwerten zur Berechnung der Temperatur und der relativen 
+Da die Kalibrierwerte zur Berechnung der Temperatur und der relativen 
 Feuchtigkeit bei der Herstellung des Bausteins vorab festgesetzt sind, 
 soll man die Kalibrierregister bei der Programmierung nur ein mal 
 auslesen. Dies erspart den Rechenaufwand des Mikrocontrollers.
@@ -267,18 +268,18 @@ auslesen. Dies erspart den Rechenaufwand des Mikrocontrollers.
 
 Dieses Unterkapitel berichtet von dem LSM6DSL 3D-Gyroskope und 
 3D-Besch-leunigungssensor. Hier ist zu entnehmen, wie die X-,Y-, und 
-Z-Koordinaten der Sensoren zu ermitteln sind und wie der Sensor 
-abh"angig vom Zweck skaliert werden kann.
+Z-Koordinaten der Sensoren zu ermitteln sind und wie der Sensor, 
+abh"angig vom Zweck, skaliert werden kann.
  
 
 Der LSM6DSL ist ein digitaler 3D-Beschleunigungsmesser und ein 
 3D-Gyroskop-system mit einer digitalen seriellen I2C/SPI Schnittstelle 
-mit einer leistung von 0.65mA im kombinierten Hochleistungsmodus.
+mit einer Leistung von 0.65mA im kombinierten Hochleistungsmodus.
 Das Ger"at verf"ugt "uber einen von Benutzer w"ahlbaren dynamischen 
 Beschleunigungsbereich von \textpm 2 \textbar \textpm 4 \textbar 
 \textpm 8 \textbar \textpm 16g (g is gleich 9,81m/s) und einen 
 Winkelgeschwindigkeitsbereich von \textpm 125 \textbar \textpm 250 
-\textbar \textpm 500 \textbar \textpm 1000 \textbar \textpm 2000\ac{dps}
+\textbar \textpm 500 \textbar \textpm 1000 \textbar \textpm 2000\ac{dps}.
  
 Das extrem geringe Gr"o\ss{}e und das geringe Gewicht des \ac{SMD}-Packets 
 machen den LSM6DSL zu einer idealen Wahl f"ur tragbare Anwendungen wie 
@@ -292,26 +293,27 @@ Der LSM6DSL bietet drei m"ogliche Betriebskonfiguration:
 	\item beide aktiv mit unabh"angigem \ac{ODR} 
 \end{itemize}
 
-Der Beschleunigungsmesser und der Gyroskop k"onnen unabh"angig 
+Der Beschleunigungsmesser und das Gyroskop k"onnen unabh"angig 
 voneinander konfiguriert werden unter anderem: Power-down, Low-Power, 
-Normal- und High -performance Modus. Um den Stromverbrauch des Sensors 
-zu reduzieren, kann der Gyroskop in einem Ruhestand gesetzt werden.
+Normal- und High-Performance Modus. Um den Stromverbrauch des Sensors 
+zu reduzieren, kann das Gyroskop in eines Ruhestand versetzt werden.
 
 
 Sobald das Ger"at mit Strom versorgt wird, werden die 
-Kalibrierkoeffizienten vom eingebettetem Flash-Speicher zu den  
-Register. Dieser Vorgang dauert ungef"ahr 15 milisekunden. Nach dieser 
-Zeit fallen der Beschleunigungsmesser und der Gyroskop im Power-Down 
+Kalibrierkoeffizienten vom eingebettetem Flash-Speicher in den  
+Registern geladen. Dieser Vorgang dauert ungef"ahr 15 ms. Nach dieser 
+Zeit fallen der Beschleunigungsmesser und das Gyroskop in den Power-Down 
 Modus. Durch der \textit{CTRL1\_XL} bzw. \textit{CTRL2\_G-}Register 
-k"onnen die Ger"ate geweckt werben, indem man das Betriebsmodus 
+k"onnen die Ger"ate geweckt werden, indem man den Betriebsmodus 
 ausw"ahlt.
 
-Wenn die Daten verf"ugbar sind, wird eine Unterbrechung (Interrupt 
-demn"achst) ausgel"ost, wenn der entsprechende Byte vom 
-Beschleunigungsmesser bzw. vom Gyroskop in dem \textit{INT1\_CTRL-} 
-Register geschrieben wurde. Das vorhandensein der Daten kann nun mithilfe des Statusregisters abgefragt werden. Das \textit{XLDA-}Bit wird 
+Wenn die Daten verf"ugbar sind, wird eine Unterbrechung (Interrupt) 
+ausgel"ost, wenn das entsprechende Byte vom 
+Beschleunigungsmesser bzw. vom Gyroskop in das \textit{INT1\_CTRL-} 
+Register geschrieben wurde. Das Vorhandensein der Daten kann nun mithilfe 
+des Statusregisters abgefragt werden. Das \textit{XLDA-}Bit wird 
 auf 1 gesetzt, wenn am Ausgang des Beschleunigungsmessers ein neuer 
-Datensatz verf"ugbar ist. Das \textit{GDS-}Bit wird suf 1 gesetzt, wenn 
+Datensatz verf"ugbar ist. Das \textit{GDS-}Bit wird auf 1 gesetzt, wenn 
 am Gyroskopausgang ein neuer Datensatz verf"ugbar ist.
 
 \begin{figure}[h]
@@ -320,45 +322,46 @@ am Gyroskopausgang ein neuer Datensatz verf"ugbar ist.
 	\caption{Flu\ss{}diagram zur Datenermitlung}\label{Gy_Acc_data}
 \end{figure}
 
-Das Abbildung \ref{Gy_Acc_data} ist der Flu\ss{}diagram zur Ermittlung 
+Die Abbildung \ref{Gy_Acc_data} stellt das Flussdiagram zur Ermittlung 
 der Achsen- und Winkelver"anderungen des Beschleunigungsmessers und des 
-Gyroskop.
+Gyroskops dar.
 
 \vspace{10cm}
 
-Wie oben schon erl"autert, kann das Ger"at so eingestellt werden, 
+Wie oben bereits erw"ahnt, kann das Ger"at so eingestellt werden, 
 dass ein neuer Satz von Messdaten durch ein Signal erkennbar wird. Das 
-\textit{XLDA-}Bit von dem \textit{STATUS\_REG-}Register wird auf 1 
-gesetzt, wenn Daten aus dem Beschleunigungsmesser zum Lesen verf"ugbar 
-sind. Das Signal kann durch den \textit{INT1-}Pin angesteuert werden, 
+\textit{XLDA-}Bit des \textit{STATUS\_REG-}Registers stellt das Signal
+des Vorhandenseins der Beschleunigungsdaten dar.
+Das Signal kann durch den \textit{INT1-}Pin angesteuert werden, 
 indem  das \textit{INT1\_DRDY\_XL-}Bit vom 
 \textit{INT1\_CTRL-}Register auf 1 gesetzt wird. 
 
-F"ur den Gyroskopsensor wird das \textit{GDA-}Bit auf 1 gesetzt, wenn 
-die Daten zum Lesen verf"ugbar sind. Das Signal kann durch den 
+F"ur den Gyroskopsensor wird das datenbereite Signal durch das
+\textit{GDA-}Bit des \textit{STATUS\_REG-}Registers dargestellt.
+Das Signal kann durch den 
 \textit{INT1-}Pin angesteuert werden, indem  das 
 \textit{INT1\_DRDY\_G-}Bit vom \textit{INT1\_CTRL-}Register auf 1 
-gestezt wird. Die gemessenen Beschleunigungsdaten werden in 
+gestezt wird. Die gemessenen Beschleunigungsdaten werden an 
 \textit{OUTX\_H\_XL-}, \textit{OUTX\_L\_XL-}, \textit{OU-TY\_H\_XL-}, 
 \textit{OUTY\_L\_-XL-}, \textit{OUTZ\_H\_XL-}, 
-\textit{OUTZ\_L\_XL-}Register gesendet. Die gemessenen 
-Winkelgeschwindigkeitsdaten werden dagegen in \textit{OUTX\_H\_G-}, 
+\textit{OUTZ\_L\_XL-}Re-gister gesendet. Die gemessenen 
+Winkelgeschwindigkeitsdaten werden dagegen an \textit{OUTX\_H\_G-}, 
 \textit{OUTX\_L\_G-}, \textit{OUTY\_H\_G-}, \textit{OUTY\_L\_G-}, 
-\textit{OUTZ\_H\_G-}, \textit{OUTZ\_L\_G-}Register gesendet. Die 
+\textit{OUTZ\_H\_G-}, \textit{OUT-Z\_L\_G-}Register gesendet. Die 
 vollst"andigen Ausgangsdaten f"ur die X-,Y- und Z-Achsen sind durch 
 die Verkettung von \textit{OUTX\_H\_XL(G)} und 
-\textit{OUTX\_L\_-XL(G)},\textit{OUTY\_H\_XL(G)} und 
+\textit{OUTX\_L\_-XL(G)}, \textit{OUTY\_H\_XL(G)} und 
 \textit{OUTY\_L\_XL(G)}, \textit{OUTZ\_H\_XL(G)} und 
 \textit{OUTZ\_L\_XL} zu erhalten, wobei die Beschleunigungsdaten und 
-die Winkelgeschwindigkeitsdaten als 16-Bit Werte dargestellt sind.
+die Winkelgeschwindigkeitsdaten als 16-Bit Werte dargestellt werden.
 
-Mit dem LSM6DSL kann man den Inhalt des unteren und oberen Teils der 
-Ausgangsdatenregister vertauschen, sodass die Darstellung entweder 
+Mit dem LSM6DSL kann der Inhalt des unteren und oberen Teils der 
+Ausgangsdatenregister vertauscht werden, sodass die Darstellung entweder 
 Big-Endian oder Little-Endian entspricht. Dies ist m"oglich, sofern 
 man das BLE-Bit von dem CTRL3\_C-Register auf 0 (Little-Endian 
-standartm"a\ss{}ig) oder auf 1 (f"ur Big-Endian) Big-Endian bedeutet, 
-dass der h"ochstwertige Byte des Datensatzes in der niedrigsten 
-Speicherstelle gespeichert wird. Little-Endian bedeutet, dass der 
+standartm"a\ss{}ig) oder auf 1 (f"ur Big-Endian). Big-Endian bedeutet, 
+dass das h"ochstwertige Byte des Datensatzes in der niedrigsten 
+Speicherstelle gespeichert wird. Little-Endian bedeutet, dass das 
 niedrigswertige Byte des Datensatzes in der niedrigsten Speicherstelle 
 gespeichert wird.
 
@@ -373,9 +376,9 @@ die Kommunikationsschnittstelle (hier I2C) zu benutzen ist.
 \section{LoRa Endger"at: i-nucleo-lrwan1}\label{LoRa Modul}
 
 Die im Kapitel \ref{Temp} ermittelten Sensordaten sollen laut der 
-Aufgabestellung mit Hilfe eines drahtloses Protokoll an einem Server 
-versandt werden. Um diese Daten drahtlos und auf eine lange Strecke zu 
-"ubertragen, haben wir uns auf das LoRaWAN-Protokol entschieden. Die 
+Aufgabestellung mit Hilfe eines drahtlosen Protokolls an einen Server 
+gesendet werden. Um diese Daten drahtlos und "uber eine lange Strecke zu 
+"ubertragen, haben wir uns f"ur das LoRaWAN-Protokol entschieden. Die 
 Gr"unde warum genau dieses Protokol ausgew"ahlt wurde, werden in 
 diesem Kapitel genannt. Noch dazu wird nicht nur auf die Eigenschaften 
 des benutzten Endger"ats eingegangen sondern auch auf den Unterschied 
@@ -390,37 +393,36 @@ finden sind.
 \end{figure}
 
 Abbildung \ref{fig:loraMod} zeigt das Endger"at, das zur 
-Daten"ubertragung verwendet ist. Diese Platine mit Arduino-Connectoren 
+Daten"ubertragung verwendet wird. Diese Platine mit Arduino-Connectoren 
 und mehr ist eine integrierte L"osung, die jedem erm"oglicht 
 Anwendungen mit der LoRa-Technologie zu entwickeln. Das 
-I-Nucleo-LRWAN1 verf"ugt "uber den USI\textregistered\ 
+I-Nucleo-LRWAN1 verf"ugt "uber das USI\textregistered\ 
 LoRaWAN\texttrademark\ Technologiemodul f"ur kosteng"unstiges und 
 stromsparendes Weitverkehrsnetz (LPWAN), welches mit einem 
-eingebetteten Stapel von AT-Befehle (AT-Befehl beschreiben) 
-mitgeliefert wird. Dieses Board wurde ausgew"ahlt, weil es durch ein 
-externes Board wie das Nucleo-L053 oder das B-L475E-IOT01A Discovery 
-kit \ref{Node} "uber mehrere Schnittstellen wie \ac{LPUART}, \ac{SPI} 
+eingebetteten Stapel von AT-Befehle mitgeliefert wird.
+Dieses Board wurde ausgew"ahlt, weil es durch ein 
+externes Board, wie das Nucleo-L053 oder das B-L475E-IOT01A Discovery 
+Kit \ref{Node} "uber mehrere Schnittstellen, wie \ac{LPUART}, \ac{SPI} 
 oder I2C angesteuert werden kann. Noch dazu verf"ugt das 
 I-Nucleo-LRWAN1 "uber die folgenden eingebetteten Sensoren.
 
 \begin{itemize}
 	\item ST Beschleunigungs- und Magnetosensor (LSM303AGR)
-	\item ST relative Feuchtigkeits- und Temperatursensor (HTS221)
+	\item ST Feuchtigkeits- und Temperatursensor (HTS221)
 	\item ST Drucksensor (LPS22HB)
 \end{itemize}
 
 Im Vergleich zu anderen Endger"aten, worauf keine Sensoren vorhanden 
-sind, braucht man keine zus"atzliche Sensoren kaufen. Die 
+sind, m"ussen keine weiteren Sensoren erworben werden. Die 
 Kommunikation mit einem anderen Mikrocontroller erfolgt einfach durch 
-UART, man braucht nicht auf das integrierte Radio-Modul zum Senden oder 
-Empfangen von Daten und Befehle zu k"ummern. Das Bild 
+UART, man braucht nicht auf das integrierte Radio-Modul ansprechen, um Daten 
+Befehle zu senden oder  empfangen. Das Bild 
 \ref{fig:loraMod_intern} zeigt, dass das I-Nucleo-LRWAN1 mit einem 
 STM32L0-Mikrocontroller versehen ist, der dazu zust"andig ist, die 
 Kommunikation zwischen dem I-Nucleo-LRWAN1 und einem externen 
-Mikrocontroller zu vereinfachen. Das SX1272-Chip ist das eigentliche 
-LoRa-Radio-Modul, das die Daten oder die AT-Befehle per Funk durch die 
-Antenne an entweder einem Gateway oder einem anderen Endger"aten 
-sendet. 
+Mikrocontroller zu vereinfachen. Der SX1272-Chip ist das eigentliche 
+LoRa-Radio-Modul, welcher die Daten oder die AT-Befehle per Funk durch die 
+Antenne an entweder ein Gateway oder ein anders Endger"at sendet. 
 
 \begin{figure}[h]
 	\centering
@@ -430,9 +432,9 @@ sendet.
 \end{figure}
 
 \vspace{10cm}
-Das I-Nucleo-LRWAN1 wird mithilfe seiner Arduino-Konnectoren mit einem 
+Das I-Nucleo-LRWAN1 wird mithilfe seiner Arduino-Connectoren mit einem 
 externen Board verbunden. F"ur diese Abschlussarbeit wird dieses 
-Endger"at an den Arduino-Connectoren des B-L475E-IOT01A Discovery kit 
+Endger"at an den Arduino-Connectoren des B-L475E-IOT01A Discovery Kit 
 verbunden (Siehe Abbildung \ref{fig:loranode})
 
 \begin{figure}[h!]
@@ -452,57 +454,59 @@ verbunden (Siehe Abbildung \ref{fig:loranode})
 \end{figure}
 
 Dem Bild \ref{fig-subfig2} ist zu entnehmen, dass beide Komponenten 
-durch eine UART-Schnitt-stelle kommunizieren. Das I-Nucleo-LRWAN1 wird 
+durch eine UART-Schnittstelle kommunizieren. Das I-Nucleo-LRWAN1 wird 
 von dem  B-L475E-IOT01A mit Strom versorgt. Die Aufgabe des 
 B-L475E-IOT01A besteht darin, erstmal die Sensordaten zu verarbeiten, 
 als n"achsten sendet es durch die UART-Schnittstelle AT-Befehle zur 
 Konfiguration des I-Nucleo-LRWAN1, sodass die erhaltenen Sensordaten 
-mithilfe des LoRaWAN-Protokolls gesendet werden. 
+mithilfe des LoRaWAN-Protokolls versendet werden k"onnen. 
 
 \subsection{LoRa und LoRaWAN-Protokol}\label{LoRaWAN_P}
 
-In diesem Teil der Thesis erfahren Sie was LoRa und das 
+In diesem Teil der Thesis erfahren Sie sowohl, was LoRa und das 
 LoRaWAN-Protokoll sind, als auch wie das Protokoll implementiert wird, 
-damit ein Endger"at in dem LoRaWAN-Netzwerk hinzugef"ugt wird.
+damit ein Endger"at in das LoRaWAN-Netzwerk hinzugef"ugt werden kann.
 
 \subsubsection{LoRa: Die Physikalische Schicht}
 
 Eine einzige Technologie kann nicht alle Anwendungen des IoT 
 decken. Technologien wie Wi-Fi und \ac{BLE} sind weit 
-verbreitete Standart und decken die Kommunikation pers"onlicher 
-Ger"ate recht gut. Die Mobilfunktechnologie passt hervorragend zur 
-Anwendung, die einem hohen Datendurchsatz ben"otigen.
+verbreitete Standards und decken die Kommunikation pers"onlicher 
+Ger"ate recht gut. Die Mobilfunktechnologie passt hervorragend zu 
+Anwendungen, die einen hohen Datendurchsatz ben"otigen.
 
-Diese Technologien sind zwar gut aber haben es bestehen einige 
-Nachteile, wie dem hohen Energieverbrauch und die Strecke von einem 
-Sender zu einem Empf"anger ist relativ kurz. LoRa bieten L"osungen zu 
-diesen Nachteilen an, n"amlich eine mehrj"arige Batterielebensdauer, 
-die "Ubertragung von kleinen Datenmengen "uber gro\ss{}e Entfernungen. 
+Diese Technologien sind zwar gut, aber weisen einige 
+Nachteile auf, wie dem hohen Energieverbrauch und eine kleine
+Reichweite. LoRa bieten L"osungen zu 
+diesen Nachteilen an, n"amlich eine mehr j"arige Batterielebensdauer, 
+erm"oglicht die "Ubertragung von kleinen Datenmengen "uber gro\ss{}e Entfernungen. 
 LoRa ist die physikalische Schicht oder die verwendete drahtlose 
 Modulation, um eine lange Bereichskommunikationsverbindung zu 
 schaffen. 
 
 Viele "altere drahtlose Systeme verwenden die Frequenzumtastungen
-(Englisc \textbf{\textit{\ac{FSK}}}) als physikalishce Schicht, weil es eine sehr 
-effiziente Modulkation zur Erzielung geringer Leistung ist. LoRa 
+(Englisch \textbf{\textit{\ac{FSK}}}) als physikalische Schicht, weil es eine sehr 
+effiziente Modulation zur Erzielung geringer Leistung ist. LoRa 
 basiert auf die Chirp-Spreizspektrum-Modulation (Englisch 
 \textbf{\textit{Chirp Spread Spectrum Modulation}}). Diese Modulation 
-beha"alt die gleiche Eigenschaft der geringen Leistung wie 
-\ac{FSK}-Modulation bei und erh"oht aber deutlich die 
+beh"alt die gleiche Eigenschaft der geringen Leistung wie 
+\ac{FSK}-Modulation bei und erh"oht deutlich die 
 Kommunikationsreichweite. Das Chirp-Spreizspektrum wird seit 
 Jahrzehnten aufgrund seiner Kommunikationsreichweite und seiner 
 Robustheit gegen"uber St"orungen in der Milit"ar-und 
 Weltraumkommunikation eingesetzt. LoRa ist derzeit die erste 
-kosteng"unstige Implementierung f"ur dien kommerziellen Einsatz.
+kosteng"unstige Implementierung f"ur den kommerziellen Einsatz.
 
+
+\vspace{1cm}
 Die LoRa-Technologie wurde von einem kleinen franz"osischen Start-Up 
 namens Cycleo entwickelt. In 2012 wurde Cycleo von der Firma Semtech 
 gekauft.
 
-Es existiert konkurrierende Technologien zu LoRa  wie Narrowband IoT 
-(ND-IoT) und Sigfox. Das LoRa kann  Video- und Audio-Nachrichten nicht 
-"ubertragen, man kann nur sehr kleine Datenpakete wie Sensordaten 
-"ubertragen. Der Hauptpunkt von LoRa ist die Kommunikation "uber lange 
+Es existieren konkurrierende Technologien zu LoRa  wie Narrowband IoT 
+(ND-IoT) und Sigfox. Das LoRa kann keine Video- und Audio-Nachrichten 
+"ubertragen, lediglich sehr kleine Datenpakete wie Sensordaten.
+Der Hauptpunkt von LoRa ist die Kommunikation "uber lange 
 Strecken und die Verwendung einer sehr geringen Sendeleistung von 
 ungef"ahr 20mW. 
 
@@ -510,25 +514,33 @@ Die Reichweite einer LoRA-Kommunikation wird durch ihre Bandbreite, die
 Signalausgangsleistung sowie den verwendeten Spreisfaktor ( Englisch 
 \textbf{\textit{\ac{SF}}}) bestimmt. Durch die Steuerung des Signals 
 wird seine Reichweite zum Nachteil der Bitrate erh"oht, da es "uber 
-einen l"angeren Zeitraum "ubertragen wird. Das verbraucht auch zu viel 
+eine l"angere Strecke "ubertragen wird. Das verbraucht zu viel 
 Energie und spielt Nachteilhaft zur Autonomie des Ger"ats. Das hei\ss{}t, 
 je gr"o\ss{}er der Spreisfaktor ist, umso kleiner wird die Bitrate und 
-die Reichweite wird dagegen gr"o\ss{}er.Ein LoRaWAN-Netzwerk bietet 
+die Reichweite wird dagegen gr"o\ss{}er (Siehe Abbildung \ref{fig:SF}). Ein LoRaWAN-Netzwerk bietet 
 sechs m"ogliche Spreizfaktoren (\textbf{SF7, SF8, SF9, SF10, SF11, 
 SF12}).  
 
-Die Reichweite zwischen LoRa-Sender und -Empf"anger h"angt von der 
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=14cm]{source/images/SF}
+	\caption{Reichweite anh"angig vom SF (Ge"andert von \cite{Entcription}) 
+	\label{fig:SF}}
+\end{figure}
+
+Die Reichweite zwischen LoRa-Sender und -Empf"anger h"angt auch von der 
 Umgebung ab, in der das Ger"at betrieben wird. Die Abdeckung von 
 Innenr"aumen h"angt weitgehend von der Art des verwendeten Baumaterials 
 ab. Die Tabelle \ref{tab:Range} zeigt die Reichweite der 
-LoRa-Technologie abh"angig der Umgebung.
+LoRa-Technologie in Abh"angigkeit zur Umgebung.
 
 \begin{center}
 	\begin{table}[htbp] 
 		\centering 
 		\Large
-		\begin{tabular}{l|c|r}
-			\textbf{Umgebung} & \textbf{Reichweite in kM} \\
+		\begin{tabular}{c|c|c}
+			\textbf{Umgebung} & \textbf{Reichweite in km} \\
 			\hline
 			St"adtische Gebiete	& 2 bis 5 \\
 			\hline
@@ -542,12 +554,10 @@ LoRa-Technologie abh"angig der Umgebung.
 	\end{table}
 \end{center}
 
-Es gibt aber Wirtschaftler, die dazu gekommen sind ein Weltrekord zu 
-stellen, indem sie eine LoRa-Verbindung bis auf 200Km geschafft haben. 
+Es gibt Wissenschaftler, die dazu gekommen sind ein Weltrekord zu 
+stellen, indem sie eine LoRa-Verbindung bis auf 200 km geschafft haben. 
 Ein Beispiel ist Herr Andreas Spiess \cite{AndreasSpiess}.
 
-
-\vspace{10cm}
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=14cm]{source/images/Communications_tech}
@@ -559,8 +569,8 @@ andere Technologien wie Wi-Fi oder 4G eine kleine Baudrate hat. Aber
 seine Reichweite ist deutlich gr"o\ss{}er als weit bekannte 
 Technologien wie Bluetooth oder Wi-Fi.
 
-Die LoRa-Technologie kann man in vielen Gebiete Einsetzen. Die folgende 
-Auflistung gibt einen groben "Uberblick auf einige Einsatzgebiete.
+Die LoRa-Technologie kann in vielen Gebiete einsetzt werden. Die folgende 
+Auflistung gibt einen groben "Uberblick "uber einige Einsatzgebiete.
 
 \begin{itemize}
 	\item \textbf{Intelligente Dienstprogramme}
@@ -572,7 +582,7 @@ Auflistung gibt einen groben "Uberblick auf einige Einsatzgebiete.
 
 	\item \textbf{Gesundheit und Hygiene}
 	\begin{itemize}
-		\item Temeratur- und Feuchtigkeits"uberwachung
+		\item Temperatur- und Feuchtigkeits"uberwachung
 		\item Umwelt"uberwachung
 	\end{itemize}
 
@@ -587,8 +597,6 @@ Auflistung gibt einen groben "Uberblick auf einige Einsatzgebiete.
 		\item "Uberwachung des Tierschutzes
 		\item "Uberwachung der Pflanzenwachstumsbedingungen
 	\end{itemize}
-
-		\vspace{3cm}
 		\item \textbf{Effizienz}
 	\begin{itemize}
 		\item Asset Management (Tracking von Containern, Paletten)
@@ -601,10 +609,9 @@ Auflistung gibt einen groben "Uberblick auf einige Einsatzgebiete.
 
 LoRaWAN beschreibt das Kommunikationsprotokoll und die 
 Systemarchitektur des Netzwerks, w"ahrend LoRa die physikalische 
-Schicht, die die Fernkommunikationsverbindung erm"oglicht. Das 
-Protokoll und die Netzwerkarchitektur haben den gr"o\ss{}en Einfluss 
-auf die Bestimmung der Batterielebensdauer eines Endger"ats, die 
-Netzwerkkapazit"at, die Servicequalit"at, die Sicherheit und die 
+Schicht beschreibt, die die Fernkommunikationsverbindung erm"oglicht. 
+Das Protokoll und die Netzwerkarchitektur haben den gro\ss{}en Einfluss 
+auf die Bestimmung der Batterielebensdauer, die Netzwerkkapazit"at, die Servicequalit"at, die Sicherheit  eines Endger"ats und die 
 Vielzahl der vom Netzwerk bereitgesellten Anwendungen. 
 
 \begin{figure}[h]
@@ -613,35 +620,35 @@ Vielzahl der vom Netzwerk bereitgesellten Anwendungen.
 	\caption{Klassen von LoRaWAN \cite{LoRaWAN}\label{fig:LoRaMAC}}
 \end{figure}
 
-Wie es auf Abbildung \ref{fig:LoRaMAC} zu entnehmen ist, ist das 
+Wie Abbildung \ref{fig:LoRaMAC} zu entnehmen ist, ist das 
 LoRaWAN mit verschiedenen Schichten aufgebaut. Die erste Schicht ist 
-die regionale Schicht, hier geht es um die Frequenzbereichen , die 
-abh"angig von der Region zur Date"ubertragung verwendet werden k"onnen. 
+die regionale Schicht, hier geht es um die Frequenzbereiche, die 
+abh"angig von der Region zur Daten"ubertragung verwendet werden k"onnen. 
 Die ISM-Bandfrequenzen von Europa liegen zwischen 863 MHz und 870 MHz.
 Als n"achstes kommt die LoRa-Modulation als physikalische Schicht des 
 Netzwerks. LoRaWAN verf"ugt "uber viele Klassen, n"amlich die Klasse A, 
-B und c. Diese Klassen werden sp"ater in diesem Unterkapitel im 
-Einzelnen erkl"art. Am Ende kommt die Anwendung der LoRa-Technologie.
+B und C. Diese Klassen werden sp"ater in diesem Unterkapitel im 
+Einzelnen erkl"art. Am Ende kommt die Anwendungsebene der LoRa-Technologie.
 
-Alle Endger"ats funktionieren nicht gleich, dies aufgrund der von dem 
+Alle Endger"ate funktionieren nicht gleich, aufgrund der von dem 
 Entwickler implementierte Klasse.
 
 \begin{description}
-	\item [Klasse A (All end-devices) \label{classA}]: Ein Endger"at 
+	\item [Klasse A (All end-devices): \label{classA}] Ein Endger"at 
 	der Klasse A erm"oglich eine bidirektionale Kommunikation, wobei 
-	nach jedem Uplink eines Endger"ats f"ur kurze Zeit zwei kurzen 
-	Downlink-Empfangsfenstern folgen. Diese Empfangs Fenster werden 
+	nach jedem Uplink eines Endger"ats f"ur kurze Zeit zwei kurze 
+	Downlink-Empfangsfenster folgen. Diese Empfangs Fenster werden 
 	jeweils f"ur eine Zeit \textit{RECEIVE\_DELAY1}(f"ur das erste 
 	Fenster) und \textit{RECEIVE\_DELAY2} ge"offnet. Die Dauer dieser 
-	Zeiten werden sowohl in dem Endger"at als auch in dem Server 
-	gespeichert. Verglichen zu den anderen Klassen, sind Endger"ate 
-	der Klasse A die niedrigsten Leistungsfresser. 
+	Zeiten werden sowohl in dem Endger"at, als auch auf dem Server 
+	gespeichert. Verglichen zu den anderen Klassen, verbrauchen Endger"ate 
+	der Klasse A am niedrigsten Leistung. 
 	
 	Nachdem die zwei Downlink-Empfangsfenster geschlo\ss{}en sind, kann 
 	das Gateway keine weitere Downliks mehr senden. Die n"achsten 
 	Downlinks werden erst ber"ucksichtig, wenn das Endger"at ein Uplink 
 	gesendet hat.
-	Das unten stehende Bild zeigt dieses Verhalten recht gut.
+	Das unten stehende Bild erl"autert dieses Verhalten.
 	
 	 \begin{figure}[h]
 	 	\centering
@@ -649,7 +656,7 @@ Entwickler implementierte Klasse.
 	 	\caption{Klasse A \label{fig:classA}}
 	 \end{figure}
 	
-	\item [Klasse B (Beacon)]: Zus"atzlich zu den zuf"alligen 
+	\item [Klasse B (Beacon):] Zus"atzlich zu den zuf"alligen 
 	Empf"angsfenster der Klasse A, Ger"ate der Klasse B "offnen 
 	zus"atzliche Empfangsfenster zu geplannte Zeiten. Damit das 
 	Endger"at seine Empfangsfenster an den geplanten Zeiten "offnen 
@@ -662,10 +669,9 @@ Entwickler implementierte Klasse.
 		\caption{Klasse B \label{fig:classB}}
 	\end{figure}
 	
-	\vspace{10cm}
-	\item [Klasse C (Continuously listening)]: Endger"ate der Klasse C 
+	\item [Klasse C (Continuously listening):] Endger"ate der Klasse C 
 	haben fast immer ge"offnete Empfangsfenster, die sich nur beim 
-	Senden schlie\ss{}en. Diese Klasse verbraucht Energie am meisten.
+	Senden schlie\ss{}en. Diese Klasse verbraucht am meisten Energie.
 	
 	\begin{figure}[h]
 		\centering
@@ -682,27 +688,27 @@ zu viel Energie verbraucht.
 
 \subsection{Sicherung der Daten}\label{secure}
 
-Wir wollen nicht, dass die gesendeten Informationen durch ein Dritter 
-ohne Zugriffsrechte auf das Netzwerk die Informationen lesen kann. 
+Wir wollen nicht, dass die gesendeten Informationen durch einen Dritten 
+ohne Zugriffsrechte in dem Netzwerk gelesen werden k"onnen. 
 Unabh"angig davon, ob die Netzwerksicherheit oder die Vertraulichkeit 
 und Sicherheit der Daten gew"ahrleistet werden soll, ist das Thema 
-sicherheit "au\ss{}erst wichtig. Eine Frage, die "ubrigens das 
+Sicherheit "au\ss{}erst wichtig. Eine Frage, die "ubrigens das 
 Internet der Dinge als ganzes betrifft.
 
-Um die Netzwerk- und Datensicherheit zu gew"arleisten, verwendet das 
+Um die Netzwerk- und Datensicherheit zu gew"ahrleisten, verwendet das 
 LoRa-WAN-Netzwerk zwei AES-128-Verschl"usselung. Der erste ist der 
-Netzwerksistzungsschl"ussel (Englisch \textbf{\textit{\ac{NwkSKey}}}) 
-stellt die Authentizit"at der Ger"ate im Netzwerk sicher. Der zweite 
+Netzwerksitzungsschl"ussel (Englisch \textbf{\textit{\ac{NwkSKey}}}) 
+und stellt die Authentizit"at der Ger"ate im Netzwerk sicher. Der zweite 
 ist der Anwendungssitzungsschl"ussel (Englisch  
 \textbf{\textit{\ac{AppSKey}}}). Der NwkSkey wird von dem 
 Endger"at und dem Server benutzt, um den Nachrichtenintegrit"atscode 
 (Englisch \textbf{\textit{\ac{MIC}}}) zu berechnen und die Intergit"at 
-aller Daten zu pr"ufen.  Es wird weiterhin verwendet, um da  
+aller Daten zu pr"ufen.  Es wird weiterhin verwendet, um das  
 Nutzdatenfeld von \ac{MAC}-Daten zu verschl"usseln und zu entschl"usseln. 
 
-Der AppSKey wird auch vom Endger"at und Server verwendet diesmal, um 
-das Nutzdatenfeld von anwendungsspezifische Daten zu verschl"usseln 
-und zu entschl"usseln. Die anwendungsnutzdaten werden zwischen dem 
+Der AppSKey wird vom Endger"at und Server verwendet diesmal, um 
+das Nutzdatenfeld von anwendungsspezifischen Daten zu verschl"usseln 
+und zu entschl"usseln. Die Anwendungsnutzdaten werden zwischen dem 
 Endger"at und dem Anwendungsserver Ende-zu-Ende verschl"usselt. Das 
 hei\ss{}t der Netzwerkserver kann m"oglicherweise den Inhalt der 
 "ubertragene Daten "andern. 
@@ -716,7 +722,7 @@ hei\ss{}t der Netzwerkserver kann m"oglicherweise den Inhalt der
 
 Laut Abbildung \ref{fig:Entcription} werden die zu sendende Daten erst 
 mit dem AppSKey verschl"usselt. Ein Header, der andere Adressen des 
-Endger"at enth"alt, wird an den verschl"usselten Daten hinzugef"ugt. 
+Endger"at enth"alt, wird den verschl"usselten Daten hinzugef"ugt. 
 Nach dieser Verkn"upfung wird das MIC berechnet, der nach der 
 Berechnung an den verschl"usselten Daten und dem Header hinzugef"ugt 
 wird. Nun k"onnen die Daten versandt werden. 
@@ -726,7 +732,6 @@ dieser Daten vom Server mithilfe des MICs gepr"uft werden. Die Daten
 werden nur ber"ucksichtigt, wenn das MIC stimmt, ansonsten werden sie 
 verworfen.  
 
-\vspace{5cm}
 \subsection{Aktivierung des Endger"ats}
 Damit ein Endger"at dem LoRaWAN-Netzwerk hinzugef"ugt werden kann, 
 muss es erst spezifiziert und aktiviert werden. Die Aktivierung eines 
@@ -734,50 +739,49 @@ Endger"at kann auf zwei Arten erfolgen, entweder per
 Over-The-Air-Aktivierung (Englisch \textbf{\textit{\ac{OTAA}}}), oder 
 per Aktivierung durch Personalisierung (Englisch 
 \textbf{\textit{\ac{ABP}}}), wobei die zwei Schritte der 
-Personalisierung und Aktivierung in einem Schritt erfolgt. 
+Personalisierung und Aktivierung in einem Schritt erfolgen. 
 
 \subsubsection{Aktivierung durch OTAA}
 Damit die Over-The-Air-Aktivierung vollst"andig wird, m"ussen 
 Endger"ate zwe-cks Datenaustausch mit einem Server einem Join-Verfahren 
-folgen. Dieses Verfahren wird auch durchgef"uhrt, wenn es vorkommen 
-w"urde, dass ein Endger"at die Sitzungsinformationen verloren hat.
+folgen. Dieses Verfahren wird durchgef"uhrt, wenn ein Endger"at die Sitzungsinformationen verloren hat.
 Bevor ein Endger"at das Join-Verfahren startet, muss er folgende 
-Informationen haben: Ein eine global eindeutige Endger"atekennung 
+Informationen haben: eine eindeutige globale Endger"atekennung 
 (\textbf{DevEUI}), eine Anwendungskennung (\textbf{AppEUI}) und ein 
 AES-128-Schl"ussel (\textbf{AppKey}). 
 
 
 \begin{description}
-	\item[AppEUI:] ist 8-Byte-Wert, codiert in Hexadezimalformat und 
+	\item[AppEUI:] ist ein 8-Byte-Wert, codiert in Hexadezimalformat und 
 	bezeichnet eine Kennung des Anwendungsanbieter.
 	\item[DevEUI:] ist ein 8-Byte-Wert mit hexadezimaler Codierung und 
 	bezeichnet die eindeutige Kennung eines Endger"ats. Manche 
-	LoRa-Radiomodule beinhalten eine DevEUI vom Herstellung her. Wenn 
-	nicht schon vorhanden, diese kann vom Anwendungsanbieter gesetzt 
+	LoRa-Radiomodule erhalten bereits bei der Herstellung eine DevEUI zugeteilt. 
+	Sofern nicht bereits vorhanden, kann diese vom Anwendungsanbieter gesetzt 
 	werden.
-	\item[AppKey:] ist ein 16-Byte-Wert in Hexadezimalformat.Wenn ein 
+	\item[AppKey:] ist ein 16-Byte-Wert in Hexadezimalformat. Wenn ein 
 	Endge"at mit OTAA das Netzwerk beitritt, wird dieser Schl"ussel zur 
 	Herstellung des NwkSKey und des AppSKey verwendet, um die 
 	Netzwerkkommunikation und die Anwendungsdaten zu verschl"usseln und 
 	zu pr"ufen. 
 \end{description}
 
-Sobald das Endger"at mit diesen Informationen versehen ist, kann es eine 
-Join-Abfrage (\textbf{Join request}) am Server schicken. Der Server 
+Sobald das Endger"at mit diesen Informationen versehen ist, kann eine 
+Join-Abfrage (\textbf{Join request}) an den Server gesendet werden. Der Server 
 antwortet mit einem Join-Zustimmung (\textbf{Join accept}), wenn das 
-Endger"at dem Netzwerk beitreten darf. Die Join-Accept- Nachricht wird 
-wie ein normales Downlink gesendet aber benutzt zwei unterschiedliche 
+Endger"at dem Netzwerk beitreten darf. Die Join-Accept-Nachricht wird 
+wie ein normaler Downlink gesendet, benutzt jedoch zwei unterschiedliche 
 Verz"ogerungen verglichen mit \textit{RECEIVE\_DE-LAY1} und 
-\textit{RECEIVE\_DELAY2} der im Abschnitt \ref{classA} beschriebenen 
-Verz"ogerungen. Diese Verz"ogerungen sind \textit{JOIN\_ACCEPT-\_DELAY1} 
-und \textit{JOIN\_ACCEPT-\_DELAY2}. Dem Endger"at wird keine Antwort 
+\textit{RECEIVE\_DELAY2} wie in Abschnitt \ref{classA} beschrieben ist.
+Diese Verz"ogerungen sind \textit{JOIN\_ACCEPT-\_DELAY1} 
+und \textit{JOIN-\_ACCEPT\_DELAY2}. Dem Endger"at wird keine Antwort 
 geschickt, wenn die Join-Abfrage abgelehnt wurde.
 
-Die Join-Accept-Nachricht enth"alt ein 3-Byte-Anwendung Nonce 
+Die Join-Accept-Nachricht enth"alt eine 3-Byte-Anwendung-Nonce 
 (\textit{AppNonce}), eine Netzwerkkennung (\textit{NetID}), eine 
 Endger"atadresse (\textit{DevAddr}), eine Verz"ogerung zwischen TX und 
 RX (\textit{RxDelay}) und eine optionale Liste der Kanalfrequenz 
-(\textit{CFList}). Die DevAddr und das AppNonce sind die wichtigste 
+(\textit{CFList}). Die DevAddr und die AppNonce sind die wichtigste 
 Informationen bei einer Join-Accept-Nachricht.
 
 \begin{description}
@@ -785,16 +789,17 @@ Informationen bei einer Join-Accept-Nachricht.
 	Endger"at nach Aktivierung kommunizieren.   
 	
 	\item[AppNonce:] ist ein zuf"alliger Wert, die vom Netzwekserver 
-	bereitgestellt wird und vom 
-	Endger"at verwendet, um den NwkSkey und den AppSKey abzuleiten.
+	bereitgestellt und vom 
+	Endger"at verwendet wird, um den NwkSkey und den AppSKey abzuleiten.
 	Der NwkSkey und der AppSKey werden mit der internen Funktion   
 	\textbf{\textit{aes128\_encrypt}} (im LoRa-Radiomodule vom 
-	Hersteller zur Verf"ugung gestellt) und wird wie folgt bestimmt 
+	Hersteller zur Verf"ugung gestellt) bestimmt und wird wie folgt bestimmt 
 	\cite{LoRaWAN}:
 	
-	\textbf{NwkSKey = aes128\_encrypt(AppKey,0x01 \textbar AppNonce 
-	\textbar NetID \textbar DevNonce \textbar pad)
-	NwkSKey = aes128\_encrypt(AppKey,0x02 \textbar AppNonce \textbar 
+	\textbf{NwkSKey = aes128\_encrypt(AppKey, 0x01 \textbar AppNonce 
+	\textbar NetID \textbar DevNonce \textbar pad)}
+	
+	\textbf{NwkSKey = aes128\_encrypt(AppKey, 0x02 \textbar AppNonce \textbar 
 	NetID \textbar DevNonce \textbar pad)} 
 \end{description}
 
@@ -806,44 +811,44 @@ mit dem Netzwerkserver austauschen (Uplinks und Downlinks). Abbildung
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=14cm]{source/images/Join-Procedure}
-	\caption{Join-Request Verfahren\label{fig:request}}
+	\caption{Join-Request Verfahren (Ver"andert von \cite{Entcription})\label{fig:request}}
 \end{figure}
 
 
 \vspace{10cm}
 \subsubsection{Aktivierung durch ABP}
 
-Bei dieser Aktivierungsart, braucht das Endger"at keine Join-Abfrage 
-senden, hier geht es um, eine direkte Bindung eines Endger"at zu einem 
+Bei dieser Aktivierungsart, muss das Endger"at keine Join-Abfrage 
+senden, hier geht es um eine direkte Bindung eines Endger"at zu einem 
 bestimmten Netzwerk. Das bedeutet, dass die \textit{DevAddr} und die 
 zwei Sitzungsschl"ussel (\textit{AppSKey} und \textit{NwkSKey}) an 
 Stelle der \textit{DevEUI}, \textit{AppEUI} und \textit{AppKey}, im 
-Endger"at gespeichert werde. Jedes Endger"at soll einen eindeutigen Satz 
-von \textit{AppSKey} und \textit{NwkSKey}. Das Kompromittieren der 
+Endger"at gespeichert werden. Jedes Endger"at soll einen eindeutigen Satz 
+von \textit{AppSKey} und \textit{NwkSKey} haben. Das Kompromittieren der 
 Schl"ussel eines Ger"ats sollte die Sicherheit der Kommunikation anderer 
 Ger"ate nicht beeintr"achtigen. 
 
 
-Zusammengefasst ist OTAA komplexer als ABP aber bietet eine h"ohere 
+Zusammengefasst ist OTAA komplexer als ABP, aber bietet eine h"ohere 
 Sicherheit. Falls ein Prototyp oder ein kleines Netzwerk erstellt werden 
-soll, ist ABD genug. Wenn es um ein gr"o\ss{}ers Netzwerk geht, ist OTAA 
+soll, ist ABP genug. Wenn es um ein gr"o\ss{}ers Netzwerk geht, wird OTAA 
 empfohlen, weil es sicherer und agiler ist. 
 
 \vspace{5cm}
 \subsection{AT Kommandos}\label{AT}
 
 Nun wissen wir was LoRa und LoRaWAN sind und wie es funktioniert, aber 
-nicht wie Informationen (Appkey, NwkKey und mehr) dem Endger"at 
-zugewiesen werden als auch wie die Daten am Server gesendet werden. 
-Im Kapitel \ref{LoRa Modul} wurde das Wort ``AT-Befehl'' kurz erw"ahnt, 
+nicht wie, sowohl Informationen (Appkey, NwkKey und mehr) dem Endger"at 
+zugewiesen werden als auch wie die Daten an den Server gesendet werden. 
+Im Kapitel \ref{LoRa Modul} wurde das Wort ``AT-Befehle'' kurz erw"ahnt, 
 in diesem Abschnitt erfahren Sie was diese Befehle sind und welche 
 gebraucht werden, damit die eine Verbindung per OTAA oder per ABP 
 erfolgreich wird.
 
-Im UNIX-Systemen ist AT ein Kommando, das bewirkt, das andere Kommandos
-nur einmal ausgef"uhrt werden. Hier ist es benutzt, um das
+Im UNIX-Systemen ist AT ein Kommando, welches bewirkt, dass andere Kommandos
+nur einmal ausgef"uhrt werden. Hier wird es genutzt, um das
 i-nucleo-lrwan1 einzustellen. Da das LoRa-Radiomodul sich nicht selbst
-einstellen kann, ist auch die Aufgabe des B-L475E-IOT01A \ref{Node} die 
+einstellen kann, ist auch die Aufgabe des B-L475E-IOT01A  die 
 Einstellung durchzuf"uhren. Das i-nucleo-lrwan1 verf"ugt "uber eine 
 UART-Schnittstelle (Siehe \ref{fig:loraMod}), um mit dem B-L475E-IOT01A 
 zu komunizieren. Diese UART-Schnittstelle hat folgende 
@@ -856,16 +861,16 @@ Konsolenkonfiguration:
 	\item Stopbit: 1 Bit
 \end{itemize}           
 
-Die Syntax des Kommandos ist wie folgt: 
+Die Syntax dieser AT-Befehle ist wie folgt: 
  
  \begin{itemize}
  	\item Algemeine Kommandos: 
  	\begin{itemize}
- 		\item \textbf{AT:} Pr"uft ob die UART Schnittstelle benutzbar ist
+ 		\item \textbf{AT:} Pr"uft, ob die UART Schnittstelle benutzbar ist
  		\item \textbf{ATE [=<enable>]:}  Aktivieren oder Deaktivieren
  		des lokalen Echos
  		\item \textbf{ATZ:} Modul zur"ucksetzen
- 		\item \textbf{AT+VERB [=<enable>]:} Ausführliche Antwort
+ 		\item \textbf{AT+VERB [=<enable>]:} Ausf"uhrliche Antwort
  		aktivieren oder deaktivieren 
  	\end{itemize}
  	\item LoRa MAC-Kommandos: \textbf{AT+Kommando [=parameter]}
@@ -873,46 +878,47 @@ Die Syntax des Kommandos ist wie folgt:
  	w"are sie alle zu erkl"aren. Zur Erkl"arung aller Kommandos siehe
  	das AT-Befehlsreferenzhand-buch \cite{AT_Command}.
  	Die Zeichnen [ ] bedeuten, dass der Parameter optional ist. Mit
- 	Parametern ist ein AT-Befehl wie ein Set-Befehl, und ohne ist es ein
+ 	Parametern ist ein AT-Befehl wie ein Set-Befehl, ohne ist es ein
  	Get-Befehl.
  \end{itemize}  
 
+\vspace{1cm}
 Da wir nun wiessen, wir diese Kommandos zu nutzen sind, k"onnen wir 
-Beispiele f"ur OTAA und ABP machen (Diese Einstellungen wurden getestet
+Beispiele f"ur OTAA- und ABP-Aktivierung machen (Diese Einstellungen wurden getestet
 und funktionieren einwandfrei).
 
 \begin{itemize}\label{LoRaconf}
-	\item[\textbf{OTAA:}] Die Folgenden AT-Befehle weden von
+	\item[\textbf{OTAA:}] Die Folgenden AT-Befehle werden von
 	B-L475E-IOT01A nacheinander  per UART am i-nucleo-lrwan1 gesendet.
 	\begin{itemize}
-		\item \textbf{AT+BAND=0}: Setzt die Region des Netzwerks (Hier
+		\item \textbf{AT+BAND=0:} Setzt die Region des Netzwerks (Hier
 		EU868)
-		\item \textbf{AT+CLASS=0}: Die Klasse A wird verwendet 
-		\item \textbf{AT+DC=1}: Deaktiviert den Auslastungsgrad 
-		\item \textbf{AT+DR=0}: Setzt die TX-Datenrate (LoRa SF12/125KHz
+		\item \textbf{AT+CLASS=0:} Die Klasse A wird verwendet 
+		\item \textbf{AT+DC=1:} Deaktiviert den Auslastungsgrad 
+		\item \textbf{AT+DR=0:} Setzt die TX-Datenrate (LoRa SF12/125KHz
 		250 Bit/s)
-		\item \textbf{AT+RX2DR=0}: Setzt die TX-Datenrate (LoRa
+		\item \textbf{AT+RX2DR=0:} Setzt die RX2-Datenrate (LoRa
 		SF12/125KHz 250 Bit/s)
-		\item \textbf{AT+RX1DT=1000}: Setzt die Verz"ogerung des ersten
-		Enpfangsfenster (in ms)
-		\item \textbf{AT+RX2DT=2000}: Setzt die Verz"ogerung des zweiten
-		Enpfangsfenster (in ms)
-		\item \textbf{AT+JRX1DT=5000}: Setzt die Verz"ogerung des
-		zweiten Enpfangsfenster (in ms)
-		\item \textbf{AT+JRX2DT=6000}: Setzt die Verz"ogerung des
-		zweiten Enpfangsfenster (in ms)
-		\item \textbf{AT+RF=14,8671000000,12,0,1}: Konfiguriert das
+		\item \textbf{AT+RX1DT=1000:} Setzt die Verz"ogerung des ersten
+		Empfangsfensters (in ms)
+		\item \textbf{AT+RX2DT=2000:} Setzt die Verz"ogerung des zweiten
+		Empfangsfensters (in ms)
+		\item \textbf{AT+JRX1DT=5000:} Setzt die Verz"ogerung des
+		ersten Join-Accept-Emp-fangsfensters (in ms)
+		\item \textbf{AT+JRX2DT=6000:} Setzt die Verz"ogerung des
+		zweiten Join-Accept-Empfangsfensters (in ms)
+		\item \textbf{AT+RF=14,8671000000,12,0,1:} Konfiguriert das
 		LoRa-Radiomodule. Ausgansleistung: 14dBm, Frequenz: 867.1MHz,
 		Spreading factor: SF12, Bandbreit: 125KHz, Cyclic Codingrate:
 		4/5.  
-		\item \textbf{AT+APPEUI=ABC123ADF135CBD8}: Setzt die AppEUI
-		\item \textbf{AT+AK=00112233445566778899AABBCCDDEEFF}: Setzt den
+		\item \textbf{AT+APPEUI=ABC123ADF135CBD8:} Setzt die AppEUI
+		\item \textbf{AT+AK=00112233445566778899AABBCCDDEEFF:} Setzt den
 		AppKey 
-		\item \textbf{AT+JOIN=1}: Sendet eine Join-Abfrage als OTAA
+		\item \textbf{AT+JOIN=1:} Sendet eine Join-Abfrage als OTAA
 		 
 	\end{itemize}
 	
-	\item[\textbf{ABP:}] Die Folgenden AT-Befehle weden von
+	\item[\textbf{ABP:}] Die Folgenden AT-Befehle werden von
 	B-L475E-IOT01A nacheinander  per UART am i-nucleo-lrwan1 gesendet.
 	\begin{itemize}
 		\item \textbf{AT+BAND=0}
@@ -925,17 +931,17 @@ und funktionieren einwandfrei).
 		\item \textbf{AT+JRX1DT=5000}
 		\item \textbf{AT+JRX2DT=6000} 
 		\item \textbf{AT+RF=14,8671000000,12,0,1}
-		\item \textbf{AT+ADDR=12345678}: Setzt die Ger"atadresse 
-		\item \textbf{AT+NSK=1122334455663EAB546829CB361CAB7D}: Setzt
+		\item \textbf{AT+ADDR=12345678:} Setzt die Ger"atadresse 
+		\item \textbf{AT+NSK=1122334455663EAB546829CB361CAB7D:} Setzt
 		den NwkSKey
-		\item \textbf{AT+ASK=887766554433BCFACDE52476CA4598BA}: Setzt
+		\item \textbf{AT+ASK=887766554433BCFACDE52476CA4598BA:} Setzt
 		den AppSKey 
-		\item \textbf{AT+JOIN=0}: Sendet eine Join-Abfrage als ABP
+		\item \textbf{AT+JOIN=0:} Sendet eine Join-Abfrage als ABP
 	\end{itemize}
 
-	\item[\textbf{Daten senden}:] \textbf{AT+SEND=2,Daten,1}
-	Hier werden die Daten durch das Port 2 gesendet. Die Daten mussen in
-	hexadezimaler Format sein, und sollen nicht gr"o\ss{}er als 64 Bytes
+	\item[\textbf{Daten senden:}] \textbf{AT+SEND=2,Daten,1}
+	Hier werden die Daten durch den Port 2 gesendet. Die Daten mussen in
+	hexadezimalem Format angegeben werden, und sollen nicht gr"o\ss{}er als 64 Bytes
 	sein. Die 1 am Ende steht f"ur die Best"atigung des Datenempfangs. 
 	
 \end{itemize}
@@ -945,23 +951,22 @@ Konfiguration der Datenrate abh"angig von der Region zur Verf"ugung.
 
 \chapter{Gateway und LoRaWAN-Server}\label{G_S}
 
-Nun ist es m"oglich ein Endger"at, so einzustellen, dass es f"ahig ist,
-Uplinks an einem LoRaWAN-Server zu senden und Downlink vom Server zu
-bekommen. Aber was ist das LoRaWAN-Server und wozu wird das Gateway
+Nun ist es m"oglich ein Endger"at so einzustellen, dass es f"ahig ist
+Uplinks an einen LoRaWAN-Server zu senden und Downlink vom Server zu
+bekommen. Aber was ist der LoRaWAN-Server und wozu wird das Gateway
 benutzt. Diese Fragen werden in diesem Kapitel beantwortet.
 
 \section{Gateway}\label{Gateway}
 
 Es gibt fertige Gateways auf dem Markt, die man kaufen und direkt
-einsetzen kann . F"ur diese Thesis wird ein selbst gebautes Gateway
-benutzt. Der Grund daf"ur ist das es billiger als fertige Gateway ist,
-sich ein eigenes zu bauen. Noch dazu steckt eine wissenschaftliche Idee
+einsetzen kann. F"ur diese Thesis wird ein selbst gebautes Gateway
+benutzt. Der Grund daf"ur ist. Noch dazu steckt eine wissenschaftliche Idee
 dahinter. Zu wissen, wie ein Gateway gebaut wird, welche Komponenten
-und welche Software im Spiel kommen.  
+und welche Software ins Spiel kommen.  
 
 Ein Gateway ist ein Ger"at, das aus mindestens einem Konzentrator, einem
 Host und einer Netzverbindung zum Internet oder ein privates Netzwerk
-(Ethernet, 3G, Wi-Fi), m"oglicherweise einem GPS-Empf"anger besteht. Der
+(Ethernet, 3G, Wi-Fi), m"oglicherweise einem GPS-Empf"anger, besteht. Der
 Konzentrator ist ein Board, das Funkpakete senden und empfangen kann.
 Ein Konzentrator basiert auf einem Semtech-Mehrkanalmodem
 (\textbf{\textit{SX130x}}), einem Transceiver (\textbf{\textit{SX135x}})
@@ -972,31 +977,33 @@ Ein Host ist ein eingebetteter Computer, auf dem die Paketweiterleitung
 ausgef"urt wird. Der Host steuert den Konzentrator "uber eine
 SPI-Schnittstelle. F"ur diese Arbeit ist der Host ein Raspberry-Pi. Ein
 Gateway kann viele Endger"ate gleichzeitig behandeln. Die Kommunikation
-zwischen einem Endger"at und einem Gateway ist bidirektional, das hei\ss{}t
-das Endger"at sendet dem Gateway Daten, aber kann auch Daten von dem
-Gateway empfangen.
+zwischen einem Endger"at und einem Gateway ist bidirektional. Das hei\ss{}t,
+das Endger"at sendet dem Gateway Daten, kann aber auch von dem
+Gateway Daten empfangen.
 
 Die Kommunikation von einem Endger"at zum Gateway ist ein Uplink,
 w"ahrend die Kommunikation vom Gateway zum Endger"at ein Downlink ist.
+
+
 Ein Endger"at sendet Uplinks als Broadcast, das hei\ss{}t die gesendeten
-Daten werden von allen Gateways des Netzwerks bekommen. Das Gateway
-leitet das Datenpaket an dem Netzwerkserver weiter. Der Netzwerkserver
+Daten werden von allen Gateways des Netzwerks empfangen. Das Gateway
+leitet das Datenpaket an den Netzwerkserver weiter. Der Netzwerkserver
 sammelt die Nachrichten aller Gateways, filtert doppelte Daten heraus
 und bestimmt das Gateway mit der besten Rezeption. Der Netzwerkserver
 leitet seine Daten zu dem entsprechenden Anwendungsserver, womit der
 Nutzer die Sensordaten ansehen und/oder verarbeiten kann.
 
-Bekommt den Netzwerkserver eine Antwort vom Anwendungsserver, bestimmt
-der Netzwerkserver welches Gateway benutzt wird, um dem Endger"at die
-Antwort zu senden (Downlink).
+Bekommt der Netzwerkserver eine Antwort vom Anwendungsserver,
+bestimmt der Netzwerkserver welches Gateway benutzt wird, um dem Endger"at
+die Antwort zu senden (Downlink).
 
 Der Konzentrator kann Funktpakete zwar empfangen und senden, er ist
-aber nur eine elektronische Komponente und braucht eigentlich eine
+jedoch lediglich eine elektronische Komponente und ben"otigt eine
 Software, um empfangene oder zu sendenden Pakete zu bearbeiten. Diese 
 Software hei\ss{}t LoRa-Packet-Forwarder \cite{paketForwarder}. 
 Der Paket-Forwarder ist ein Programm, das auf dem Host ausgef"uhrt wird,
-um Funkpakete, die vom Konzentrator empfangen werden "uber eine IP/UDP-
-Verbindung an den Server weiterleitet und sendet die vom Server gesendeten 
+um Funkpakete, die vom Konzentrator empfangen werden, "uber eine IP/UDP-
+Verbindung an den Server weiterzuleitet und sendet die vom Server gesendeten 
 Funkpakete weiter. Der Packet-Forwarder kann auch ein netzwerkweites
 synchrones GPS-Signal senden, das zur Koordination aller Endger"ate des
 Netzwerks verwendet wird. 
@@ -1021,25 +1028,25 @@ Abbildung \ref{fig:forwarder1} zeigt die Netzwerkkomponenten, beginnend
 mit dem Gateway und seinen Bestandteilen. Es ist deutlich zu sehen, dass
 das der Konzentrator und der Host durch einer SPI-Schnittstelle verbunden
 sind und die Verbindung zwischen dem Gateway und dem Server das Internet
-einem einzigen Modul. Das hei\ss{}t, der Konzentrator, das Gateway und der
-Server zusammen in einem Block eingebaut sind. Der Raspberry-Pi ist
+ist. Das hei\ss{}t, der Konzentrator, das Gateway und der
+Server sind zusammen in einem Block eingebaut. Der Raspberry-Pi ist
 gleichzeitig der Host und der Server. 
 
 \section{Einstellung des LoRaWAN-Servers}\label{server}
 
 An dieser Stelle ist die Arbeit fast fertig, da unsere Anwendung
-theoretisch in der Lage ist, Uplinks an dem Gateway zu schicken. Nun
-interessieren wir uns auf die Verarbeitung der empfangenen Daten. Die
+theoretisch in der Lage ist, Uplinks an das Gateway zu schicken. Nun
+konzentrieren wir uns auf die Verarbeitung der empfangenen Daten. Die
 Daten werden zwar in die Luft gesendet, aber der Benutzer kann diese
-nicht sehen oder verarbeiten, dazu ist ein Server. Dieser Server soll in
-der Lage sein, gesendete Funkpakete zu interpretieren und darzustellen,
-sodass der Benutzer diese lesen und verstehen kann. 
+nicht sehen oder verarbeiten, daf"ur ist ein Server zust"andig. Dieser
+Server soll in der Lage sein, gesendete Funkpakete zu interpretieren 
+und darzustellen, sodass der Benutzer diese lesen und verstehen kann. 
 
 Der verwendete Server hei\ss{}t \textbf{lorawan-server} (Open-source). Er
 wurde von Herrn \textbf{Petr Gotthard} \cite{server} entwickelt und ist
-ein Kompakter Server f"ur private LoRaWAN-Netzwerke. Dieser Server dient
+ein kompakter Server f"ur private LoRaWAN-Netzwerke. Dieser Server dient
 nicht nur als Netzwerkserver, sondern auch als Anwendungsserver. Man kann
-damit alle Ereignisse, und alle Daten, die entweder vom Endger"at oder
+damit alle Ereignisse und alle Daten ansehen, die entweder vom Endger"at oder
 vom Packet-Forwarder kommen. Der Server wurde in 79\% in der
 Programmiersprache Erlang \cite{erlang} geschieben.   
 
@@ -1052,7 +1059,7 @@ Gruppe des Endger"ats kennen.
 
 \begin{description}
 	\item[Gateway:] Der Server kann mit einem oder mehrere Gateways
-	verbunden werden (Nur ein in unserem Fall). Der Server bekommt alle
+	verbunden werden (Nur eins in unserem Fall). Der Server bekommt alle
 	Uplinks, die von den Gateways weitergeleitet werden, betrachtet nicht
 	welches Endger"at welchem Netzwerk geh"ort.
 	\vspace{10cm}
@@ -1065,10 +1072,10 @@ Gruppe des Endger"ats kennen.
 	\item[Netzwerk:] Der Server kann ein oder mehrere Netzwerke
 	 verarbeiten. Jede Netzwerkkonfiguration umfasst:
 	\begin{itemize}
-		\item Eine Netzwerkkennung, um die Enger"at-Adresse (DevAddr) neu
-		verbundener Endger"ate zu Erstellen.
+		\item Eine Netzwerkkennung, um die Endger"at-Adresse (DevAddr) neu
+		verbundener Endger"ate zu erstellen.
 		\item LoRaWAN-Regionparameter, einschlie\ss{}lich zus"atzliche
-		Frequenzen
+		Frequenzen.
 	\end{itemize}
 
 	\begin{figure}[h!]
@@ -1086,22 +1093,19 @@ Gruppe des Endger"ats kennen.
 		\caption{Einstellung des Netzwerks}
 	\end{figure}
 
-
-	
 	\item[Profil:] Das Profil repr"asentiert eine bestimmte Hardware und
 	alle statischen Einstellungen in der Firmware, die f"ur eine Gruppe
 	von Ger"aten gleich sind. Die Konfiguration umfasst:
 	\begin{itemize}
-		\item Die Referenz zu einem bestimmten Netzwerk
-		\item Die F"ahigkei des Ger"ats, \ac{ADR} 
-		durchzuf"uren oder den Batteriestatus bereitzustellen.
-		\item Die Anwendung
+		\item Die Referenz zu einem bestimmten Netzwerk.
+		\item Die F"ahigkeit des Ger"ats, \ac{ADR} 
+		durchzuf"uhren oder den Batteriestatus bereitzustellen.
 	\end{itemize} 
 	Es ist zu bemerken, dass die Einstellung der Abbildung
 	\ref{fig:ProAdr} genau ist, wie die Einstellung des Endger"ats, die
 	im Abschnitt \ref{LoRaconf} erl"autert wurde. Weil wir genau dieses
 	Ger"at im Netzwerk integrieren wollen, muss auch der Server
-	dem entsprechen eingestellt werden.
+	entsprechend eingestellt werden.
 
 	\begin{figure}[h!]
 		% first include \usepackage{subfigure}
@@ -1129,7 +1133,7 @@ Gruppe des Endger"ats kennen.
 \end{description}
 \vspace{10cm}
 Nun ist es m"oglich Endger"ate zum Server hinzuzuf"ugen. Als Erstes
-versuchen wir mit ABP, dann mit OTAA.
+versuchen wir es mit ABP, dann mit OTAA.
 
 \subsubsection{ABP Verbindung}
 Ger"ate die mit ABP verbunden werden sollen, brauchen wir im Abschnitt
@@ -1149,12 +1153,12 @@ erkennen, die im Abschnitt \ref{secure} erw"ahnt wurden.
 		\includegraphics[width=7cm]{source/images/Labcsmart_abp_adr}
 		\label{fig:DevAdr}
 	}
-	\caption{ABP Verbindung}
+	\caption{ABP Registrierung}
 	\end{figure}
 
 \vspace{10cm}
 \subsubsection{OTAA Verbindung}
-Hier befinden sich Ger"ate, die dem LoRaWAN-Netzwerk mitmilfe von OTAA
+Hier befinden sich Ger"ate, die dem LoRaWAN-Netzwerk mithilfe von OTAA
 beitreten d"urfen. Man muss dazu aber die DevEUI, AppEUI und AppKey auf
 jedem Fall kennen und im Server eingeben (Siehe \ref{fig:otaa}). 
 	\begin{figure}[h]
@@ -1164,13 +1168,13 @@ jedem Fall kennen und im Server eingeben (Siehe \ref{fig:otaa}).
 \end{figure}
 Nachdem das Ger"at dem Netzwerk beigetreten ist, bekommt es eine
 DevAddr, einen NwkSKey und einen AppSKey, die mit Hilfe des AppKey
-berechnet wird (Siehe \ref{secure} f"ur die Erkl"arung). 
+berechnet wird zugewiesen (Siehe \ref{secure} f"ur die Erkl"arung). 
 \vspace{10cm}
 
 Nachdem diese Einstellungen fertig sind und die Ger"ate dem Netzwerk
-beigetreten sind, k"onnen Uplinks im Dashboard gesehen werden. Der
-Inhalt (In Hexadezimal) befinden sich unter Frames (unten links vom
-Server). 
+beigetreten sind, k"onnen Uplinks im Dashboard gesehen werden. Die
+"ubertragenen Daten (In Hexadezimal) befinden sich unter Frames 
+(unten links vom Server). 
 
 	\begin{figure}[h!]
 	% first include \usepackage{subfigure}
@@ -1183,16 +1187,16 @@ Server).
 		\includegraphics[width=17cm]{source/images/frames}
 		\label{fig:Frames}
 	}
-	\caption{Zwischenergebnis}
+	\caption{Uplinks/Downlinks \ref{fig:Dashboard} und Frames \ref{fig:Frames}}
 \end{figure}
 
 \vspace{10cm}
 Gr"une Ereignisse im Abbildung \ref{fig:Dashboard} bezeichnen 
-Downlinks, w"ahrend Ereignisse in lila sind Uplinks. Die Spalte U/l 
+Downlinks, w"ahrend Ereignisse in lila Uplinks sind. Die Spalte U/L 
 RSSI des Abbildungs \ref{fig:Frames} stellt die empfangene 
 Signalat"arke (Englisch \textbf{\textit{\ac{RSSI}}}) dar. RSSI ist die 
 empfangene Leistung in milliwatts, wird aber in \ac{dBm} gemessen. 
-Diesen wird sagt wie, gut ein Empf"anger gesendete Signale empfangen 
+Die RSSI sagt, wie gut ein Empf"anger gesendete Signale empfangen 
 kann. RSSI ist ein negativer Wert, je n"aher 0 dieser Wert ist, desto 
 besser ist das Signal. Der minimale RSSI-Wert f"ur die 
 LoRa-Technologie ist -120dBm.  
@@ -1200,30 +1204,32 @@ LoRa-Technologie ist -120dBm.
 Zu Ende reicht dieses Ergebnis noch nicht. Was passiert, wenn der Server
 nicht mehr funktioniert? Soll die Anwendung auch nicht funktionieren
 oder gibt es eine andere M"oglichkeit die Daten irgendwie zu sichern,
-falls ein Serverausfall vorkommen w"urde? Zwischen dem Server und dem
-Packet-Forwarder gibt es ein Kommunikationsprotokoll namens \ac{MQTT}. 
+falls ein Serverausfall vorkommen w"urde? 
 
+\vspace{2cm}
+Zwischen dem Server und dem
+Packet-Forwarder gibt es ein Kommunikationsprotokoll namens \ac{MQTT}. 
 Das n"achste Kapitel erkl"art was MQTT ist, wie es funktioniert und 
 wie die Daten beim Serverausfall anderswo gesichert werden k"onnen. 
   
 \section{MQTT Protokoll}
 
 MQTT hat sich in den letzten Jahren zum Standard Protokoll f"ur die
-Machine-To-Machine- und IoT-Kommunikation von Ger"ate und Anwendungen
-entwickelt. MQTT steht f"ur \textbf{Message Queue Telemetry Transport},
-und bietet eine sichere, versl"assliche, performante und wartbare
-Kommunikation zwischen Anwendungen und Ger"ate. Dieses Protokoll
+Machine-To-Machine- und IoT-Kommunikation von Ger"aten und Anwendungen
+entwickelt. MQTT steht f"ur \textbf{Message Queue Telemetry Transport}
+und bietet eine sichere, zuverl"asige, performante und wartbare
+Kommunikation zwischen Anwendungen und Ger"aten. Dieses Protokoll
 unterscheidet sich von Request/Resp-onse-Protokollen wie \ac{HTTP} 
 dadurch, dass es alle Kommunikationsteilnehmer entkoppelt. F"ur den
 Datenaustausch werden Nachrichten "uber einen zentralen Verteiler an 
-die Teilnehmer gesendet. Das ist der Grund warum kein tieferes Wissen 
+die Teilnehmer gesendet. Das ist der Grund, warum kein tieferes Wissen 
 "uber empfangende Anwendungen vorhanden sein muss.
 
-MQTT basiert auf eine 1:N-Kommunikation, ein Teilnehmer sendet eine
+MQTT basiert auf eine 1:N-Kommunikation. Ein Teilnehmer sendet eine
 Nachricht, worauf einen oder mehreren Abonnenten Zugriff haben k"onnen.
-Teilnehmer k"onnen entweder Date empfangen oder senden. Der MQTT-Broker
+Teilnehmer k"onnen entweder Daten empfangen oder senden. Der MQTT-Broker
 ist der zentraler Verteiler, "uber den alle Kommunikationen stattfinden.
-Der Publisher ist produziert die Nachricht und der Subsriber abonniert
+Der Publisher produziert die Nachricht und der Subscriber abonniert
 sich an eine bestimmte oder an alle Nachrichten. 
 
 Der Begriff  Topic, bezeichnet ein Ordner oder Unterordner, an dem
@@ -1238,42 +1244,115 @@ eine \ac{TCP}-Verbindung mit dem MQTT-Broker verbunden. Diese
 Verbindung wird von den Clients (Subscriber und Publisher) selbst 
 aufgebaut und ben"otigen anders als der Broker keine Ip-Adresse. 
 
+\vspace{2cm}
 Kommen wir nun zur"uck auf den Zusammenhang zwischen MQTT und dieser
-Thesis. Das Das Kommunikationsprotokoll zwischen dem Packet-Forwarder und 
+Thesis. Das Kommunikationsprotokoll zwischen dem Packet-Forwarder und 
 dem LoRaWAN-Server wurde im Kapitel \ref{server} nicht erw"ahnt. Beide
 benutzen das MQTT-Protokoll, um jeweils Uplinks und Downlinks
-weiterzuleiten. Es ist derzeit m"oglich mit einer Externen Anwendung an
-den vom MQTT-Broker ver"offentlichte Topics zu abonnieren als auch 
-selber ver"ofentlichen. Die von der externen Anwendung ver"offentliche 
-Topics k"onnen Downlinks ersetzen, diesmal werden die Downlinks nicht 
-vom Server gesendet, sondern von der Externen Anwendung.
+weiterzuleiten. Es ist derzeit m"oglich mit einer externen Anwendung an
+den vom MQTT-Broker ver"offentlichten Topics zu abonnieren als auch 
+selbst ver"offentlichen.
 
-\chapter{Software Emplimmentierung}\label{Soft-Ent}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=13cm]{source/images/MQTT}
+	\caption{MQTT-Protokoll\label{fig:mqtt}}
+\end{figure}
+
+Der MQTT-Broker soll auf den Entwicklungsrechner instaliert werden, sodass es m"oglich wird, Topics zu abonnieren oder Nachrichten zu ver"offentlichen. \textbf{Mosquitto} ist die benutzte Software dazu und wird wie folgt installiert.
+ 
+\begin{lstlisting}[frame=single]
+$ sudo apt-get install mosquitto
+$ sudo apt-get install mosquitto-clients
+\end{lstlisting}
+Nach der Installation kann man schon Topics abonnieren oder eine Nachricht ver"offentlichen. Um Topics zu 
+abonnieren, bietet mosquitto das Kommando \textbf{Mosquito\_sub} und wird wie folgt benutzt.
+
+\begin{lstlisting}[frame=single]
+$ Mosquito_sub -h 192.168.0.17 -t out/devaddr
+\end{lstlisting}
+Die IP-Adressen geh"ort dem Server. Wir abonnieren somit alle Nachrichten, die an das Topic
+\textbf{out/devaddr} ver"offentlicht werden. Mit dem Kommando \textbf{Mosquito\_pub} k"onnen Nachrichten ver"offentlicht werden.
+
+\begin{lstlisting}[frame=single]
+$ Mosquito_pub -h 192.168.0.17 -m "Hello Server" -t in/devaddr
+\end{lstlisting}
+Falls der LoRaWAN-Server das Topic \textbf{in/devaddr} abonniert, w"urde er die Nachricht 
+\textbf{Hallo Server} empfangen.
+
+\textbf{Achtung:} devaddr bezeichnet die Adresse eines Endger"ats, sie ist von einem Endger"at zu einem anderen unterschiedlich.
+
+Zwischen dem Gateway und dem LoRaWAN-Server ist ein MQTT-Broker, der als zentraler Server 
+gilt. Beide Komponenten sind Clients des MQTT-Broker. Hier interessiersn wir uns auf die 
+Konfiguration des Servers als MQTT-Subscriber und -Publisher. Der Server gilt als 
+Subscriber, wenn er Daten vom Endger"at empf"angt und als Publisher, wenn downlinks an das 
+versendet Endger"at werden sollen. Es ist m"oglich mit einer externen Python-Anwendung auf 
+Uplinks zu abonnieren  oder Daten als Downlinks an den Server zu senden, da seine IP-Adressen zur Ver"offentlichung verwendet wird.
+ 
+Der Server ver"offentlicht dann diese Daten an den MQTT-Broker. Das Gateway abonniert 
+die vom Server ver"offentlichte Topics und leitet diese an den Endger"at weiter. Das 
+Endgr"at enf"angt und verarbeitet diese Daten. Wir k"onnen beispielsweise 2 LED's ansteuern, 
+indem wir Downlinks wie im Tabelle \ref{tab:Downlink} senden. (Siehe 
+\ref{fig:mqtt-Connector} Um den Server mit MQTT einzustellen) 
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=10cm]{source/images/Labcsmart_connector}
+	\caption{MQTT Connector vom Server\label{fig:mqtt-Connector}}
+\end{figure}
+
+\vspace{1cm}
+Es ist auf das Bild \ref{fig:mqtt-Connector} zu sehen, dass der Server Nachrichten an topic \textbf{out/{devaddr}} ver"offentlicht, \textbf{out/{devaddr}} abonniert  und an allen Nachrichten von devaddr interessiert ist. 
+
+
+\begin{center}
+	\begin{table}[htbp] 
+		\centering 
+		\Large
+		\begin{tabular}{c|c|c|c}
+			
+			\textbf{Downlink} & \textbf{ASCII-Code} & \textbf{LED 1} & \textbf{LED 2} \\
+			\hline
+			11 & 3131	& AN & AN \\
+			\hline
+			10 & 3130	& AN & AUS \\
+			\hline
+			01 & 3031	& AUS & AN \\
+			\hline
+			00 & 3030  & AUS & AUS \
+		\end{tabular} 
+		\caption{Downlink Nachrichten} 
+		\label{tab:Downlink} 
+	\end{table}
+\end{center}
+
+Der Abschnitt \ref{MQTT} behandelt, wie Das Endger"at Downlinks empf"angt und verarbeitet.
+
+\chapter{Software Implimmentierung}\label{Soft-Ent}
 Bis jetzt wurden die Begriffe theoretisch erw"ahnt. Man kann zwar schon 
 verstehen, was das Ziel der Arbeit ist, wie die gemessenen Daten gelesen 
-werden und wie die LoRa funktioniert. Das reicht aber noch nicht. 
+werden und wie die LoRa-Technologie funktioniert. Das reicht aber noch nicht. 
 In diesem Kapitel geht es um den Host (der Entwicklungsrechner), die 
 Tools, die zur Entwicklung der eingebetteten Software zur Ansteuerung 
 der Sensoren und des LoRa-Moduls eingesetzt wurden. Das gesamte Projekt 
 wurde zum gr"o\ss{}ten Teil in der Programmiersprache C geschrieben. 
-Die externe Anwendung f"ur das Abonnieren an Topics und das Senden von
-Downlinks wurde in der Programmiersprache Python geschrieben.
+
 
 \section{Entwicklungsumgebung}
 Das gesamte Projekt wurde unter Ubuntu durchgef"uhrt. Ubuntu ist eine 
-ber"umte Linux-Distribution. Da die Kosten der Entwicklung niedrig wie 
-m"oglich gehalten werden sollen, wurde eine Linux. Distribution 
-ausgew"ahlt. Der Grund daf"ur ist die Freiheit von Linux, und die 
+ber"umte Linux-Distribution. Da die Kosten der Entwicklung so niedrig wie 
+m"oglich gehalten werden sollen, wurde eine Linux-Distribution 
+ausgew"ahlt. Der Grund daf"ur ist die Freiheit von Linux und die 
 Unentgeltlichkeit vieler Entwicklungsumgebung. 
 
 \subsection{Eclipse}
 
 Als Entwicklungsumgebung war \textbf{Eclipse} vorteilhaft, weil der 
 Entwickler viele externen Tools hinzuf"ugen kann und es sich einfach 
-zum Bedarf angepasst werden kann. In diesem Teil des Berichts, wird in 
+zum Bedarf angepassen l"asst. In diesem Teil des Berichts, wird auf 
 die Installation und die Konfiguration von Eclipse eingegangen, sodass  
-der Entwickler C-Quelle-Codes durch einen Klick compilieren und im 
-Mikrocontroller laden kann. 
+der Entwickler C-Quelle-Codes durch einen Klick compilieren und mithilfe eines
+Lade-Kommando die Ausf"uhrbare Datei im Mikrocontroller laden kann. 
 
 \vspace{2cm}
 Starten wir erstmal mit der Installation der Entwicklungsumgebung. 
@@ -1285,8 +1364,8 @@ Folgende Kommandos sorgen daf"ur:
 	$ sudo apt install oracle-java8-set-default
 \end{lstlisting}
 
-Man soll nun Eclipse von der offiziellen
-\href{https://www.eclipse.org/downloads/}{Website}  herunterladen.Nachdem 
+Man sollte Eclipse von der offiziellen
+\href{https://www.eclipse.org/downloads/}{Website}  herunterladen. Nachdem 
 die Software heruntergeladen wurde, befindet sie sich unter 
 ~/Download. Die Software soll entpackt werden bevor die Installation 
 erfolgt.
@@ -1295,25 +1374,25 @@ erfolgt.
 	$ ~/Downloads/eclipse-installer/eclipse-inst
 \end{lstlisting}
 
-Die Software startet, es wird nach dem Paket gefragt, die man 
+Die Software startet, es wird nach den Paketen gefragt, die man 
 installieren m"ochte. F"ur diese Arbeit brauchen wir das Paket 
 \textbf{Eclipse IDE for C/C++ Developers}. Nachdem es ausgew"ahlt 
 wurde, kann man nun die Installation starten.
   
 Nach der Installation kann man Eclipse eigentlich schon benutzen. 
 C-Quelle-Codes f"ur normalen Rechner k"onnen kompiliert werden, da der 
-GCC-Compiler standartm"a\ss{}ig installiert wird. Wir wollen aber 
+GCC-Compiler standardm"a\ss{}ig installiert wird. Wir wollen jedoch	 
 C-Codes f"ur einen ARM-Mikro- controller compilieren. Aus diesem Grund 
 m"ussen wir ein externes Tool f"ur ARM-Mikrocontroller in Eclipse 
-einf"ugen. Damit das erfolgt, soll man das 
+einf"ugen. Damit das erfolgt, soll das 
 \textbf{Eclipse-Marketplace} 
-unter \textbf{Help} suchen. Sobald das Eclipse-Marketplace ge"offnet 
+unter \textbf{Help} gesucht werden. Sobald das Eclipse-Marketplace ge"offnet 
 ist, soll man nach \textbf{GNU MCU Eclipse} suchen und 
 installieren.
 
-Nun k"onnen wir ein Projekt herstellen. Bevor das geschieht, soll man 
-ein Ordner herstelle, in dem das Projekt abgelegt wird. In diesem 
-Ordner muss man ein MAKEFILE herstellen. Folgende Kommandos zeigen wie 
+Nun k"onnen wir ein Projekt erstellen. Bevor das geschieht, soll man 
+ein Ordner erstellem, in dem das Projekt abgelegt wird. In diesem 
+Ordner muss man ein MAKEFILE erstellen. Folgende Kommandos zeigen wie 
 das geht.
 \begin{lstlisting}[frame=single]
 $ mkdir projekt1
@@ -1322,14 +1401,14 @@ $ touch Makefile
 \end{lstlisting}
 Die Datei ist momentan leer und wird sp"ater ausgef"ullt. Danach w"ahlt
 man \textbf{file -> new -> project} aus. Nun wird nach dem Typ des 
-Projekts, wir w"ahlen \textbf{Makefile Project with Existing Code} und 
+Projekts gefragt, wir w"ahlen \textbf{Makefile Project with Existing Code} und 
 dann \textbf{ARM Cross GCC} aus. Oben gibt man den Namen  sowie das
 Verzeichnis des Projekts ein und dr"uckt auf fertig. Nun ist unser 
-Projekt angelegt, obwohl wir noch keinen ARM-Code compilieren k"onnen.
+Projekt angelegt, k"onnen aber noch keinen ARM-Code compilieren.
 
 Wir wollen mithilfe von \textbf{MAKEFILES} unsere Quellen-Codes 
-kompilieren. Wir haben dadurch eine volle Kontrolle auf die 
-Kompilierung haben, und die Fehlerausgaben werden schnell 
+compilieren. Wir haben dadurch eine volle Kontrolle auf die 
+Kompilierung, und die Fehlerausgaben werden schnell 
 verst"andlich, da wir genau bekommen was wir auch in dem MAKEFILE 
 spezifiziert haben. Wir m"ussen dazu sogenannte \textbf{Build Targets} 
 hinzuf"ugen. 
@@ -1344,8 +1423,8 @@ Oben rechts von Eclipse befinden sich diese Build-Targets und m"ussen wie in Abb
 
 Nachdem die Build-Targets konfiguriert sind, erscheinen sie in dem 
 \textbf{Project Explorer} wie es der Abbildung \ref{fig:build2} zu 
-entnehmen ist. Zum Kompilieren soll man 2 mal auf \textbf{all} klicken, 
-genau so wie auf \textbf{clean}, wenn Bin"ar- und ausf"hrbare Dateien 
+entnehmen ist. Zum Compilieren soll man 2 mal auf \textbf{all} klicken, 
+genau so wie auf \textbf{clean}, wenn Bin"ar- und ausf"uhrbare Dateien 
 gel"oscht werden sollen. 
 
 \begin{figure}[h]
@@ -1373,7 +1452,7 @@ LDFLAGS += -u _printf_float //Damit floating points durch UART dastellbar werden
 
 VPATH += $(SHARED_DIR)
 INCLUDES += $(patsubst %,-I%, . $(SHARED_DIR))
-OPENCM3_DIR=../libopencm3 //Das Verzeichnis der benutzte Bibliotek
+OPENCM3_DIR=../libopencm3 //Das Verzeichnis der benutzte Bibliothek
 
 include $(OPENCM3_DIR)/mk/genlink-config.mk
 include ./rules.mk
@@ -1388,7 +1467,7 @@ benutzen, aber der Name des Projekts, der Mikrocontroller und die zu
 kompilierenden C-Quelle-Dateien  m"ussen je nach Aufgabe angepasst 
 werden.   
 
-Damit der kompilierte Code auf dem Mikrocontroller getestet werden kann, muss er in dem Flash-Speicher gespeichert werden. Daf"ur brauch man ein zus"atzliches Werkzeug. Dieses Werkzeug hei\ss{}t \textbf{ST-Link} f"ur STM32-Mikrocontroller. Dieses Werkzeug wird wie folgt installiert.
+Damit der kompilierte Code auf dem Mikrocontroller getestet werden kann, muss er in den Flash-Speicher gespeichert werden. Daf"ur brauch man ein zus"atzliches Werkzeug. Dieses Werkzeug hei\ss{}t \textbf{ST-Link} f"ur STM32-Mikrocontroller. Dieses Werkzeug wird wie folgt installiert.
 
 \begin{lstlisting}[frame=single]
 sudo apt-get install libusb-1.0-0-dev git
@@ -1396,7 +1475,7 @@ git clone https://github.com/texane/stlink stlink.git
 cd stlink.git
 make
 \end{lstlisting}
-Nun ist das Programm installiert aber man kann es nicht einfach und "uberall ausf"uren. Damit es m"oglich wird, das Programm unter irgendwelchen Ordner und ohne SUDO-Rechte auszuf"uhren, muss es in dem Linux-Filesystem kopiert werden.
+Nun ist das Programm installiert, aber man kann es nicht einfach und "uberall ausf"uhren. Damit es m"oglich wird, das Programm unter irgendwelchen Ordner und ohne SUDO-Rechte auszuf"uhren, muss es in dem Linux-Filesystem kopiert werden.
 \begin{lstlisting}[frame=single]
 cd flash
 sudo cp st-flash /usr/bin
@@ -1413,16 +1492,17 @@ st-flash write stlinkTest.bin 0x8000000
 \subsection{Libopencm3 Bibliotek installieren}
 Sensoren, die f"ur dieses Projekt eingesetzt wurden lassen sich durch 
 eine I2C-Schnittstelle ansteuern, w"ahrend die UART-Schnittstelle f"ur 
-das Senden von AT-Befehlen verwendet wurde. Wir k"onnen zwar diese 
-Peripherien durch direkter Zugriff auf Registern, aber das w"urde zu 
-viel Zeit nehmen, und der Code kann un"ubersichtlich werden. Damit wir 
-uns diese Arbeit ein wenig sparen, wurde eine Open-Source-Bibliothek 
+das Senden von AT-Befehlen und den Empfang von Antworten zu AT-Befehle 
+und Downlinks verwendet wurde. Wir k"onnen zwar diese 
+Peripherien durch direkten Zugriff auf die Registern, aber das w"urde zu 
+viel Zeit kosten, und der Code kann un"ubersichtlich werden. Damit wir 
+uns diese Arbeit ein wenig sparen k"onnen, wurde eine Open-Source-Bibliothek 
 benutzt \textbf{(libopencm3)} \cite{lib}. 
 
 Diese Bibliothek stellt fertige Funktionen und Parameter zur 
 Ansteuerung der Peripherien der ganzen 
 ARM-Cortex-M3-Mikrocontroller-Familie zur Verf"ugung. 
-Es gibt in dem GNU-ARM-Tool von Eclipse eine Bibliotek f"ur ARM-Mikrocontroller.
+Es gibt in dem GNU-ARM-Tool von Eclipse eine Bibliotek f"ur ARM-Mikrocontro-ller.
 Diese wurde nicht verwenden, weil sie zu dem Makefile nicht 
 passen w"urde, und die Dokumentation nicht gefunden wurde. 
 
@@ -1438,7 +1518,7 @@ Kommandos zeigen, wie das geht.
 $ git clone https://github.com/libopencm3/libopencm3 
 $ make
 
-/* Beispiele */
+/* Beispiele herunterladen */
 $ git clone https://github.com/libopencm3/libopencm3-examples 
 $ make
 
@@ -1462,7 +1542,7 @@ $ firefox index.html
 
 \section{Sensoren Auslesen} \label{Sensoren}
 
-Da wir nun eine Funktionsf"ahige Entwicklungsumgebung und eine 
+Da wir nun eine funktionsf"ahige Entwicklungsumgebung und eine 
 STM32-kompatible Bibliothek haben, sind wir in der Lage C-Code zur 
 Ansteuerung der Sensoren zu schreiben. In diesem Kapitel werden nur 
 wichtige Teile des gesamten Quellcodes erkl"art. Die Sensoren lassen 
@@ -1496,10 +1576,10 @@ void i2c2_setup(void)
 
 I2C ist eine Multi-Master-, Multi-Slave-Komminukationsschnittstelle, 
 das hei\ss{}t einem oder mehrere Master k"onnen mit einem oder mehrere 
-Slaves  Kommunizieren. F"ur dieses Projekt haben wir einen Master 
+Slaves  kommunizieren. F"ur dieses Projekt haben wir einen Master 
 \textbf{(STM32L4)} und zwei Slaves  \textbf{(HTS221 und LSM6DSL)} 
 (Siehe Abbildung \ref{fig:I2C}). 
-Jedes Slave hat eine Adresse in Hexadezimal, womit der Master es 
+Jeder Slave hat eine Adresse in Hexadezimal, womit der Master ihn 
 ansprechen kann. Der Master muss diese Adresse kennen, sonst k"onnen 
 beide nicht kommunizieren. 
 
@@ -1512,13 +1592,13 @@ beide nicht kommunizieren.
 \vspace{10cm}
 Im Kapitel \ref{Temp} wurde die Funktionsweise beider Sensoren und die 
 Vorgehensweise zur Ermittlung der gemessenen Daten behandelt. In diesem 
-Abschnitt wird gezeigt wie man Werte im Sensoren-Register schreibt und
-wie diese Register zu lesen sind. Im Anhang befinden sich alle Quellen- 
+Abschnitt wird gezeigt wie man Werte in Sensoren-Register schreibt und
+wie diese Register auszulesen sind. Im Anhang befinden sich alle Quell- 
 und Header-Dateien. In den Header-Dateien \textbf{hts221.h} und 
 \textbf{lsm6dsl.h} sind alle Register (Als Makro-Definition), 
 Funktionen zur Initialisierung und zum Auslesen der jeweiligen Sensoren 
-definiert. In den Quellen-Dateien \textbf{hts221.c} und 
-\textbf{lsm6dsl.c} sind diese Funktionen implementiert. Das folgende 
+definiert. In den Quell-Dateien \textbf{hts221.c} und 
+\textbf{lsm6dsl.c} sind diese Funktionen implementiert. Der folgende 
 Textblock zeigt, wie Register gelesen werden und wie man in diesen 
 Registern schreiben kann. (Dieses Beispiel bezieht sich auf dem 
 HTS221-Sensor)
@@ -1538,7 +1618,7 @@ Die Funktion \textbf{i2c\_transfer()} hat sechs Parameter:
 	\item \textbf{addr:} Die Slave-Adresse  
 	\item \textbf{w:} Buffer der zu schreibenden Daten
 	\item \textbf{wn:} Gr"o\ss{}e der zu schreibenden Daten (In Byte)
-	\item \textbf{r:} Buffer, in dem die gelesennen Daten geschrieben 
+	\item \textbf{r:} Buffer, in dem die gelesenen Daten geschrieben 
 	werden sollen
 	\item \textbf{rn:} Gr"o\ss{}e der zu lesenden Daten (In Byte)
 \end{enumerate}
@@ -1547,7 +1627,7 @@ Die Funktion \textbf{i2c\_transfer()} hat sechs Parameter:
 gleich dem NULL-Pointer und \textbf{rn} gleich null (0), da wir nichts 
 lesen wollen.
 
-Diese Vorgehensweise wird (Mit unterschiedlichen Registern) mehrmals 
+Diese Vorgehensweise wird (mit unterschiedlichen Registern) mehrmals 
 wiederholt, weil viele Kalibrierregister gelesen und zusammengerechnet 
 werden m"ussen, um die gemessenen Werten zu bekommen. Die folgenden 
 Textbl"ocke bezeichnen jeweils, wie die Temperatur vom \textbf{HTS221} 
@@ -1658,24 +1738,24 @@ und die Beschleunigung vom \textbf{LSM6DSL} ermittelt werden.
 \end{lstlisting}
 
 \textbf{Achtung:} Die Adresse, die beim Auslesen der Beschleunigung
-zur"uckgegeben wird, enth"alt 3 unterschiedliche Werten. Der Index 0 
+zur"uckgegeben wird, enth"alt 3 unterschiedliche Werte. Der Index 0 
 beinhaltet den Wert der X-Achse, Index 1 beinhaltet den Y-Wert und 
-Index 2 den Y-Wert. (Genau so wie f"ur den Gyroskop)
+Index 2 den Z-Wert. (analog f"ur den Gyroskop).
 
-Nachdem die Daten gelesen worden sind, kann man sie nun in Hexadezimal 
+Nachdem die Daten gelesen wurden, kann man sie nun in ASCI 
 konvertieren und mithilfe eines AT-Befehls am Server per LoRaWAN 
 senden. Der folgende Abschnitt zeigt, wie das geht.
 
 
 \section{AT-Kommandos senden}
 In diesem Teil geht es haupts"achlich um UART. Die Peripherie muss 
-aktiviert und konfiguriert werden, bevor einem Transfer startet. Der 
-folgende Quelle-Code ist daf"ur zust"andig.
+aktiviert und konfiguriert werden, bevor ein Transfer startet. Der 
+folgende Quell-Code ist daf"ur zust"andig.
 Die Konfugiration muss die gleiche sein wie im Abschnitt \ref{AT} 
 beschrieben (Baudrate: 115200, Daten:8 Bit, keine Parit"at und 1 
 Stopbit).
 
-\vspace{1cm}
+\vspace{2cm}
 \begin{lstlisting}[frame=single]
 	rcc_periph_clock_enable(RCC_UART4);
 	
@@ -1703,18 +1783,18 @@ Stopbit).
 	
 \end{lstlisting}  
 
-Wie im Abschnitt \ref{AT} erw"ahnt, sollen AT-Befehle am LoRa-Modul  
-senden, um das Modul f"ur eine LoRaWAN-Verbindung vorzubereiten. Diese 
+Wie im Abschnitt \ref{AT} erw"ahnt, sollen AT-Befehle an das LoRa-Modul  
+gesendet werden, um das Modul f"ur eine LoRaWAN-Verbindung vorzubereiten. Diese 
 Befehle werden  ein Zeichen nach dem anderen per UART an dem LoRa-Modul 
-gesendet werden. Da viele AT-Befehle Parameter erwarten, haben wir mithilfe
-der Stringifikation Makros definiert, die dem Benutzer 
-erm"oglichen ver"anderliche Strings in C durch UART zu senden. 
+gesendet. Da viele AT-Befehle Parameter erwarten, wurden mithilfe
+der Stringification Makros definiert, die dem Benutzer 
+erm"oglichen ver"anderliche Strings in C zu bilden. 
 
-Zuerst wurde eine Enumeration aller Befehle herstellt, die gebraucht 
-werden. Danach mithilfe eines zweidimensionalen Feldes und des 
-Stingifikation k"onnen wird Parametern zwischen den Strings setzen. Die 
+Zuerst wurde eine Enumeration aller Befehle erstellt, die gebraucht 
+werden. Danach mithilfe eines zweidimensionalen Feldes und der
+Stingification k"onnen wir Parametern zwischen den Strings setzen. Die 
 Enumeration gibt den Anfangsindex jedes Befehls an. Damit kann man 
-weiter iterieren, um ein kompletes String zu bilden. Die folgenden 
+weiter iterieren, um ein kompleten String zu bilden. Die folgenden 
 Zeilen-Code zeigen die Stingification, die Enumeration und das 
 zweidimensionale Feld.
 
@@ -1723,7 +1803,7 @@ zweidimensionale Feld.
 
 	/*
 	* Stringification
-	* Helful to convert macro argument into
+	* Helpful to convert macro argument into
 	* string constant
 	*/
 	#define AT_COMMAND(cmd,	param) "AT+" #cmd "=" #param "\r\n\0"
@@ -1822,7 +1902,7 @@ zweidimensionale Feld.
 	};
 \end{lstlisting}
 
-Nun ein Beispiel wie das ganze zu verwenden ist. Jedes Zeichen wird einem nach dem anderen per UART4 gesendet.
+Nun ein Beispiel wie das ganze zu verwenden ist. Jedes Zeichen wird einem nach dem anderen durch die UART4-Schnittstelle des Mikrocontrollers gesendet.
 
 \begin{lstlisting}[frame=single]
 	void send_cmd(enum lora_cmd cmd)
@@ -1841,13 +1921,13 @@ Nun ein Beispiel wie das ganze zu verwenden ist. Jedes Zeichen wird einem nach d
 
 Nachdem ein Befehl gesendet wurde, bekommt man eine Antwort von dem LoRa-Modul zur"uck. 
 Diese Antwort ist abh"angig von dem Befehl. Geht es um einen Set-Befehl, bekommt man 
-\textbf{OK} oder ein Fehler zur"uck. Ist der Befehle ein Get-Befehl dagegen, bekommt man 
+\textbf{OK} oder ein Fehler zur"uck. Ist der Befehle ein Get-Befehl, bekommt man 
 die abgefragte Daten oder ein Fehler zur"uck. Eine Ausnahme besteht bei Events.
 
-Nehmen wir an ein Endger"at m"ochte ein LoRaWAM-Netzwerk eintreten. Das 
-Endger"at wird zugelassen, der Server sendet es ein Join-Accept. Diese 
+Nehmen wir an ein Endger"at m"ochte einem LoRaWAM-Netzwerk beitreten. Das 
+Endger"at wird zugelassen, der Server sendet ein Join-Accept. Diese 
 Antwort taucht wie ein Event genau so wie ein normales Downlink auf. 
-Diese Antworten werden dann zur P"ufung verwendet oder zur Verarbeitung 
+Diese Antworten werden dann zur P"ufung oder zur Verarbeitung 
 von Downlinks verwendet. Um dieses Verhalten zu visualisieren, wurde 
 ein Logic-Analyser namens Saleae \cite{analyzer} verwendet. Das 
 folgende Bild zeigt das Ergebnis einer Messung. Es wird ein einfaches 
@@ -1862,14 +1942,150 @@ folgende Bild zeigt das Ergebnis einer Messung. Es wird ein einfaches
 \vspace{5cm}
 Diese Antwort wird mithilfe eines Interrupts abgefangen und in einem 
 Buffer gespeichert. Um zu pr"ufen, dass ein Befehle richtig interpretiert wurde, wird 
-der Inhalt des Antwort-Buffers mit dem String \textbf{OK} mit hilfe der System-Funktion 
+der Inhalt des Antwort-Buffers mit dem String \textbf{OK} mit hilfe der 
+System-Funktion 
 \textbf{strcmp()} verglieschen. So k"onnen wir auch pr"ufen ob ein Endger"at dem 
 Netzwerk eingetreten ist, indem der Antwort-Buffer mit dem Inhalt des 
 Join-Status-Registers. Der Inhalt des Join-Status-Registers ist 1, wenn das Endger"at 
-zugelassen wurde, un 0 wenn nicht. So k"onnen wir Join-Request solange senden, bis das 
-Endger"at dem Netzwerk zugelassen wird.
+zugelassen wurde, und 0 wenn nicht. So soll das Endger"at Join-Request solange 
+senden, bis das Endger"at dem Netzwerk zugelassen wird.
+
+Bei Downlinks bekommen wir auch ein Event, das unterschiedlich zu dem Join-Accept 
+oder die Antwort eines Befehls, zu behandeln ist. Das n"achte Teil erl"utert wie 
+Downlinks abgefangen werden und welche Action kann man abh"angig der empfangene Date 
+durchf"uhren.
+
+\section{Downlinks Behandlung}\label{MQTT} 
+
+Mit dem aktuellen stand der Anwendung, ist das Endgr"at in der Lage Uplinks zu senden, es 
+kann zwar downlinks-Event empfangen aber nicht verarbeiten. In diesem Abschnitt geht es 
+haupts"achlich um die Behandlung der Downlinks, die vom Server oder mit Mosquitto gesendet 
+werden k"onnen. 
+
+Der Abbildung \ref{fig:saleae} kann man erkennen, dass das LoRa-Modul auf 
+das Senden (TX) des Kommandos \textbf{\textit{AT}} mit \textbf{\textit{OK}} antwortet. Die 
+RX-Leitung des Mikrocontrollers 
+empf"angt diese Antwort und kann sie mit einer \ac{ISR} abfangen, um zu pr"ufen, ob das 
+Senden des Kommandos problemlos abgelaufen ist. Genau wie diese Vorgehensweise k"onnen 
+Downlinks abgefangen werden.
+
+Eine Downlinks-Nachricht sieht folgendermassen aus: 
+
+\begin{lstlisting}[frame=single]
++RCV=2,2,3130
+\end{lstlisting}
+Es bedeutet, dass die daten durch den Port \textbf{\textit{2}} empfangen wurden, 
+\textbf{\textit{2}} Bytes gro\ss{} sind und die eigentliche Nachricht der ASCII-String 
+\textbf{\textit{3130}} ist. Dieser ASCII-String wollen wir benutzen nachdem die komplete 
+Antwort in einem Buffer gespeichert wurden. Da die Nutztdaten ab Index 9 des Empfangsbuffers beginnt, ist es m"oglich den Empfangsbuffer als \textbf{EXTERN} in dem gobalen Header-Datei (\textbf{setup.h}) zu deklarieren, sodass es in anderen Dateien verwendbar wird.  
+
+\begin{lstlisting}[frame=single]
+#ifndef  EXTERN
+#define  EXTERN  extern
+#endif
+
+EXTERN volatile char payload[30];
+\end{lstlisting}
+So kann der Buffer \textbf{payload} von dem Empfangsinterrupt der UART Schnittstelle ver"andert werden (Siehe die Datei \textbf{lora\_modul.c}).
+
+\begin{lstlisting}[frame=single]
+int j = 0;
+int joined = 0;
+
+void uart4_isr(void)
+{
+	if(usart_get_flag(UART4, USART_ISR_RXNE) && joined){
+
+		/* Get downlink
+		* EX: +RCV=2,2,3030
+		* The gateway send packet to module for APP port 2
+		* The packet's payload size is 2 Bytes
+		* The payload data in Hex-format string
+		*/
+	
+		payload[j] = usart_recv(UART4);
+		j++;
+
+		if(j == 13){
+			nvic_disable_irq(NVIC_UART4_IRQ);
+			usart_disable_rx_interrupt(UART4);
+			usart_disable(UART4);
+			j = 0;
+			joined = 0;
+			downlink = 1;
+		}
+	}
+}
+
+/*
+* Convert each character of a floating point value
+* into Ascii hex string
+*/
+void float_to_Ascii(float value, char *buffer)
+{
+	char tmp[30];
+	unsigned int i, x = 0;
+	
+	sprintf(tmp,"%.2f", value); 
+	for(i = 0; i < strlen(tmp); i++){ 
+		sprintf((buffer+x), "%X", tmp[i]); 
+		x += 2;
+	}
+}
+
+\end{lstlisting}
+Diese \ac{ISR} wird ausgef"uhrt, wenn jedes zeichen des Downlinkstrings an dem RX-Pin der UART Schnitstelle bereit zum Lesen ist.
+Nachdem der komplette Downlink in dem Buffer gespeichert wurde, kann es abh"angig des Ziels 
+verarbeitet werden. Mehnem wir mal das Beispiel der Tabelle 
+\ref{tab:Downlink}, wir k"onnen LED's abhh"angig von den empfangenen Daten an-, 
+ausmachen oder blinken lassen. Die folgenden Zeilen implementieren dieses Beispiel.(Siehe die Datei \textbf{main.c})
+
+\vspace{1cm}
+\begin{lstlisting}[frame=single]
+static void downlink_event(char *payload)
+{
+	if(strcmp(payload, "3131") == 0){ //11
+		led_toggle(1,1);
+	}
+	else if(strcmp(payload, "3130") == 0){ //10
+		led_toggle(1,0);
+	}
+	else if(strcmp(payload, "3031") == 0){ //01
+		led_toggle(0,1);
+	}
+	else if(strcmp(payload, "3030") == 0){ //00
+		led_toggle(0,0);
+	}
+	else{
+		printf("Strings does not match\n");
+	}
+	usart_enable(UART4);
+	nvic_enable_irq(NVIC_UART4_IRQ);
+	usart_enable_rx_interrupt(UART4);
+}
+
+char temp[20];
+while(1){
+	temperature = read_temperature();
+	float_to_Ascii(temperature, data); // Temperatur in ASCII-Hex-String umwandeln
+	send_data(temp, AT_OK);
+	msleep (10000); // Daten jede 10 Sekunde senden
+
+	if(downlink){
+		printf("Payload: %s\n", payload+9);
+		downlink_event(payload+9);
+
+		/* Reset to catch next downlink*/
+		downlink = 0;
+	}
+}
+\end{lstlisting}
+Es ist deutlich zu bemerken, dass das feld \textbf{payload} dank der Qualifikation 
+\textbf{EXTERN} in zwei unterschiedlichen Dateien verwendet wurde, obwohl es in diesen 
+Dateien nicht deklariert wurden.
+Zu Testszwecken wurde das Szenario mit LED's ausgedacht, allerdings kann das Szenario 
+unterschiedlich sein, solange die Downlinks zu sinvollen Zwecken benutzt werden. Es w"are 
+zum Beispiel m"oglich, die Heizung ein bzw. auszuschalten, je nach der gemessenen 
+Temperatur. 
 
 
-\section{Downlinks Behandlung} 
-
-Muss noch Hinzugef"ugt werden.

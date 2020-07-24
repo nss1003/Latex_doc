@@ -68,7 +68,7 @@
 \usepackage[normalem]{ulem}   % bietet Unterstreichungsvarianten
 %\usepackage{picins} 					% Bilder im Absatz platzieren
 \usepackage[T1]{fontenc}			% Erweiterten Zeichensatz aktivieren
-\usepackage[printonlyused, withpage]{acronym}
+\usepackage[printonlyused,withpage]{acronym}
 \usepackage{multido}					% ermöglicht Schleifenartiges wiederholen von Befehlen
 \usepackage{mdwlist}					% ermöglicht das Setzen des Zählers bei Aufzählungspunkten
 \usepackage{paralist}					% Paket für Aufzählungen, erweitert Enumerate-Paket
@@ -171,11 +171,12 @@
 
 %-----------Header+Footer---------------------------------------------------
 \usepackage{fancyhdr}					%
-\pagestyle{fancy}							%
-%\rhead[\leftmark]{\thepage}
+\pagestyle{plain}							%
+\rhead[\leftmark]{\thepage}
 %\lhead[\thepage]{\rightmark}
-\fancyhead{}
+%\fancyhead{}
 \fancyfoot{} 
+\cfoot[\pagemark]{\pagemark}
 \renewcommand{\headrulewidth}{0.4pt} % Kopzeilenlinie
 \renewcommand{\footrulewidth}{0.0pt} % Fusszeilenlinie 0.0pt blendet sie aus
 
